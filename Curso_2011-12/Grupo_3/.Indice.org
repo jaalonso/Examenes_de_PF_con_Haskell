@@ -1,0 +1,12 @@
+Exámenes de I1M (curso 2011-12). Grupo 3 (Antonia M. Chávez) 
+==========================================================================
+
++ [[./examen_1_14_nov.hs][Examen 1]] (14 de Noviembre de 2011).
++ [[./examen_2_12_dic.hs][Examen 2]] (12 de Diciembre de 2011).
++ Examen 3 (27 de Febrero de 2012).
++ Examen 4 (09 de Abril de 2012).
++ Examen 5 (07 de Mayo de 2012).
++ Examen 6 (20 de Junio 2012). 
++ [[../Grupo_1/examen_7_29_Jun.hs][Examen 7]] (29 de Junio de 2012). 
++ [[../Grupo_1/examen_8_10_Sep.hs][Examen 8]] (09 de Septiembre de 2012). 
++ [[../Grupo_1/examen_9_10_Dic.hs][Examen 9]] (10 de Diciembre de 2012). 

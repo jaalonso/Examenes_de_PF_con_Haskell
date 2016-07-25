@@ -1,0 +1,39 @@
+Exámenes de I1M del curso 2012-13
+=====================================================================
+
+* [[./Grupo_1/.Indice.org][Grupo 1]] (Antonia M. Chávez).
++ [[./Grupo_1/examen_1_07_nov.hs][Examen 1]] (07 de noviembre de 2012).
++ [[./Grupo_1/examen_2_19_dic.hs][Examen 2]] (19 de diciembre de 2012).
++ [[./Grupo_1/examen_3_06_feb.hs][Examen 3]] (06 de febrero de 2013).
++ [[./Grupo_1/examen_4_03_abr.hs][Examen 4]] (03 de abril de 2013).
++ [[./Grupo_1/examen_5_15_may.hs][Examen 5]] (15 de mayo de 2013).
++ [[./Grupo_1/examen_6_13_jun.hs][Examen 6]] (13 de junio de 2013). 
++ [[./Grupo_1/examen_7_03_jul.hs][Examen 7]] (03 de julio de 2013). 
+
+* [[./Grupo_2/.Indice.org][Grupo 2]] (José A. Alonso y Miguel A. Martínez).
++ [[./Grupo_2/examen_1_08_nov.hs][Examen 1]] (08 de noviembre de 2012).
++ [[./Grupo_2/examen_2_20_dic.hs][Examen 2]] (20 de diciembre de 2012).
++ [[./Grupo_2/examen_3_06_ene.hs][Examen 3]] (06 de febrero de 2013).
++ [[./Grupo_2/examen_4_21_mar.hs][Examen 4]] (21 de marzo de 2013).
++ [[./Grupo_2/examen_5_16_may.hs][Examen 5]] (09 de mayo de 2013).
++ [[./Grupo_2/examen_6_13_jun.hs][Examen 6]] (13 de junio de 2013). 
++ [[./Grupo_2/examen_7_03_jul.hs][Examen 7]] (03 de julio de 2013). 
+
+* [[./Grupo_3/.Indice.org][Grupo 3]] (María J. Hidalgo).
++ [[./Grupo_3/examen_1_16_nov.hs][Examen 1]] (16 de noviembre de 2012).
++ [[./Grupo_3/examen_2_21_dic.hs][Examen 2]] (21 de diciembre de 2012).
++ [[./Grupo_3/examen_3_06_feb.hs][Examen 3]] (06 de febrero de 2013).
++ [[./Grupo_3/examen_4_22_mar.hs][Examen 4]] (22 de marzo de 2013).
++ [[./Grupo_3/examen_5_10_jun.hs][Examen 5]] (10 de mayo de 2013). 
++ [[./Grupo_3/examen_6_13_jun.hs][Examen 6]] (13 de junio de 2013). 
++ [[./Grupo_3/examen_7_03_jul.hs][Examen 7]] (03 de julio de 2013). 
+
+* [[./Grupo_4/.Indice.org][Grupo 4]] (Andrés Cordón e Ignacio Pérez).
++ [[./examen_1_12_nov.pdf][Examen 1]] (12 de noviembre de 2012).
++ [[./examen_2_17_dic.pdf][Examen 2]] (17 de diciembre de 2012).
++ [[./examen_3_06_feb.hs][Examen 3]] (06 de febrero de 2013).
++ [[./examen_4_18_mar.hs][Examen 4]] (18 de marzo de 2013).
++ [[./examen_5_06_may.hs][Examen 5]] (06 de mayo de 2013). 
++ [[./examen_6_13_jun.hs][Examen 6]] (13 de junio de 2013). 
++ [[./examen_7_03_jul.hs][Examen 7]] (03 de julio de 2013). 
+ 

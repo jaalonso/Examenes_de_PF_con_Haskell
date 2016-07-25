@@ -1,0 +1,14 @@
+/* ---------------------------------------------------------------------
+  Ejercicio 5 (en Maxima). [1.5 puntos]  Construir un programa que
+  calcule la suma de todos los números primos menores que n. Por
+  ejemplo, 
+     sumaPrimosMenores (10)     = 17
+     sumaPrimosMenores (200000) = 1709600813
+  ---------------------------------------------------------------------
+*/
+
+sumaPrimosMenores (n) := block([r : 0, k : 2],
+  while k <= n do
+  ( r : r+k,
+    k : next_prime (k) ),
+  r)$

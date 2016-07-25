@@ -1,0 +1,29 @@
+#+TITLE: Exámenes de programación funcional con Haskell
+
+Desde el inicio (en el curso 2009-10) del [[http://www.matematicas.us.es/estudios/grado-en-matematicas][Grado en Matemática]] de la [[http://www.us.es/][Universidad
+de Sevilla]] se estudia, en la [[http://www.cs.us.es/~jalonso/cursos/i1m/][asignatura de Informática]] de primero, una
+introducción a la programación funcional con [[http://es.wikipedia.org/wiki/Haskell][Haskell]].
+
+Durante este tiempo he ido publicando materiales para la asignatura que he
+recopilado en dos libros:
+
++ [[http://www.cs.us.es/~jalonso/publicaciones/2013-Temas_de_PF_con_Haskell.pdf][Temas de programación funcional]] y
++ [[http://www.cs.us.es/~jalonso/publicaciones/Piensa_en_Haskell.pdf][Piensa en Haskell (Ejercicios de programación funcional con Haskell)]]
+
+Este libro completa los anteriores presentando una recopilación de los exámenes
+de la asignatura durante estos años.
+
+Los exámenes se realizaron en el aula de informática y su duración fue de 2
+horas. La materia de cada examen es la impartida desde el comienzo del curso
+(generalmente, el 1 de octubre) hasta la fecha del examen.
+
+El libro consta de 7 capítulos correspondientes a los 7 cursos en los que se ha
+impartido la asignatura. En cada capítulo hay una sección, por cada uno de los
+grupos de la asignatura, y una subsección por cada uno de los exámenes del
+grupo.
+
+Los ejercicios de cada examen han sido propuestos por los profesores de su
+grupo (cuyos nombres aparecen en el título de la sección). Sin embargo, los he
+modificado para unificar el estilo de su presentación.
+
+

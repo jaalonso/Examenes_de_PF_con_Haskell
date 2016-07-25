@@ -1,0 +1,13 @@
+Exámenes de I1M (curso 2011-12). Grupo 4 (José F. Quesada) 
+==========================================================================
+
++ [[./examen_1_07_nov.hs][Examen 1]] (07 de Noviembre de 2011).
++ [[./examen_2_30_nov.hs][Examen 2]] (30 de Noviembre de 2011).
++ [[./examen_3_16_ene.hs][Examen 3]] (16 de Enero de 2012).
++ [[./examen_4_07_mar.hs][Examen 4]] (07 de Marzo de 2012).
++ [[./examen_5_28_mar.hs][Examen 5]] (28 de Marzo de 2012).
++ [[./examen_6_07_jun.hs][Examen 6]] (09 de Mayo de 2012).
++ [[./examen_7_11_jun.hs][Examen 7]] (11 de Junio de 2012).
++ [[../Grupo_1/examen_8_29_Jun.hs][Examen 8]] (29 de Junio de 2012). 
++ [[../Grupo_1/examen_9_10_Sep.hs][Examen 9]] (09 de Septiembre de 2012). 
++ [[../Grupo_1/examen_10_10_Dic.hs][Examen 10]] (10 de Diciembre de 2012). 

@@ -1,0 +1,13 @@
+Exámenes de I1M (curso 2011-12). Grupo 2 (María J. Hidalgo)
+==========================================================================
+
++ [[./examen_1_27_oct.hs][Examen 1]] (27 de Octubre de 2011).
++ [[./examen_2_01_dic.hs][Examen 2]] (01 de Diciembre de 2011).
++ [[./examen_3_26_ene.hs][Examen 3]] (26 de Enero de 2012).
++ [[./examen_4_01_mar.hs][Examen 4]] (01 de Marzo de 2012).
++ [[./examen_5_22_mar.hs][Examen 5]] (22 de Marzo de 2012).
++ [[./examen_6_03_may.hs][Examen 6]] (03 de Mayo de 2012).
++ [[./examen_7_24_jun.hs][Examen 7]] (24 de Junio de 2012)
++ [[../Grupo_1/examen_8_29_Jun.hs][Examen 8]] (29 de Junio de 2012). 
++ [[../Grupo_1/examen_9_10_Sep.hs][Examen 9]] (09 de Septiembre de 2012). 
++ [[../Grupo_1/examen_10_10_Dic.hs][Examen 10]] (10 de Diciembre de 2012). 
