@@ -106,10 +106,10 @@ esBelga2 k n =
 -- Comparación de eficiencia
 -- =========================
 
---    λ> length [n | n <- [1..9000], esBelga1 0 n]
+--    ghci> length [n | n <- [1..9000], esBelga1 0 n]
 --    2857
 --    (2.95 secs, 1,115,026,728 bytes)
---    λ> length [n | n <- [1..9000], esBelga2 0 n]
+--    ghci> length [n | n <- [1..9000], esBelga2 0 n]
 --    2857
 --    (0.10 secs, 24,804,480 bytes)
 
@@ -148,7 +148,7 @@ esBelga2 k n =
 --    anotado :: Arbol a -> Arbol (a,Int)
 -- tal que (anotado x) es el árbol obtenido anotando los elementos de x
 -- con su profundidad. Por ejemplo,
---    λ> anotado ejArbol
+--    ghci> anotado ejArbol
 --    N (3,0) 
 --      (N (4,1) 
 --         (N (5,2) (H (2,3)) (H (0,3))) 
@@ -194,7 +194,7 @@ anotado2 a = aux a [0..]
 -- tal que (distribucionUltimos n) es la matriz cuyo elemento (i,j)
 -- indica cuántos de los n primeros números primos terminan en i y su
 -- siguiente número primo termina en j. Por ejemplo,
---    λ> distribucionUltimos 30
+--    ghci> distribucionUltimos 30
 --    ( 0 0 4 0 0 0 2 0 0 )
 --    ( 0 0 1 0 0 0 0 0 0 )
 --    ( 0 0 0 0 1 0 4 0 4 )
@@ -205,7 +205,7 @@ anotado2 a = aux a [0..]
 --    ( 0 0 0 0 0 0 0 0 0 )
 --    ( 2 0 3 0 0 0 1 0 0 )
 --    
---    λ> distribucionUltimos (10^5)
+--    ghci> distribucionUltimos (10^5)
 --    ( 4104    0 7961    0    0    0 8297    0 4605 )
 --    (    0    0    1    0    0    0    0    0    0 )
 --    ( 5596    0 3604    0    1    0 7419    0 8387 )
@@ -233,14 +233,14 @@ ultimo :: Int -> Int
 ultimo n = n `mod` 10
 
 -- ultimos es la lista de el último dígito de los primos.
---    λ> take 20 ultimos
+--    ghci> take 20 ultimos
 --    [2,3,5,7,1,3,7,9,3,9,1,7,1,3,7,3,9,1,7,1]
 ultimos :: [Int]
 ultimos = map ultimo primes
 
 -- ultimosConsecutivos es la lista de los últimos dígitos de los primos
 -- consecutivos. 
---    λ> take 10 ultimosConsecutivos
+--    ghci> take 10 ultimosConsecutivos
 --    [(2,3),(3,5),(5,7),(7,1),(1,3),(3,7),(7,9),(9,3),(3,9),(9,1)]
 ultimosConsecutivos :: [(Int,Int)]
 ultimosConsecutivos = zip ultimos (tail ultimos)
@@ -277,7 +277,7 @@ distribucionUltimos3 n
 -- Comparación de eficiencia
 -- =========================
 
---    λ> distribucionUltimos1 (10^5)
+--    ghci> distribucionUltimos1 (10^5)
 --    ( 4104    0 7961    0    0    0 8297    0 4605 )
 --    (    0    0    1    0    0    0    0    0    0 )
 --    ( 5596    0 3604    0    1    0 7419    0 8387 )
@@ -289,7 +289,7 @@ distribucionUltimos3 n
 --    ( 8830    0 6513    0    0    0 5671    0 3995 )
 --    
 --    (3.51 secs, 941,474,520 bytes)
---    λ> distribucionUltimos2 (10^5)
+--    ghci> distribucionUltimos2 (10^5)
 --    ( 4104    0 7961    0    0    0 8297    0 4605 )
 --    (    0    0    1    0    0    0    0    0    0 )
 --    ( 5596    0 3604    0    1    0 7419    0 8387 )
@@ -301,7 +301,7 @@ distribucionUltimos3 n
 --    ( 8830    0 6513    0    0    0 5671    0 3995 )
 --    
 --    (1.75 secs, 560,891,792 bytes)
---    λ> distribucionUltimos3 (10^5)
+--    ghci> distribucionUltimos3 (10^5)
 --    ( 4104    0 7961    0    0    0 8297    0 4605 )
 --    (    0    0    1    0    0    0    0    0    0 )
 --    ( 5596    0 3604    0    1    0 7419    0 8387 )

@@ -46,7 +46,7 @@ balanceadores x =
     [(a,b) | (a,b) <- enteros, 
              balanceado ((x+a)*(x+b))]
 
---    λ> take 10 enteros
+--    ghci> take 10 enteros
 --    [(1,1),(1,2),(2,1),(1,3),(2,2),(3,1),(1,4),(2,3),(3,2),(4,1)]
 enteros :: [(Int,Int)]
 enteros = [(a,n-a) | n <- [1..],
@@ -62,7 +62,7 @@ prop_balanceadores :: Positive Int-> Int -> Property
 prop_balanceadores (Positive x) a =
     a > 0 ==> balanceado ((x+a)*(x+a))
 
---    λ> quickCheck prop_balanceadores
+--    ghci> quickCheck prop_balanceadores
 --    +++ OK, passed 100 tests.
 
 -- ---------------------------------------------------------------------
@@ -113,10 +113,10 @@ bajada a b = fromLists [[x i] | i <- [1..m]]
 -- tal que (clasesEquivalencia xs r) es la lista de las clases de
 -- equivalencia de xs respecto de la relación de equivalencia r. Por
 -- ejemplo,
---    λ> let c = S.fromList [-3..3]
---    λ> clasesEquivalencia c (\x y -> x `mod` 3 == y `mod` 3)
+--    ghci> let c = S.fromList [-3..3]
+--    ghci> clasesEquivalencia c (\x y -> x `mod` 3 == y `mod` 3)
 --    fromList [fromList [-3,0,3],fromList [-2,1],fromList [-1,2]]
---    λ> clasesEquivalencia c (\x y -> (x - y) `mod` 2 == 0)
+--    ghci> clasesEquivalencia c (\x y -> (x - y) `mod` 2 == 0)
 --    fromList [fromList [-3,-1,1,3],fromList [-2,0,2]]
 -- ---------------------------------------------------------------------
 
@@ -145,9 +145,9 @@ clasesEquivalencia xs r
 -- Definir la función
 --    sumaPol :: (Num a, Eq a) => Polinomio a -> Polinomio a -> Polinomio a
 -- tal que (sumaPol p q) es la suma de los polinomios p y q. Por ejemplo,
---   λ> sumaPol ejPol1 ejPol2
+--   ghci> sumaPol ejPol1 ejPol2
 --   fromList [(0,7),(1,7),(5,1)]
---   λ> sumaPol ejPol1 ejPol1
+--   ghci> sumaPol ejPol1 ejPol1
 --   fromList [(0,6),(1,14),(3,-10)]
 -- ---------------------------------------------------------------------
 
@@ -166,7 +166,7 @@ sumaPol p q =
 --   multPorTerm :: Num a => (Int,a) -> Polinomio a -> Polinomio a
 -- tal que (multPorTerm (n,a) p) es el producto del término ax^n por
 -- p. Por ejemplo,
---   λ> multPorTerm (2,3) (M.fromList [(0,4),(2,1)])
+--   ghci> multPorTerm (2,3) (M.fromList [(0,4),(2,1)])
 --   fromList [(2,12),(4,3)]
 -- ---------------------------------------------------------------------
 
@@ -179,11 +179,11 @@ multPorTerm (n,a) p =
 --   multPol :: (Eq a, Num a) => Polinomio a -> Polinomio a -> Polinomio a
 -- tal que (multPol p q) es el producto de los polinomios p y q. Por
 -- ejemplo, 
---   λ> multPol ejPol1 ejPol2
+--   ghci> multPol ejPol1 ejPol2
 --   fromList [(0,12),(1,28),(3,-5),(4,35),(5,3),(6,-18),(8,-5)]
---   λ> multPol ejPol1 ejPol1
+--   ghci> multPol ejPol1 ejPol1
 --   fromList [(0,9),(1,42),(2,49),(3,-30),(4,-70),(6,25)]
---   λ> multPol ejPol2 ejPol2
+--   ghci> multPol ejPol2 ejPol2
 --   fromList [(0,16),(3,40),(5,8),(6,25),(8,10),(10,1)]
 -- ---------------------------------------------------------------------
 

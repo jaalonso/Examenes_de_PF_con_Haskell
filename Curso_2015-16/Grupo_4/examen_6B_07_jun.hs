@@ -78,26 +78,26 @@ prop_equiv_esSumaP (Positive x) =
     where v = esSumaP1 3 x
                       
 -- La comprobación es
---    λ> quickCheck prop_equiv_esSumaP
+--    ghci> quickCheck prop_equiv_esSumaP
 --    +++ OK, passed 100 tests.
 
 -- Eficiencia
 -- ==========
 
---    λ> [x | x <- [1..], esSumaP1 10 x] !! 700
+--    ghci> [x | x <- [1..], esSumaP1 10 x] !! 700
 --    720
 --    (3.94 secs, 3,180,978,848 bytes)
---    λ> [x | x <- [1..], esSumaP2 10 x] !! 700
+--    ghci> [x | x <- [1..], esSumaP2 10 x] !! 700
 --    720
 --    (0.76 secs, 410,235,584 bytes)
---    λ> [x | x <- [1..], esSumaP3 10 x] !! 700
+--    ghci> [x | x <- [1..], esSumaP3 10 x] !! 700
 --    720
 --    (0.10 secs, 102,200,384 bytes)
 --
---    λ> take 3 [n | n <- [1..], esSumaP2 18 n]
+--    ghci> take 3 [n | n <- [1..], esSumaP2 18 n]
 --    [36,37,38]
 --    (0.02 secs, 0 bytes)
---    λ> take 3 [n | n <- [1..], esSumaP3 18 n]
+--    ghci> take 3 [n | n <- [1..], esSumaP3 18 n]
 --    [36,37,38]
 --    (2.91 secs, 5,806,553,024 bytes)
 
@@ -107,7 +107,7 @@ prop_equiv_esSumaP (Positive x) =
 --
 -- Nota. Al hacer la comprobación limitar el tamaño de las pruebas como
 -- se indica a continuación
---    λ> quickCheckWith (stdArgs {maxSize=7}) prop_menor_esSuma
+--    ghci> quickCheckWith (stdArgs {maxSize=7}) prop_menor_esSuma
 --    +++ OK, passed 100 tests.
 -- ---------------------------------------------------------------------
 
@@ -118,7 +118,7 @@ prop_menor_esSuma k n =
       head [x | x <- [1..], esSumaP3 k x] == 2*k
 
 -- La comprobación es
---    λ> quickCheckWith (stdArgs {maxSize=7}) prop_menor_esSuma
+--    ghci> quickCheckWith (stdArgs {maxSize=7}) prop_menor_esSuma
 --    +++ OK, passed 100 tests.
 --    (0.03 secs, 0 bytes)
 
@@ -234,7 +234,7 @@ esClique g xs = all (aristaEn g) [(x,y) | x <- ys, y <- ys, y < x]
 -- tal que (polNumero n) es el polinomio cuyos coeficientes son los
 -- dígitos de n. Por ejemplo, si n = 5703, el polinomio es
 -- 5x^3 + 7x^2 + 3. En Haskell,
---    λ> polNumero 5703
+--    ghci> polNumero 5703
 --    5*x^3 + 7*x^2 + 3
 -- ---------------------------------------------------------------------
 
@@ -293,7 +293,7 @@ prop_polNumero n =
 --    fibGen :: Integer -> [Integer]
 -- tal que (fibGen n) es la sucesión de tipo Fibonacci definida por
 -- n. Por ejemplo,
---    λ> take 10 (fibGen 197)
+--    ghci> take 10 (fibGen 197)
 --    [1,9,7,17,33,57,107,197,361,665]
 -- ---------------------------------------------------------------------
 
@@ -340,6 +340,6 @@ esKeith n = n == head (dropWhile (<n) $ fibGen1 n)
 -- ---------------------------------------------------------------------
 
 -- El cálculo es
---    λ> filter esKeith [10^4..10^5-1]
+--    ghci> filter esKeith [10^4..10^5-1]
 --    [31331,34285,34348,55604,62662,86935,93993]
 

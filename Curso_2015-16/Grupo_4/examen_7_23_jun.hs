@@ -17,16 +17,16 @@ import Data.Numbers.Primes
 --    particiones :: [a] -> Int -> [[[a]]]
 -- tal que (particiones xs k) es la lista de las particiones de xs en k
 -- subconjuntos disjuntos. Por ejemplo,
---    λ> particiones [2,3,6] 2
+--    ghci> particiones [2,3,6] 2
 --    [[[2],[3,6]],[[2,3],[6]],[[3],[2,6]]]
---    λ> particiones [2,3,6] 3
+--    ghci> particiones [2,3,6] 3
 --    [[[2],[3],[6]]]
---    λ> particiones [4,2,3,6] 3
+--    ghci> particiones [4,2,3,6] 3
 --    [[[4],[2],[3,6]],[[4],[2,3],[6]],[[4],[3],[2,6]],
 --     [[4,2],[3],[6]],[[2],[4,3],[6]],[[2],[3],[4,6]]]
---    λ> particiones [4,2,3,6] 1
+--    ghci> particiones [4,2,3,6] 1
 --    [[[4,2,3,6]]]
---    λ> particiones [4,2,3,6] 4
+--    ghci> particiones [4,2,3,6] 4
 --    [[[4],[2],[3],[6]]]
 -- ---------------------------------------------------------------------
 
@@ -140,7 +140,7 @@ valor (R i d) = valor i - valor d
 -- Definir la función 
 --    relleno :: Matriz -> Matriz
 -- tal que (relleno p) es el relleno de la matriz p. Por ejemplo,
---    λ> elems (relleno ej)
+--    ghci> elems (relleno ej)
 --    [1,0,0,1,0,
 --     1,0,0,1,0,
 --     1,1,1,1,1,
@@ -225,26 +225,26 @@ relleno3 p = p // ([((i,j),1) | i <- filas,  j <- [1..n]] ++
 -- Comparación de eficiencia
 -- =========================
 
---    λ> let f i j = if i == j then 1 else 0 
---    λ> let q n = array ((1,1),(n,n)) [((i,j),f i j) | i <- [1..n], j <- [1..n]]
+--    ghci> let f i j = if i == j then 1 else 0 
+--    ghci> let q n = array ((1,1),(n,n)) [((i,j),f i j) | i <- [1..n], j <- [1..n]]
 --    
---    λ> sum (elems (relleno1 (q 200)))
+--    ghci> sum (elems (relleno1 (q 200)))
 --    40000
 --    (6.90 secs, 1,877,369,544 bytes)
 --    
---    λ> sum (elems (relleno2 (q 200)))
+--    ghci> sum (elems (relleno2 (q 200)))
 --    40000
 --    (0.46 secs, 57,354,168 bytes)
 --    
---    λ> sum (elems (relleno3 (q 200)))
+--    ghci> sum (elems (relleno3 (q 200)))
 --    40000
 --    (0.34 secs, 80,465,144 bytes)
 --    
---    λ> sum (elems (relleno2 (q 500)))
+--    ghci> sum (elems (relleno2 (q 500)))
 --    250000
 --    (4.33 secs, 353,117,640 bytes)
 --    
---    λ> sum (elems (relleno3 (q 500)))
+--    ghci> sum (elems (relleno3 (q 500)))
 --    250000
 --    (2.40 secs, 489,630,048 bytes)
 
@@ -319,7 +319,7 @@ potenciasPerfectas3 = mezclaTodas potencias
 
 -- potencias es la lista las listas de potencias de todos los números
 -- mayores que 1 con exponentes mayores que 1. Por ejemplo,
---    λ> map (take 3) (take 4 potencias)
+--    ghci> map (take 3) (take 4 potencias)
 --    [[4,8,16],[9,27,81],[16,64,256],[25,125,625]]
 potencias:: [[Integer]]
 potencias = [[n^k | k <- [2..]] | n <- [2..]]
@@ -357,11 +357,11 @@ mezcla (x:xs) (y:ys) | x < y  = x : mezcla xs (y:ys)
 --    minimales :: Ord a => S.Set (S.Set a) -> S.Set (S.Set a)
 -- tal que (minimales xss) es el conjunto de los elementos de xss que no
 -- están contenidos en otros elementos de xss. Por ejemplo,
---    λ> minimales (S.fromList (map S.fromList [[1,3],[2,3,1],[3,2,5]]))
+--    ghci> minimales (S.fromList (map S.fromList [[1,3],[2,3,1],[3,2,5]]))
 --    fromList [fromList [1,3],fromList [2,3,5]]
---    λ> minimales (S.fromList (map S.fromList [[1,3],[2,3,1],[3,1],[3,2,5]]))
+--    ghci> minimales (S.fromList (map S.fromList [[1,3],[2,3,1],[3,1],[3,2,5]]))
 --    fromList [fromList [1,3],fromList [2,3,5]]
---    λ> minimales (S.fromList (map S.fromList [[1,3],[2,3,1],[3,1,3],[3,2,5]]))
+--    ghci> minimales (S.fromList (map S.fromList [[1,3],[2,3,1],[3,1,3],[3,2,5]]))
 --    fromList [fromList [1,3],fromList [2,3,5]]
 -- ---------------------------------------------------------------------
 
