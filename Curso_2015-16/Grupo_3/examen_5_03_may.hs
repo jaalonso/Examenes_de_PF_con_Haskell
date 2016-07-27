@@ -1,6 +1,6 @@
 -- Informática (1º del Grado en Matemáticas)
 -- 5º examen de evaluación continua (3 de mayo de 2016)
--- ============================================================================
+-- =====================================================================
 
 -- ---------------------------------------------------------------------
 -- § Librerías auxiliares                                             --
@@ -38,13 +38,14 @@ termino n
     | even n    = n `div` 2
     | otherwise = termino (n `div` 2)
 
--- ----------------------------------------------------------------------------
+-- ---------------------------------------------------------------------
 -- Ejercicio 1.2. Definir la constante
 --   secuencia :: [Integer]
--- cuyo valor es la secuencia infinita descrita en el enunciado. Por ejemplo,
+-- cuyo valor es la secuencia infinita descrita en el enunciado. Por
+-- ejemplo, 
 --   take 10 secuencia  ==  [0,0,1,0,2,1,3,0,4,2]
 --   take 20 secuencia  ==  [0,0,1,0,2,1,3,0,4,2,5,1,6,3,7,0,8,4,9,2]
--- ----------------------------------------------------------------------------
+-- ---------------------------------------------------------------------
 
 -- 1ª definición (basada en termino)
 -- =================================
@@ -81,7 +82,7 @@ mezcla (x:xs) (y:ys) =
 secuencia :: [Integer]
 secuencia = secuencia2
 
--- ----------------------------------------------------------------------------
+-- ---------------------------------------------------------------------
 -- Ejercicio 1.3. Definir la función
 --    sumaSecuencia :: Integer -> Integer
 -- tal que (sumaSecuencia n) es la suma de los n primeros términos de la
@@ -89,7 +90,7 @@ secuencia = secuencia2
 --    sumaSecuencia 10      ==  13
 --    sumaSecuencia (10^4)  ==  16661783
 -- ¿Cuánto es (sumaSecuencia (10^20))?
--- ----------------------------------------------------------------------------
+-- ---------------------------------------------------------------------
 
 -- 1ª definición
 sumaSecuencia1 :: Integer -> Integer
@@ -165,7 +166,7 @@ sumaSecuencia3 n
 --    numeroPasos (foldr inserta vacia [20])        ==  4
 --    numeroPasos (foldr inserta vacia [10])        ==  3
 --    numeroPasos (foldr inserta vacia [10,20,30])  ==  11
--- ----------------------------------------------------------------------------
+-- ---------------------------------------------------------------------
 
 numeroPasos :: Cola Int -> Int
 numeroPasos c
@@ -227,7 +228,7 @@ mayorDivisorPropio = mayorDivisorPropio2
 --    productoDeGrado pol1 pol2  =>  20*x^4 + 20*x^3 + 1
 --    productoDeGrado pol1 pol3  =>  -8*x^4 + 10*x^3 + 1
 --    productoDeGrado pol3 pol4  =>  -3*x^6 + -6*x^4 + 1
--- ----------------------------------------------------------------------------
+-- ---------------------------------------------------------------------
 
 listaApol :: [Int] -> Polinomio Int
 listaApol xs = foldr (\ (n,c) p -> consPol n c p) 
@@ -304,13 +305,13 @@ esCruce2 :: M.Matrix Int -> Int -> Int -> (Int,Int) -> Bool
 esCruce2 p m n (i,j) =
     M.minorMatrix i j p == M.zero (m-1) (n-1)
 
--- ----------------------------------------------------------------------------
+-- ---------------------------------------------------------------------
 -- Ejercicio 4.2. Definir la función 
 --    matrizCruz :: Int -> Int -> Int -> Int -> M.Matrix Int
 -- tal que (matrizCruz m n i j) es la matriz cruz de dimensión (m,n) con
--- respecto a la posición (i,j), en la que el valor de cada elemento no nulo
--- es la distancia en línea recta a la posición (i,j), contando también esta
--- última. Por ejemplo,
+-- respecto a la posición (i,j), en la que el valor de cada elemento no
+-- nulo es la distancia en línea recta a la posición (i,j), contando
+-- también esta última. Por ejemplo,
 --    ghci> matrizCruz 3 3 (2,2)
 --    ( 0 2 0 )
 --    ( 2 1 2 )

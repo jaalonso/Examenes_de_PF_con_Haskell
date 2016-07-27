@@ -27,7 +27,7 @@ import Test.QuickCheck
 -- definición anterior. Por ejemplo,
 --    hermanadaC [2,6,3,9,1,5]  ==  True
 --    hermanadaC [2,3,5]        ==  False
--- ----------------------------------------------------------------------------
+-- ---------------------------------------------------------------------
 
 hermanadaC :: [Int] -> Bool
 hermanadaC xs = and [hermanos p | p <- zip xs (tail xs)]
@@ -37,39 +37,39 @@ hermanadaC xs = and [hermanos p | p <- zip xs (tail xs)]
 hermanos :: (Int, Int) -> Bool
 hermanos (x,y) = x == 1 || y == 1 || gcd x y /= 1
 
--- ----------------------------------------------------------------------------
+-- ---------------------------------------------------------------------
 -- Ejercicio 1.2. Definir, usando funciones de orden superior, la función
 --    hermanadaS :: [Int] -> Bool
 -- tal que (hermanada xs) se verifica si la lista xs es hermanada según la
 -- definición anterior. Por ejemplo,
 --    hermanadaS [2,6,3,9,1,5]  ==  True
 --    hermanadaS [2,3,5]        ==  False
--- ----------------------------------------------------------------------------
+-- ---------------------------------------------------------------------
 
 hermanadaS :: [Int] -> Bool
 hermanadaS xs = all hermanos (zip xs (tail xs))
 
--- ----------------------------------------------------------------------------
+-- ---------------------------------------------------------------------
 -- Ejercicio 1.3. Definir, por recursión, la función
 --    hermanadaR :: [Int] -> Bool
 -- tal que (hermanada xs) se verifica si la lista xs es hermanada según la
 -- definición anterior. Por ejemplo,
 --    hermanadaR [2,6,3,9,1,5]  ==  True
 --    hermanadaR [2,3,5]        ==  False
--- ----------------------------------------------------------------------------
+-- ---------------------------------------------------------------------
 
 hermanadaR :: [Int] -> Bool
 hermanadaR (x1:x:xs) = hermanos (x1,x) && hermanadaR (x:xs)
 hermanadaR _          = True
 
--- ----------------------------------------------------------------------------
+-- ---------------------------------------------------------------------
 -- Ejercicio 1.4. Definir, por plegado, la función
 --    hermanadaP :: [Int] -> Bool
 -- tal que (hermanada xs) se verifica si la lista xs es hermanada según la
 -- definición anterior. Por ejemplo,
 --    hermanadaP [2,6,3,9,1,5]  ==  True
 --    hermanadaP [2,3,5]        ==  False
--- ----------------------------------------------------------------------------
+-- ---------------------------------------------------------------------
 
 hermanadaP :: [Int] -> Bool
 hermanadaP xs =
@@ -84,7 +84,7 @@ hermanadaP xs =
 --    sumaEnPosicion [1,2,3] [0,2]  ==  4
 --    sumaEnPosicion [4,6,2] [1,3]  ==  6
 --    sumaEnPosicion [3,5,1] [0,1]  ==  8
--- ----------------------------------------------------------------------------
+-- ---------------------------------------------------------------------
 
 sumaEnPosicion :: [Int] -> [Int] -> Int
 sumaEnPosicion xs ys = aux xs [y | y <- ys, 0 <= y, y < n] 0
@@ -101,7 +101,7 @@ sumaEnPosicion xs ys = aux xs [y | y <- ys, 0 <= y, y < n] 0
 --    take 5 (productoInfinito [1..])    ==  [1,2,6,24,120]
 --    take 5 (productoInfinito [2,4..])  ==  [2,8,48,384,3840]
 --    take 5 (productoInfinito [1,3..])  ==  [1,3,15,105,945]
--- ----------------------------------------------------------------------------
+-- ---------------------------------------------------------------------
 
 -- 1ª definición (por comprensión):
 productoInfinito1 :: [Integer] -> [Integer]
@@ -157,7 +157,7 @@ productoInfinito4 = scanl1 (*)
 -- Nota: Se supone que el argumento es una lista de números no negativos
 -- y que se puede ampliar tanto como sea necesario para repartir los
 -- elementos. 
--- ----------------------------------------------------------------------------
+-- ---------------------------------------------------------------------
 
 siembra :: [Int] -> [Int]
 siembra [] = []

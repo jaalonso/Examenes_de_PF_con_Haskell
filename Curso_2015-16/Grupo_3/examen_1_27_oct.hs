@@ -17,23 +17,23 @@ posiciones x xs =
     [i | (y,i) <- zip xs [0..], x == y]
 
 -- ---------------------------------------------------------------------
--- Ejercicio 2. Una forma de aproximar el número π es usando la
+-- Ejercicio 2. Una forma de aproximar el número pi es usando la
 -- siguiente igualdad: 
 --
---            π         1     1*2     1*2*3     1*2*3*4     
+--            pi         1     1*2     1*2*3     1*2*3*4     
 --           --- = 1 + --- + ----- + ------- + --------- + ....
 --            2         3     3*5     3*5*7     3*5*7*9
 --
 -- Es decir, la serie cuyo término general n-ésimo es el cociente entre el
 -- producto de los primeros n números y los primeros n números impares:
 --
---                       Π i   
---           s(n) =  -----------
---                    Π (2*i+1)
+--                       Product i   
+--           s(n) =  -----------------
+--                    Product (2*i+1)
 --
 -- Definir por comprensión la función:
 --    aproximaPi :: Double -> Double
--- tal que (aproximaPi n) es la aproximación del número π calculada con la
+-- tal que (aproximaPi n) es la aproximación del número pi calculada con la
 -- serie anterior hasta el término n-ésimo. Por ejemplo,
 --    aproximaPi 10   ==  3.141106021601377
 --    aproximaPi 30   ==  3.1415926533011587

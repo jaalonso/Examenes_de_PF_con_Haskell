@@ -23,7 +23,7 @@ import Test.QuickCheck
 --    sumaMaxima [2,-1,3,-2,3]  ==  5
 --    sumaMaxima [1,-1,3,-2,4]  ==  5
 --    sumaMaxima [2,-1,3,-2,4]  ==  6
--- ----------------------------------------------------------------------------
+-- ---------------------------------------------------------------------
 
 -- 1ª definición
 -- =============
@@ -145,7 +145,7 @@ matrizParNula m =
     all (== 0) [m!(i,j) | i <- [1..p], j <- [1..q], even (i+j)]
     where (p,q) = snd (bounds m)
 
--- ----------------------------------------------------------------------------
+-- ---------------------------------------------------------------------
 -- Ejercicio 2.2. Definir la función
 --    matrizParNulaDistancias :: Int -> Int -> Matriz Int
 -- tal que (matrizParNulaDistancias p q) es la matriz de tipo par-nula que en
@@ -166,7 +166,7 @@ matrizParNula m =
 --       ( 0 2 0 2 0 )
 --       ( 1 0 2 0 1 )
 --       ( 0 1 0 1 0 )
--- ----------------------------------------------------------------------------
+-- ---------------------------------------------------------------------
 
 matrizParNulaDistancias :: Int -> Int -> Matriz Int
 matrizParNulaDistancias p q =
@@ -185,7 +185,7 @@ matrizParNulaDistancias p q =
 --    permutacionesM "abcab"  ==  ["abcab","abcba","abacb","ababc","acbab",
 --                                 "bacab","bacba","babca","babac","bcaba",
 --                                 "cabab","cbaba"]
--- ----------------------------------------------------------------------------
+-- ---------------------------------------------------------------------
 
 permutacionesM :: (Eq a) => [a] -> [[a]]
 permutacionesM [] = [[]]
@@ -250,7 +250,7 @@ borra x (y:xs)
 --    esArbolFib (N 2 (H 0) (H 1))              ==  False
 --    esArbolFib (N 2 (H 0) (N 1 (H 0) (H 0)))  ==  True 
 --    esArbolFib (N 3 (H 0) (N 1 (H 0) (H 0)))  ==  False
--- ----------------------------------------------------------------------------
+-- ---------------------------------------------------------------------
 
 data Arbol = H Int
            | N Int Arbol Arbol
@@ -277,7 +277,7 @@ esArbolFib _ = False
 --    arbolesFib!!1  ==  N 1 (H 0) (H 0)
 --    arbolesFib!!2  ==  N 2 (H 0) (N 1 (H 0) (H 0))
 --    arbolesFib!!3  ==  N 3 (N 1 (H 0) (H 0)) (N 2 (H 0) (N 1 (H 0) (H 0)))
--- ----------------------------------------------------------------------------
+-- ---------------------------------------------------------------------
 
 -- 1ª solución
 -- ===========
