@@ -145,7 +145,7 @@ maxHojas (N _ i d) = max (maxHojas i) (maxHojas d)
 --    sumaValor :: Num a => a -> Arbol a -> Arbol a
 -- tal que (sumaValor v t) es el árbol obtenido a partir de t al sumar v
 -- a todos sus nodos. Por ejemplo, 
---    λ> sumaValor 7 (N 14 (N 2 (H 7) (H 10)) (H 3))
+--    ghci> sumaValor 7 (N 14 (N 2 (H 7) (H 10)) (H 3))
 --    N 21 (N 9 (H 14) (H 17)) (H 10)
 -- ---------------------------------------------------------------------
 

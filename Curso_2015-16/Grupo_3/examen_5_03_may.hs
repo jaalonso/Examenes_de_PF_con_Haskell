@@ -70,10 +70,10 @@ mezcla (x:xs) (y:ys) =
 -- Comparación de eficiencia
 -- =========================
 
---    λ> sum (take (10^6) secuencia1)
+--    ghci> sum (take (10^6) secuencia1)
 --    166666169612
 --    (5.56 secs, 842,863,264 bytes)
---    λ> sum (take (10^6) secuencia2)
+--    ghci> sum (take (10^6) secuencia2)
 --    166666169612
 --    (1.81 secs, 306,262,616 bytes)
 
@@ -112,25 +112,25 @@ sumaSecuencia3 n
 
 -- Comparación de eficiencia
 -- =========================
---    λ> sumaSecuencia1 (10^6)
+--    ghci> sumaSecuencia1 (10^6)
 --    166666169612
 --    (5.25 secs, 810,622,504 bytes)
---    λ> sumaSecuencia2 (10^6)
+--    ghci> sumaSecuencia2 (10^6)
 --    166666169612
 --    (1.72 secs, 286,444,048 bytes)
---    λ> sumaSecuencia3 (10^6)
+--    ghci> sumaSecuencia3 (10^6)
 --    166666169612
 --    (0.01 secs, 0 bytes)
 --    
---    λ> sumaSecuencia2 (10^7)
+--    ghci> sumaSecuencia2 (10^7)
 --    16666661685034
 --    (17.49 secs, 3,021,580,920 bytes)
---    λ> sumaSecuencia3 (10^7)
+--    ghci> sumaSecuencia3 (10^7)
 --    16666661685034
 --    (0.01 secs, 0 bytes)
 
 -- El cálculo de (sumaSecuencia (10^20)) es
---    λ> sumaSecuencia3 (10^20)
+--    ghci> sumaSecuencia3 (10^20)
 --    1666666666666666666616666684103392376198
 --    (0.01 secs, 0 bytes)
 
@@ -189,10 +189,10 @@ mayorDivisorPropio2 n =
     n `div` head (primeFactors n)
 
 -- Comparación de eficiencia:
---    λ> sum (map mayorDivisorPropio1 [2..3000])
+--    ghci> sum (map mayorDivisorPropio1 [2..3000])
 --    1485659
 --    (3.91 secs, 618,271,360 bytes)
---    λ> sum (map mayorDivisorPropio2 [2..3000])
+--    ghci> sum (map mayorDivisorPropio2 [2..3000])
 --    1485659
 --    (0.04 secs, 22,726,600 bytes)
 
@@ -311,12 +311,12 @@ esCruce2 p m n (i,j) =
 -- respecto a la posición (i,j), en la que el valor de cada elemento no nulo
 -- es la distancia en línea recta a la posición (i,j), contando también esta
 -- última. Por ejemplo,
---    λ> matrizCruz 3 3 (2,2)
+--    ghci> matrizCruz 3 3 (2,2)
 --    ( 0 2 0 )
 --    ( 2 1 2 )
 --    ( 0 2 0 )
 --    
---    λ> matrizCruz 4 5 (2,3)
+--    ghci> matrizCruz 4 5 (2,3)
 --    ( 0 0 2 0 0 )
 --    ( 3 2 1 2 3 )
 --    ( 0 0 2 0 0 )
@@ -325,7 +325,7 @@ esCruce2 p m n (i,j) =
 
 -    ( 0 0 3 0 0 )
 --    
---    λ> matrizCruz 5 3 (2,3)
+--    ghci> matrizCruz 5 3 (2,3)
 --    ( 0 0 2 )
 --    ( 3 2 1 )
 --    ( 0 0 2 )

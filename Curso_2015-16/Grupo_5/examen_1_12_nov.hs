@@ -65,16 +65,16 @@ mismaLongitud4 (xs:xss) =
     where n = length xs 
 
 -- Comparación de eficiencia
---    λ> mismaLongitud1 (replicate 20000 (replicate 20000 5))
+--    ghci> mismaLongitud1 (replicate 20000 (replicate 20000 5))
 --    True
 --    (5.05 secs, 0 bytes)
---    λ> mismaLongitud2 (replicate 20000 (replicate 20000 5))
+--    ghci> mismaLongitud2 (replicate 20000 (replicate 20000 5))
 --    True
 --    (9.98 secs, 0 bytes)
---    λ> mismaLongitud3 (replicate 20000 (replicate 20000 5))
+--    ghci> mismaLongitud3 (replicate 20000 (replicate 20000 5))
 --    True
 --    (10.17 secs, 0 bytes)
---    λ> mismaLongitud4 (replicate 20000 (replicate 20000 5))
+--    ghci> mismaLongitud4 (replicate 20000 (replicate 20000 5))
 --    True
 --    (5.18 secs, 0 bytes)
 

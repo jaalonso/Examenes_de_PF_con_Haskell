@@ -121,16 +121,16 @@ productoInfinito4 :: [Integer] -> [Integer]
 productoInfinito4 = scanl1 (*)
 
 -- Comparación de eficiencia
---    λ> take 20 (show (productoInfinito1 [2,4..] !! 10000))
+--    ghci> take 20 (show (productoInfinito1 [2,4..] !! 10000))
 --    "11358071114466915693"
 --    (0.35 secs, 98,287,328 bytes)
---    λ> take 20 (show (productoInfinito2 [2,4..] !! 10000))
+--    ghci> take 20 (show (productoInfinito2 [2,4..] !! 10000))
 --    "11358071114466915693"
 --    (0.35 secs, 98,840,440 bytes)
---    λ> take 20 (show (productoInfinito3 [2,4..] !! 10000))
+--    ghci> take 20 (show (productoInfinito3 [2,4..] !! 10000))
 --    "11358071114466915693"
 --    (7.36 secs, 6,006,360,472 bytes)
---    λ> take 20 (show (productoInfinito4 [2,4..] !! 10000))
+--    ghci> take 20 (show (productoInfinito4 [2,4..] !! 10000))
 --    "11358071114466915693"
 --    (0.34 secs, 96,367,000 bytes)
 
@@ -178,5 +178,5 @@ prop_siembra xs =
     where ys = map (\x -> 1 + abs x) xs
 
 -- La comprobación es
---    λ> quickCheck prop_siembra
+--    ghci> quickCheck prop_siembra
 --    +++ OK, passed 100 tests.

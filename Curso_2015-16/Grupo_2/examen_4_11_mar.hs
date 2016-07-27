@@ -24,9 +24,9 @@ import Data.Set (fromList, notMember)
 --    rota1 :: Array (Int,Int) Int  -> Array (Int,Int) Int
 -- tal que (rota p) es la matriz obtenida girando en el sentido del
 -- reloj la matriz cuadrada p. Por ejemplo,
---    λ> elems (rota1 (listArray ((1,1),(3,3))[1..9]))
+--    ghci> elems (rota1 (listArray ((1,1),(3,3))[1..9]))
 --    [7,4,1,8,5,2,9,6,3]
---    λ> elems (rota1 (listArray ((1,1),(3,3))[7,4,1,8,5,2,9,6,3]))
+--    ghci> elems (rota1 (listArray ((1,1),(3,3))[7,4,1,8,5,2,9,6,3]))
 --    [9,8,7,6,5,4,3,2,1]
 -- ---------------------------------------------------------------------
 
@@ -40,12 +40,12 @@ rota1 p =
 --    rota2 :: M.Matrix Int  -> M.Matrix Int
 -- tal que (rota p) es la matriz obtenida girando en el sentido del
 -- reloj la matriz cuadrada p. Por ejemplo,
---    λ> rota2 (M.fromList 3 3 [1..9])
+--    ghci> rota2 (M.fromList 3 3 [1..9])
 --    ( 7 4 1 )
 --    ( 8 5 2 )
 --    ( 9 6 3 )
 --    
---    λ> rota2 (M.fromList 3 3 [7,4,1,8,5,2,9,6,3])
+--    ghci> rota2 (M.fromList 3 3 [7,4,1,8,5,2,9,6,3])
 --    ( 9 8 7 )
 --    ( 6 5 4 )
 --    ( 3 2 1 )
@@ -80,7 +80,7 @@ bajadas n = sum (map aux (tails (show n)))
 -- ---------------------------------------------------------------------
 
 -- El cálculo es
---    λ> length [n | n <- [1000..9999], bajadas n > 2]
+--    ghci> length [n | n <- [1000..9999], bajadas n > 2]
 --    5370
 
 -- ---------------------------------------------------------------------
@@ -89,13 +89,13 @@ bajadas n = sum (map aux (tails (show n)))
 -- tal que (penultimo c) es el penúltimo elemento de la cola c. Si
 -- la cola esta vacía o tiene un sólo elemento, dará el error
 -- correspondiente, "cola vacia" o bien "cola unitaria". Por ejemplo, 
---    λ> penultimo vacia
+--    ghci> penultimo vacia
 --    *** Exception: cola vacia
---    λ> penultimo (inserta 2 vacia)
+--    ghci> penultimo (inserta 2 vacia)
 --    *** Exception: cola unitaria
---    λ> penultimo (inserta 3 (inserta 2 vacia))
+--    ghci> penultimo (inserta 3 (inserta 2 vacia))
 --    2
---    λ> penultimo (inserta 5 (inserta 3 (inserta 2 vacia)))
+--    ghci> penultimo (inserta 5 (inserta 3 (inserta 2 vacia)))
 --    3
 -- ---------------------------------------------------------------------
 
@@ -148,25 +148,25 @@ ausente4 xs =
 -- Comparación de eficiencia
 -- =========================
 
---    λ> let n = 10^5 in ausente1 (n+1:[0..n-1])
+--    ghci> let n = 10^5 in ausente1 (n+1:[0..n-1])
 --    100000
 --    (68.51 secs, 25,967,840 bytes)
---    λ> let n = 10^5 in ausente2 (n+1:[0..n-1])
+--    ghci> let n = 10^5 in ausente2 (n+1:[0..n-1])
 --    100000
 --    (0.12 secs, 123,488,144 bytes)
---    λ> let n = 10^5 in ausente3 (n+1:[0..n-1])
+--    ghci> let n = 10^5 in ausente3 (n+1:[0..n-1])
 --    100000
 --    (0.07 secs, 30,928,384 bytes)
---    λ> let n = 10^5 in ausente4 (n+1:[0..n-1])
+--    ghci> let n = 10^5 in ausente4 (n+1:[0..n-1])
 --    100000
 --    (0.02 secs, 23,039,904 bytes)
 --    
---    λ> let n = 10^7 in ausente2 (n+1:[0..n-1])
+--    ghci> let n = 10^7 in ausente2 (n+1:[0..n-1])
 --    10000000
 --    (14.32 secs, 15,358,509,280 bytes)
---    λ> let n = 10^7 in ausente3 (n+1:[0..n-1])
+--    ghci> let n = 10^7 in ausente3 (n+1:[0..n-1])
 --    10000000
 --    (5.57 secs, 2,670,214,936 bytes)
---    λ> let n = 10^7 in ausente4 (n+1:[0..n-1])
+--    ghci> let n = 10^7 in ausente4 (n+1:[0..n-1])
 --    10000000
 --    (3.36 secs, 2,074,919,184 bytes)
