@@ -122,7 +122,7 @@ palabras (x:xs)
    | otherwise = (x:takeWhile (/=' ') xs):palabras (dropWhile (/=' ') xs) 
 
 -- ---------------------------------------------------------------------
--- Ejercicio 5. Los árboles binarios se representan mediante el tipo de
+-- Ejercicio 5.1. Los árboles binarios se representan mediante el tipo de
 -- datos 
 --    data Arbol a = H a | N a (Arbol a) (Arbol a) deriving Show
 -- 
@@ -141,7 +141,7 @@ maxHojas (H x)     = x
 maxHojas (N _ i d) = max (maxHojas i) (maxHojas d)
 
 -- ---------------------------------------------------------------------
--- Definir la función
+-- Ejercicio 5.2. Definir la función
 --    sumaValor :: Num a => a -> Arbol a -> Arbol a
 -- tal que (sumaValor v t) es el árbol obtenido a partir de t al sumar v
 -- a todos sus nodos. Por ejemplo, 
