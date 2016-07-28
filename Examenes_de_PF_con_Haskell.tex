@@ -23,10 +23,18 @@
 \renewcommand{\ttdefault}{cmtt}
 \usepackage{a4wide}
 
-% \linespread{1.05}                  % Distancia entre líneas
-\setlength{\parindent}{2em}        % Indentación de comienzo de párrafo
+% Espacio entre líneas
+\usepackage{setspace}
+\onehalfspacing
+
+\setlength{\parindent}{5mm}        % Indentación de comienzo de párrafo
 \deactivatetilden                  % Elima uso de ~ para la eñe
 \raggedbottom                      % No ajusta los espacios verticales.
+
+% Control de listas
+% Elimina espacio entre item y párrafo y coloca item en el margen izquierdo
+\usepackage{enumitem}
+\setlist[enumerate,itemize]{noitemsep, nolistsep, leftmargin=*}
 
 \usepackage[%
   colorlinks=true,
@@ -106,7 +114,7 @@
            {Dpto. de Ciencias de la Computación e Inteligencia Artificial} \\
       \href{http://www.us.es}
            {Universidad de Sevilla}  \\
-      Sevilla, 25 de julio de 2016
+      Sevilla, 27 de julio de 2016
   \end{tabular}\hfill\mbox{}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -149,22 +157,19 @@ Durante este tiempo he ido publicando materiales para la asignatura que he
 recopilado en dos libros:
 \begin{itemize}
 \item \href{http://www.cs.us.es/~jalonso/publicaciones/2013-Temas_de_PF_con_Haskell.pdf}
-           {Temas de programación funcional}\footnote{\url{http://www.cs.us.es/~jalonso/publicaciones/2013-Temas_de_PF_con_Haskell.pdf}}
+           {Temas de programación funcional}\
+           \footnote{\url{http://www.cs.us.es/~jalonso/publicaciones/2013-Temas_de_PF_con_Haskell.pdf}}
 \item \href{http://www.cs.us.es/~jalonso/publicaciones/Piensa_en_Haskell.pdf}
-                       {Piensa en Haskell (Ejercicios de programación funcional con Haskell)}\footnote{\url{http://www.cs.us.es/~jalonso/publicaciones/Piensa_en_Haskell.pdf}}
+           {Piensa en Haskell (Ejercicios de programación funcional con Haskell)}\
+           \footnote{\url{http://www.cs.us.es/~jalonso/publicaciones/Piensa_en_Haskell.pdf}}
 \end{itemize}
 
 Este libro completa los anteriores presentando una recopilación de los exámenes
 de la asignatura durante estos años. 
 
 Los exámenes se realizaron en el aula de informática y su duración fue de 2
-horas. Durante el examen se podía usar el resumen de funciones de Haskell del
-apéndice \ref{resumen}. La materia de cada examen es la impartida desde el
+horas. La materia de cada examen es la impartida desde el
 comienzo del curso (generalmente, el 1 de octubre) hasta la fecha del examen.
-
-La asignatura está más orientada a la resolución de problemas con Haskell
-(usando el método de Polya del apéndice \ref{Polya}), que al estudio de las
-particularidades de Haskell.
 
 En algunos ejercicios se usan tipos abstractos de datos estudiados en la
 asignatura tal como se explica en \cite{Alonso-12a}. Sus implementaciones se
@@ -172,21 +177,29 @@ encuentra en la
 \href{https://github.com/jaalonso/I1M}
      {página de los códigos}\footnote{\url{https://github.com/jaalonso/I1M}}
 
-El libro consta de 6 capítulos correspondientes a los 6 cursos en los que
+El libro consta de 7 capítulos correspondientes a los 7 cursos en los que
 se ha impartido la asignatura. En cada capítulo hay una sección, por
 cada uno de los grupos de la asignatura, y una subsección por cada uno de los
 exámenes del grupo.  
+
+Además contiene dos apéndices. Uno con el método de Polya de resolución de problemas
+(sobre el que se hace énfasis durante todo el curso) y el otro con un resumen
+de las funciones de Haskell de uso más frecuente. 
+
+En resumen, el libro contiene tiene 155 exámenes con un total de 1.012
+ejercicios.
 
 Los ejercicios de cada examen han sido propuestos por los profesores de su
 grupo (cuyos nombres aparecen en el título de la sección). Sin embargo, los he
 modificado para unificar el estilo de su presentación.
 
-En resumen, en esta versión del libro hay 129 exámenes con un total de 833 
-ejercicios.
+Los códigos del libro están disponibles en Github
+\href{https://github.com/jaalonso/Examenes_de_PF_con_Haskell}
+     {\url{https://github.com/jaalonso/Examenes_de_PF_con_Haskell}}.
 
 \begin{flushright}
   José A. Alonso \\
-  Sevilla, 14 de septiembre de 2015
+  Sevilla, 27 de julio de 2016
 \end{flushright}
 
 \chapter{Exámenes del curso 2009--10}
