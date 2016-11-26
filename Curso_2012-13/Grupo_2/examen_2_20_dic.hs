@@ -67,7 +67,7 @@ ceros n | rem n 10 /= 0 = 0
 -- es un número de Harshad porque es divisible por 3 (la suma de sus
 -- dígitos). Cuando se elimina el último dígito de 201 se obtiene 20 que
 -- también es un número de Harshad. Cuando se elimina el último dígito
--- de 20 se obtiene 2 que también es un número de Harshad. Los número
+-- de 20 se obtiene 2 que también es un número de Harshad. Los números
 -- como el 201 que son de Harshad y que los números obtenidos eliminando
 -- sus últimos dígitos siguen siendo de Harshad se llaman números de
 -- Harshad hereditarios por la derecha. Definir la función
