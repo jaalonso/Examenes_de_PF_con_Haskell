@@ -1,4 +1,4 @@
--- Informática (1º del Grado en Matemáticas)
+-- Informática (1º del Grado en Matemáticas, Grupo 1)
 -- 1º examen de evaluación continua (3 de noviembre de 2016)
 -- ---------------------------------------------------------------------
 
