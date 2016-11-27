@@ -76,11 +76,11 @@ esSombra x y = sombra x == y
 --    conSombra :: Int -> [Int]
 -- tal que (conSombra x n) es la lista de números con el menor número
 -- posible de cifras cuya sombra es x. Por ejemplo,
---    λ> conSombra 2
+--    ghci> conSombra 2
 --    [2]
---    λ> conSombra 23
+--    ghci> conSombra 23
 --    [203,213,223,233,243,253,263,273,283,293]
---    λ> conSombra 234
+--    ghci> conSombra 234
 --    [20304,20314,20324,20334,20344,20354,20364,20374,20384,20394,
 --     21304,21314,21324,21334,21344,21354,21364,21374,21384,21394,
 --     22304,22314,22324,22334,22344,22354,22364,22374,22384,22394,
@@ -99,13 +99,13 @@ conSombra x =
 
 -- (intercala xs ys) es la lista obtenida intercalando los elementos de
 -- xs entre los de ys. Por ejemplo, 
---    λ> intercala "79" "15"
+--    ghci> intercala "79" "15"
 --    ["719","759"]
---    λ> intercala "79" "154"
+--    ghci> intercala "79" "154"
 --    ["719","759","749"]
---    λ> intercala "796" "15"
+--    ghci> intercala "796" "15"
 --    ["71916","71956","75916","75956"]
---    λ> intercala "796" "154"
+--    ghci> intercala "796" "154"
 --    ["71916","71956","71946",
 --     "75916","75956","75946",
 --     "74916","74956","74946"]

@@ -50,7 +50,7 @@ colegas3b x = filter (x `esColega`) [100 .. 999]
 --    colegasN :: Int -> Int -> [Int]
 -- tal que (colegasN x n) es la lista de colegas de x con menos de n
 -- dígitos. Por ejemplo,
---    λ> colegasN 24 4
+--    ghci> colegasN 24 4
 --    [6,16,23,32,61,116,123,132,161,213,231,312,321,611]
 -- ---------------------------------------------------------------------
 
@@ -109,7 +109,7 @@ prop_divideMitad xs =
   divideMitad1 xs == divideMitad2 xs
 
 -- La comprobacion es:
---    λ> quickCheck prop_divideMitad
+--    ghci> quickCheck prop_divideMitad
 --    +++ OK, passed 100 tests.
 
 -- ---------------------------------------------------------------------
