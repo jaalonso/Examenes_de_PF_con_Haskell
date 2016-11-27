@@ -14,7 +14,7 @@ import Test.QuickCheck
 -- formada por los elementos de xs que también pertenecen a ys.
 --
 -- Definir, por comprensión, la función
---    interseccionC ::Eq a => [a] -> [a] -> [a]
+--    interseccionC :: Eq a => [a] -> [a] -> [a]
 -- tal que (interseccionC xs ys) es la intersección de xs e ys. Por
 -- ejemplo, 
 --    interseccionC [2,7,4,1] [1,3,6] == [1]
@@ -22,8 +22,8 @@ import Test.QuickCheck
 --    interseccionC [2..10] [23..120] == []
 -- ---------------------------------------------------------------------
 
-interseccionC ::Eq a => [a] -> [a] -> [a]
-interseccionC xs ys = [x | x <-xs, x `elem` ys]
+interseccionC :: Eq a => [a] -> [a] -> [a]
+interseccionC xs ys = [x | x <- xs, x `elem` ys]
 
 -- ---------------------------------------------------------------------
 -- Ejercicio 1.2. Definir, por recursión, la función
@@ -37,7 +37,7 @@ interseccionC xs ys = [x | x <-xs, x `elem` ys]
 
 interseccionR ::Eq a => [a] -> [a] -> [a]
 interseccionR [] ys = []
-interseccionR(x:xs) ys
+interseccionR (x:xs) ys
   | x `elem` ys = x : interseccionR xs ys
   | otherwise   = interseccionR xs ys
 
