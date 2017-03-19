@@ -6,6 +6,8 @@
 -- § Librerías auxiliares                                             --
 -- ---------------------------------------------------------------------
 
+import Debug.Trace
+
 import Data.List
 import Data.Numbers.Primes 
 
@@ -158,6 +160,7 @@ sumaMaxima2 xs = sumaMaximaAux 0 0 xs
     where m = maximum xs
 
 sumaMaximaAux :: Integer -> Integer -> [Integer] -> Integer
+sumaMaximaAux m v xs | trace ("aux " ++ show m ++ " " ++ show v ++ " " ++ show xs) False = undefined
 sumaMaximaAux m v [] = max m v
 sumaMaximaAux m v (x:xs)
     | x >= 0    = sumaMaximaAux m (v+x) xs
