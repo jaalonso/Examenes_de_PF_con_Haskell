@@ -129,8 +129,8 @@ clasesEquivalencia xs r
           (us,vs) = S.partition (r y) xs
 
 -- ---------------------------------------------------------------------
--- Ejercicio 4.1. Los polinomios se puede se puede representar mediante
--- diccionarios con los exponentes como claves y los coeficientes como
+-- Ejercicio 4.1. Los polinomios se pueden representar mediante
+-- diccionarios con los exponentes como claves y los coeficientes como 
 -- valores. El tipo de los polinomios con coeficientes de tipo a se
 -- define por 
 --    type Polinomio a = M.Map Int a 
