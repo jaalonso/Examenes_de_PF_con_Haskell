@@ -120,7 +120,7 @@ sumas3Capicuas x =
   where as = takeWhile (<= x) capicuas
 
 -- capicuas es la sucesión de los números capicúas. Por ejemplo,
---    λ> take 45 capicuas
+--    ghci> take 45 capicuas
 --    [0,1,2,3,4,5,6,7,8,9,11,22,33,44,55,66,77,88,99,101,111,121,131,
 --     141,151,161,171,181,191,202,212,222,232,242,252,262,272,282,292,
 --     303,313,323,333,343,353]
@@ -152,7 +152,7 @@ capicuas2 = capicuasImpares `mezcla` capicuasPares
 
 -- capicuasPares es la sucesión del cero y las capicúas con un número
 -- par de dígitos. Por ejemplo,  
---    λ> take 17 capicuasPares
+--    ghci> take 17 capicuasPares
 --    [0,11,22,33,44,55,66,77,88,99,1001,1111,1221,1331,1441,1551,1661]
 capicuasPares :: [Integer]
 capicuasPares =
@@ -161,7 +161,7 @@ capicuasPares =
 
 -- capicuasImpares es la sucesión de las capicúas con un número
 -- impar de dígitos a partir de 1. Por ejemplo,  
---    λ> take 20 capicuasImpares
+--    ghci> take 20 capicuasImpares
 --    [1,2,3,4,5,6,7,8,9,101,111,121,131,141,151,161,171,181,191,202]
 capicuasImpares :: [Integer]
 capicuasImpares =
@@ -272,50 +272,50 @@ prop_capicuas (Positive k) =
                                          , capicuas7]]
 
 -- La comprobación es
---    λ> quickCheck prop_capicuas
+--    ghci> quickCheck prop_capicuas
 --    +++ OK, passed 100 tests.
 
 -- Comparación de eficiencia
 -- =========================
 
---    λ> capicuas1 !! 2000
+--    ghci> capicuas1 !! 2000
 --    1001001
 --    (2.25 secs, 598,879,552 bytes)
---    λ> capicuas2 !! 2000
+--    ghci> capicuas2 !! 2000
 --    1001001
 --    (0.05 secs, 28,630,552 bytes)
---    λ> capicuas3 !! 2000
+--    ghci> capicuas3 !! 2000
 --    1001001
 --    (0.06 secs, 14,721,360 bytes)
---    λ> capicuas4 !! 2000
+--    ghci> capicuas4 !! 2000
 --    1001001
 --    (0.01 secs, 0 bytes)
---    λ> capicuas5 !! 2000
+--    ghci> capicuas5 !! 2000
 --    1001001
 --    (0.01 secs, 0 bytes)
---    λ> capicuas6 !! 2000
+--    ghci> capicuas6 !! 2000
 --    1001001
 --    (0.01 secs, 0 bytes)
---    λ> capicuas7 !! 2000
+--    ghci> capicuas7 !! 2000
 --    1001001
 --    (0.01 secs, 0 bytes)
 --    
---    λ> capicuas2 !! (10^5)
+--    ghci> capicuas2 !! (10^5)
 --    900010009
 --    (2.03 secs, 1,190,503,952 bytes)
---    λ> capicuas3 !! (10^5)
+--    ghci> capicuas3 !! (10^5)
 --    900010009
 --    (5.12 secs, 1,408,876,328 bytes)
---    λ> capicuas4 !! (10^5)
+--    ghci> capicuas4 !! (10^5)
 --    900010009
 --    (0.21 secs, 8,249,296 bytes)
---    λ> capicuas5 !! (10^5)
+--    ghci> capicuas5 !! (10^5)
 --    900010009
 --    (0.10 secs, 31,134,176 bytes)
---    λ> capicuas6 !! (10^5)
+--    ghci> capicuas6 !! (10^5)
 --    900010009
 --    (0.14 secs, 55,211,272 bytes)
---    λ> capicuas7 !! (10^5)
+--    ghci> capicuas7 !! (10^5)
 --    900010009
 --    (0.03 secs, 0 bytes)
 
@@ -325,7 +325,7 @@ prop_sumas3Capicuas x =
   x >= 0 ==> not (null (sumas3Capicuas x))
 
 -- La comprobación es
---    λ> quickCheck prop_sumas3Capicuas
+--    ghci> quickCheck prop_sumas3Capicuas
 --    +++ OK, passed 100 tests.
 
 -- ---------------------------------------------------------------------

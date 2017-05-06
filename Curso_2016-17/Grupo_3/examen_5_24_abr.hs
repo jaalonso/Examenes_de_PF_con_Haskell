@@ -76,13 +76,13 @@ posMaxVec v =
 --    sustitucion :: Posicion -> a -> Arbol a -> Arbol a
 -- tal que (sustitucion ds z x) es el árbol obtenido sustituyendo el
 -- elemento del arbol x en la posición ds por z. Por ejemplo, 
---    λ> sustitucion [I,D] 7 ej1
+--    ghci> sustitucion [I,D] 7 ej1
 --    N 9 (N 8 (N 3 H H) (N 7 H H)) (N 6 (N 4 H H) (N 5 H H))
---    λ> sustitucion [D,D] 7 ej1
+--    ghci> sustitucion [D,D] 7 ej1
 --    N 9 (N 8 (N 3 H H) (N 2 H H)) (N 6 (N 4 H H) (N 7 H H))
---    λ> sustitucion [I] 7 ej1
+--    ghci> sustitucion [I] 7 ej1
 --    N 9 (N 7 (N 3 H H) (N 2 H H)) (N 6 (N 4 H H) (N 5 H H))
---    λ> sustitucion [] 7 ej1
+--    ghci> sustitucion [] 7 ej1
 --    N 7 (N 8 (N 3 H H) (N 2 H H)) (N 6 (N 4 H H) (N 5 H H))
 -- ---------------------------------------------------------------------
 

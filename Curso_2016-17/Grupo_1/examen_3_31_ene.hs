@@ -108,11 +108,11 @@ pandigitalBase2 b n = sort (nub xs) == [0..(b-1)]
 -- cuyos elementos son los pares (n,x), donde x es el n-ésimo término de
 -- la sucesión de Fibonacci, tales que la terminación de x es n. Por
 -- ejemplo,
---    λ> take 6 sucFinalesFib
+--    ghci> take 6 sucFinalesFib
 --    [(0,0),(1,1),(5,5),(25,75025),(29,514229),(41,165580141)]
---    λ> head [(n,x) | (n,x) <- sucFinalesFib, n > 200]
+--    ghci> head [(n,x) | (n,x) <- sucFinalesFib, n > 200]
 --    (245,712011255569818855923257924200496343807632829750245)
---    λ> head [n | (n,_) <- sucFinalesFib, n > 10^4]
+--    ghci> head [n | (n,_) <- sucFinalesFib, n > 10^4]
 --    10945
 -- ---------------------------------------------------------------------
 

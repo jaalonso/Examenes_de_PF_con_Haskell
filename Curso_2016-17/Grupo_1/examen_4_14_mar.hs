@@ -145,7 +145,7 @@ posicionesComunes2 p q =
 -- que pregunte al usuario por una posición y devuelva "Tocado" o
 -- "Agua" según lo que haya en esa posición en el tablero ej4. Una
 -- posible sesión puede ser la siguiente.
---    λ> juego ej4
+--    ghci> juego ej4
 --    Elije una fila: 
 --    3
 --    Elije una columna: 

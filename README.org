@@ -17,10 +17,12 @@ Los exámenes se realizaron en el aula de informática y su duración fue de 2
 horas. La materia de cada examen es la impartida desde el comienzo del curso
 (generalmente, el 1 de octubre) hasta la fecha del examen.
 
-El libro consta de 7 capítulos correspondientes a los 7 cursos en los que se ha
+El libro consta de 8 capítulos correspondientes a los 8 cursos en los que se ha
 impartido la asignatura. En cada capítulo hay una sección, por cada uno de los
 grupos de la asignatura, y una subsección por cada uno de los exámenes del
 grupo.
+
+En resumen, el libro contiene 1.131 ejercicios resueltos.
 
 Los ejercicios de cada examen han sido propuestos por los profesores de su
 grupo (cuyos nombres aparecen en el título de la sección). Sin embargo, los he

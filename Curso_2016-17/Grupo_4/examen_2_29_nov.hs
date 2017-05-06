@@ -191,16 +191,16 @@ sumaMaxima4 xs =
 -- Comparación de eficiencia
 -- =========================
 
---    λ> let n = 10^2 in sumaMaxima1 [-n..n] 
+--    ghci> let n = 10^2 in sumaMaxima1 [-n..n] 
 --    5050
 --    (2.10 secs, 390,399,104 bytes)
---    λ> let n = 10^2 in sumaMaxima2 [-n..n] 
+--    ghci> let n = 10^2 in sumaMaxima2 [-n..n] 
 --    5050
 --    (0.02 secs, 0 bytes)
---    λ> let n = 10^2 in sumaMaxima3 [-n..n] 
+--    ghci> let n = 10^2 in sumaMaxima3 [-n..n] 
 --    5050
 --    (0.27 secs, 147,705,184 bytes)
---    λ> let n = 10^2 in sumaMaxima4 [-n..n] 
+--    ghci> let n = 10^2 in sumaMaxima4 [-n..n] 
 --    5050
 --    (0.04 secs, 11,582,520 bytes)
 

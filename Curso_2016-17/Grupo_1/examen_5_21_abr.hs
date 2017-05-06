@@ -36,7 +36,7 @@ palindromo n = xs == reverse xs
 
 -- sucSumaCuadradosConsecutivos es la sucesión de los números que son
 -- sumas de los cuadrados de dos números consecutivos. Por ejemplo,       
---    λ> take 10 sucSumaCuadradosConsecutivos
+--    ghci> take 10 sucSumaCuadradosConsecutivos
 --    [1,5,13,25,41,61,85,113,145,181]
 sucSumaCuadradosConsecutivos :: [Integer]
 sucSumaCuadradosConsecutivos = map (\x -> 2*x^2+2*x+1) [0..]
@@ -55,13 +55,13 @@ cuadrados :: [Integer]
 cuadrados = map (^2) [0..]
 
 -- Comparación de eficiencia
---    λ> maximum (take (10^6) sucSumaCuadradosConsecutivos)
+--    ghci> maximum (take (10^6) sucSumaCuadradosConsecutivos)
 --    1999998000001
 --    (1.47 secs, 912,694,568 bytes)
---    λ> maximum (take (10^6) sucSumaCuadradosConsecutivos2)
+--    ghci> maximum (take (10^6) sucSumaCuadradosConsecutivos2)
 --    1999998000001
 --    (1.79 secs, 1,507,639,560 bytes)
---    λ> maximum (take (10^6) sucSumaCuadradosConsecutivos3)
+--    ghci> maximum (take (10^6) sucSumaCuadradosConsecutivos3)
 --    1999998000001
 --    (1.29 secs, 840,488,376 bytes)
 
@@ -116,7 +116,7 @@ p4 = foldr apila vacia [4,-1,7,3,8,10,0,3,3,4]
 --                      [0, 0,-2,9],
 --                      [0, 0, 0,3]]
 -- se tiene
---    λ> polM m1
+--    ghci> polM m1
 --    x^4 + -1*x^3 + -7*x^2 + 1*x + 6
 -- ---------------------------------------------------------------------
 
@@ -152,11 +152,11 @@ dibPol m xs =
 -- Definir la constante
 --    sucRecaman :: [Int]
 -- tal que sucRecaman es la sucesión anterior. Por ejemplo,
---    λ> take 21 sucRecaman
+--    ghci> take 21 sucRecaman
 --    [0,1,3,6,2,7,13,20,12,21,11,22,10,23,9,24,8,25,43,62,42]
---    λ> sucRecaman !! (10^3)
+--    ghci> sucRecaman !! (10^3)
 --    3686
---    λ> sucRecaman !! (10^4)
+--    ghci> sucRecaman !! (10^4)
 --    18658
 -- ---------------------------------------------------------------------
 
@@ -195,20 +195,20 @@ recaman s n x
     (x+n):recaman (S.insert (x+n) s) (n+1) (x+n) 
 
 -- Comparación de eficiencia:
---    λ> sucRecaman1 !! 25
+--    ghci> sucRecaman1 !! 25
 --    17
 --    (3.76 secs, 2,394,593,952 bytes)
---    λ> sucRecaman2 !! 25
+--    ghci> sucRecaman2 !! 25
 --    17
 --    (0.00 secs, 0 bytes)
---    λ> sucRecaman3 !! 25
+--    ghci> sucRecaman3 !! 25
 --    17
 --    (0.00 secs, 0 bytes)
 --
---    λ> sucRecaman2 !! (2*10^4)
+--    ghci> sucRecaman2 !! (2*10^4)
 --    14358
 --    (2.69 secs, 6,927,559,784 bytes)
---    λ> sucRecaman3 !! (2*10^4)
+--    ghci> sucRecaman3 !! (2*10^4)
 --    14358
 --    (0.04 secs, 0 bytes)
 
@@ -239,10 +239,10 @@ conjeturaRecaman2 n =
   all (`elem` sucRecaman3) [1..n]
 
 -- Comparación de eficiencia
---    λ> conjeturaRecaman 100 == True
+--    ghci> conjeturaRecaman 100 == True
 --    True
 --    (0.44 secs, 249,218,152 bytes)
---    λ> conjeturaRecaman2 100 == True
+--    ghci> conjeturaRecaman2 100 == True
 --    True
 --    (0.02 secs, 0 bytes)
 
@@ -265,9 +265,9 @@ invRecaman2 n =
   length (takeWhile (/=n) sucRecaman)
 
 -- Comparación de eficiencia
---    λ> invRecaman 10400
+--    ghci> invRecaman 10400
 --    50719
 --    (3.13 secs, 42,679,336 bytes)
---    λ> invRecaman2 10400
+--    ghci> invRecaman2 10400
 --    50719
 --    (0.00 secs, 0 bytes)

@@ -112,16 +112,16 @@ respetuosos4 xs =
      , a <= x && x <= b]
 
 -- Comparación de eficiencia
---    λ> length (respetuosos [1..3000])
+--    ghci> length (respetuosos [1..3000])
 --    3000
 --    (3.31 secs, 1,140,407,224 bytes)
---    λ> length (respetuosos2 [1..3000])
+--    ghci> length (respetuosos2 [1..3000])
 --    3000
 --    (2.85 secs, 587,082,160 bytes)
---    λ> length (respetuosos3 [1..3000])
+--    ghci> length (respetuosos3 [1..3000])
 --    3000
 --    (2.12 secs, 785,446,880 bytes)
---    λ> length (respetuosos4 [1..3000])
+--    ghci> length (respetuosos4 [1..3000])
 --    3000
 --    (0.02 secs, 0 bytes)
 
