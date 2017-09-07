@@ -37,7 +37,7 @@ import qualified I1M.Cola as C
 digitos :: Int -> [Int]
 digitos n = [read [x] | x <- show n]
 
-sig:: Int -> Int
+sig :: Int -> Int
 sig = sum . (map (^2)) . digitos
 
 orbita:: Int -> [Int]
@@ -144,7 +144,7 @@ multListaPol2 = foldr multPol polUnidad
 -- Ejercicio 4. El algoritmo de Damm (http://bit.ly/1SyWhFZ) se usa en
 -- la detección de errores en códigos numéricos. Es un procedimiento
 -- para obtener un dígito de control, usando la siguiente matriz, como
--- describimos en el ejemplo 
+-- describimos en los ejemplos 
 -- 
 --   |  0   1   2   3   4   5   6   7   8   9
 -- --+---------------------------------------

@@ -82,6 +82,10 @@ todos p m
 -- tipo que G (dirigido o no dirigido), con el mismo conjunto de nodos y
 -- tal que dos nodos de G' son adyacentes si y sólo si no son adyacentes
 -- en G. Los pesos de todas las aristas del complementario es igual a 0.
+--
+-- Definir la función
+--    complementario :: Grafo Int Int -> Grafo Int Int
+-- tal que (complementario g) es el complementario de g. Por ejemplo,
 --    ghci> complementario (creaGrafo D (1,3) [(1,3,0),(3,2,0),(2,2,0),(2,1,0)])
 --    G D (array (1,3) [(1,[(1,0),(2,0)]),(2,[(3,0)]),(3,[(1,0),(3,0)])])
 --    ghci> complementario (creaGrafo D (1,3) [(3,2,0),(2,2,0),(2,1,0)])
