@@ -22,7 +22,7 @@ impartido la asignatura. En cada capítulo hay una sección, por cada uno de los
 grupos de la asignatura, y una subsección por cada uno de los exámenes del
 grupo.
 
-En resumen, el libro contiene 1.131 ejercicios resueltos.
+En resumen, el libro contiene 1.149 ejercicios resueltos.
 
 Los ejercicios de cada examen han sido propuestos por los profesores de su
 grupo (cuyos nombres aparecen en el título de la sección). Sin embargo, los he

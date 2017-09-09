@@ -156,7 +156,7 @@ prop_equiv_sumas (Positive n) ns x =
 --    > sumas2 3 [1..200] 4
 --    [[1,1,2]]
 --    (0.17 secs, 25,189,688 bytes)
---    λ> sumas3 3 [1..200] 4
+--    ghci> sumas3 3 [1..200] 4
 --    [[1,1,2]]
 --    (0.08 secs, 21,091,368 bytes)
 
@@ -201,9 +201,9 @@ diagonalesPrincipales p =
 --    S (N 5) (S (V "x") (V "y"))
 --    > simplificada (S (S (S (V "x") (N 3)) (S (N 2) (V "y"))) (N (-5)))
 --    S (V "x") (V "y")
---    λ> simplificada (S (V "x") (V "y"))
+--    ghci> simplificada (S (V "x") (V "y"))
 --    S (V "x") (V "y")
---    λ> simplificada (S (N 2) (N 3))
+--    ghci> simplificada (S (N 2) (N 3))
 --    N 5
 -- ---------------------------------------------------------------------
 
@@ -243,9 +243,9 @@ variables (S e1 e2) = variables e1 ++ variables e2
 
 -- (sumaVariables xs) es la expresión obtenida sumando las variables
 -- xs. Por ejemplo,
---    λ> sumaVariables ["x","y","z"]
+--    ghci> sumaVariables ["x","y","z"]
 --    S (V "x") (S (V "y") (V "z"))
---    λ> sumaVariables ["x"]
+--    ghci> sumaVariables ["x"]
 --    V "x"
 sumaVariables :: [String] -> Exp
 sumaVariables [x]    = V x

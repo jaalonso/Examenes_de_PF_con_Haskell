@@ -13,17 +13,17 @@ import Test.QuickCheck
 import Graphics.Gnuplot.Simple
 
 -- ---------------------------------------------------------------------
--- Ejercicio 1.1. La función de Möebius, μ(n), está definida para todos
+-- Ejercicio 1.1. La función de Möebius,  está definida para todos
 -- los enteros positivos ncomo sigue:
---    μ(n) =  1 si n es libre de cuadrados y tiene un número par de
+--    mu(n) =  1 si n es libre de cuadrados y tiene un número par de
 --              factores primos distintos.
---    μ(n) = -1 si n es libre de cuadrados y tiene un número impar de
+--    mu(n) = -1 si n es libre de cuadrados y tiene un número impar de
 --              factores primos distintos.
---    μ(n) =  0 si n es divisible por algún cuadrado.
+--    mu(n) =  0 si n es divisible por algún cuadrado.
 -- 
 -- Definir la función
---    mu:: Int -> Int
--- tal que (mu n) es el valor μ(n). Por ejemplo:
+--    mu :: Int -> Int
+-- tal que (mu n) es el valor mu(n). Por ejemplo:
 --    mu 1    == 1
 --    mu 1000 == 0
 --    mu 3426 == -1
@@ -61,7 +61,7 @@ mu2 n | any (>1) es = 0
         
 -- ---------------------------------------------------------------------
 -- Ejercicio 1.2. Comprobar con QuickCheck que se verifica la siguiente
--- propiedad: la suma de μ(d), siendo d los divisores positivos de n, es
+-- propiedad: la suma de mu(d), siendo d los divisores positivos de n, es
 -- cero excepto cuando n = 1.
 -- ---------------------------------------------------------------------
 
@@ -71,7 +71,7 @@ prop_mu n = abs n /= 1 ==> sum (map mu2 (divisores n)) == 0
   where divisores x = [y | y <- [1..abs x], x `mod` y == 0]
 
 -- La comprobación es
---    λ> quickCheck prop_mu
+--    ghci> quickCheck prop_mu
 --    +++ OK, passed 100 tests.
 
 -- ---------------------------------------------------------------------
@@ -94,9 +94,9 @@ graficaMu ns = plotList [] $ map mu2 ns
 --    generable      :: Integer -> Bool
 -- tales que
 -- + generables es la sucesión de los números generables. Por ejemplo,
---      λ> take 20 generables
+--      ghci> take 20 generables
 --      [1,3,6,8,9,11,13,14,16,18,19,21,23,24,26,27,28,29,31,32]
---      λ> generables !! (10^6)
+--      ghci> generables !! (10^6)
 --      1250008
 -- + (generable x) se verifica si x es generable. Por ejemplo,
 --      generable 23       ==  True

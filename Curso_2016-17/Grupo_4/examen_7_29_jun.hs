@@ -61,10 +61,10 @@ inicial (x:xs) =
 -- Comparación de eficiencia
 -- =========================
 
---    λ> length (segmentos1 (show (5^(10^6))))
+--    ghci> length (segmentos1 (show (5^(10^6))))
 --    636114
 --    (2.05 secs, 842,837,680 bytes)
---    λ> length (segmentos2 (show (5^(10^6))))
+--    ghci> length (segmentos2 (show (5^(10^6))))
 --    636114
 --    (1.21 secs, 833,432,080 bytes)
 
@@ -74,7 +74,7 @@ prop_segmentos xs =
   all (\ys -> last ys - head ys == length ys - 1) (segmentos2 xs)
 
 -- La comprobación es 
---    λ> quickCheck prop_segmentos
+--    ghci> quickCheck prop_segmentos
 --    +++ OK, passed 100 tests.
 
 -- ---------------------------------------------------------------------
@@ -100,9 +100,9 @@ prop_segmentos xs =
 -- Definir la sucesión
 --    numerosDeLaSuerte :: [Int]
 -- cuyos elementos son los números de la suerte. Por ejemplo,
---    λ> take 20 numerosDeLaSuerte
+--    ghci> take 20 numerosDeLaSuerte
 --    [1,3,7,9,13,15,21,25,31,33,37,43,49,51,63,67,69,73,75,79]
---    λ> numerosDeLaSuerte !! 1500
+--    ghci> numerosDeLaSuerte !! 1500
 --    13995
 -- ---------------------------------------------------------------------
 
@@ -123,10 +123,10 @@ numerosDeLaSuerte2 =  1 : criba 2 [1, 3..]
                   where (us, _:vs) = splitAt (z - 1) ws 
 
 -- Comparación de eficiencia
---    λ> numerosDeLaSuerte2 !! 300
+--    ghci> numerosDeLaSuerte2 !! 300
 --    2217
 --    (3.45 secs, 2,873,137,632 bytes)
---    λ> numerosDeLaSuerte !! 300
+--    ghci> numerosDeLaSuerte !! 300
 --    2217
 --    (0.04 secs, 22,416,784 bytes)
 

@@ -18,25 +18,25 @@ import Test.QuickCheck
 -- tales que
 -- + (potenciasDe2 a) es la lista de las potencias de 2 que comienzan
 --   por a. Por ejemplo,
---      λ> take 5 (potenciasDe2 3)
+--      ghci> take 5 (potenciasDe2 3)
 --      [32,32768,33554432,34359738368,35184372088832]
---      λ> take 2 (potenciasDe2 102)
+--      ghci> take 2 (potenciasDe2 102)
 --      [1024,102844034832575377634685573909834406561420991602098741459288064]
---      λ> take 2 (potenciasDe2 40)
+--      ghci> take 2 (potenciasDe2 40)
 --      [4096,40564819207303340847894502572032]
 -- + (menorPotenciaDe2 a) es la menor potencia de 2 que comienza con
 --   el número a. Por ejemplo,
---      λ> menorPotenciaDe2 10
+--      ghci> menorPotenciaDe2 10
 --      1024
---      λ> menorPotenciaDe2 25
+--      ghci> menorPotenciaDe2 25
 --      256
---      λ> menorPotenciaDe2 62
+--      ghci> menorPotenciaDe2 62
 --      6277101735386680763835789423207666416102355444464034512896
---      λ> menorPotenciaDe2 425
+--      ghci> menorPotenciaDe2 425
 --      42535295865117307932921825928971026432
---      λ> menorPotenciaDe2 967140655691
+--      ghci> menorPotenciaDe2 967140655691
 --      9671406556917033397649408
---      λ> [menorPotenciaDe2 a | a <- [1..10]]
+--      ghci> [menorPotenciaDe2 a | a <- [1..10]]
 --      [1,2,32,4,512,64,70368744177664,8,9007199254740992,1024]
 --
 -- Comprobar con QuickCheck que, para todo entero positivo a, existe una
@@ -75,13 +75,13 @@ potenciasC = iterate (*2) 1
 -- Comparación de eficiencia
 -- =========================
 
--- λ> length (show (head (potenciasDe2A 123456)))
+-- ghci> length (show (head (potenciasDe2A 123456)))
 -- 19054
 -- (7.17 secs, 1,591,992,792 bytes)
--- λ> length (show (head (potenciasDe2 123456)))
+-- ghci> length (show (head (potenciasDe2 123456)))
 -- 19054
 -- (5.96 secs, 1,273,295,272 bytes)
--- λ> length (show (head (potenciasDe2C 123456)))
+-- ghci> length (show (head (potenciasDe2C 123456)))
 -- 19054
 -- (6.24 secs, 1,542,698,392 bytes)
 
@@ -95,7 +95,7 @@ prop_potenciasDe2 a =
   a > 0 ==> not (null (potenciasDe2 a))
 
 -- Comprobación
---    λ> quickCheck prop_potenciasDe2
+--    ghci> quickCheck prop_potenciasDe2
 --    +++ OK, passed 100 tests.
   
 -- ---------------------------------------------------------------------
@@ -170,7 +170,7 @@ potenciasPerfectas = mezclaTodas potencias
 
 -- potencias es la lista las listas de potencias de todos los números
 -- mayores que 1 con exponentes mayores que 1. Por ejemplo,
---    λ> map (take 3) (take 4 potencias)
+--    ghci> map (take 3) (take 4 potencias)
 --    [[4,8,16],[9,27,81],[16,64,256],[25,125,625]]
 potencias :: [[Integer]]
 potencias = [[n^k | k <- [2..]] | n <- [2..]]
@@ -298,7 +298,7 @@ esContinua xs =
 -- tales que
 -- + (torres n) es la lista de las soluciones del problema de las n
 --   torres. Por ejemplo,  
---       λ> torres 3
+--       ghci> torres 3
 --       [( 1 0 0 )
 --        ( 0 1 0 )
 --        ( 0 0 1 )
@@ -321,9 +321,9 @@ esContinua xs =
 --   donde se ha indicado con 1 las posiciones ocupadas por las torres. 
 -- + (nTorres n) es el número de soluciones del problema de las n
 --   torres. Por ejemplo,   
---       λ> nTorres 3
+--       ghci> nTorres 3
 --       6
---       λ> length (show (nTorres (10^4)))
+--       ghci> length (show (nTorres (10^4)))
 --       35660
 -- ---------------------------------------------------------------------
 
@@ -348,21 +348,21 @@ torres :: Int -> [Matrix Int]
 torres = map fromLists . permutations . toLists . identity
 
 -- El cálculo con la definición anterior es:
---    λ> identity 3
+--    ghci> identity 3
 --    ( 1 0 0 )
 --    ( 0 1 0 )
 --    ( 0 0 1 )
 --    
---    λ> toLists it
+--    ghci> toLists it
 --    [[1,0,0],[0,1,0],[0,0,1]]
---    λ> permutations it
+--    ghci> permutations it
 --    [[[1,0,0],[0,1,0],[0,0,1]],
 --     [[0,1,0],[1,0,0],[0,0,1]],
 --     [[0,0,1],[0,1,0],[1,0,0]],
 --     [[0,1,0],[0,0,1],[1,0,0]],
 --     [[0,0,1],[1,0,0],[0,1,0]],
 --     [[1,0,0],[0,0,1],[0,1,0]]]
---    λ> map fromLists it
+--    ghci> map fromLists it
 --    [( 1 0 0 )
 --     ( 0 1 0 )
 --     ( 0 0 1 )
@@ -398,9 +398,9 @@ nTorres n = product [1..fromIntegral n]
 -- Comparación de eficiencia
 -- =========================
 
---    λ> nTorres1 9
+--    ghci> nTorres1 9
 --    362880
 --    (4.22 secs, 693,596,128 bytes)
---    λ> nTorres2 9
+--    ghci> nTorres2 9
 --    362880
 --    (0.00 secs, 0 bytes)
