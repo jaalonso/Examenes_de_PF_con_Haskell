@@ -18,8 +18,9 @@ ceros n | n `rem` 10 == 0 = 1 + ceros (n `div`10)
 
 -- 2ª definición (por comprensión):
 ceros2 :: Int -> Int
+ceros2 0 = 1
 ceros2 n = head [x | x <- [0..]
-                   , n `rem` (10^x) /= 0]
+                   , n `rem` (10^x) /= 0] - 1
 
 -- ---------------------------------------------------------------------
 -- Ejercicio 2. Una representación de 46 en base 3 es [1,0,2,1] pues
