@@ -3,132 +3,130 @@
 -- ---------------------------------------------------------------------
 
 -- ---------------------------------------------------------------------
--- § Librerías                                                        --
--- ---------------------------------------------------------------------
-
-import Test.QuickCheck
-
--- ---------------------------------------------------------------------
--- Ejercicio 1.1. La suma de la serie 
---    1/1 - 1/2 + 1/3 - 1/4 + ...+ (-1)^n/(n+1) + ...
--- es log 2.
--- 
--- Definir la función 
---    sumaSL :: Double -> Double
--- tal que (sumaSL n) es la aproximación de (log 2) obtenida mediante n
--- términos de la serie. Por ejemplo,
---    sumaSL 2   == 0.8333333333333333
---    sumaSL 10  == 0.7365440115440116
---    sumaSL 100 == 0.6931471805599453
+-- Ejercicio 1. Consideremos las regiones del plano delimitadas por
+-- las rectas x = 1, x = -1, y = 1 e y = -1. Diremos que dos regiones
+-- son vecinas si comparten una frontera distinta de un punto; es decir.
+-- no son vecinas dos regiones con un único punto de contacto.
 --
--- Indicaciones:
--- + en Haskell (log x) es el logaritmo neperiano de x; por ejemplo,
---      log (exp 1) == 1.0
--- + usar la función (**) para la potencia.
--- ---------------------------------------------------------------------
-
-sumaSL :: Double -> Double
-sumaSL n = sum [(-1)**k/(k+1) | k <- [0..n]]
-
--- ---------------------------------------------------------------------
--- Ejercicio 1.2. Definir la función 
---    errorSL :: Double -> Double
--- tal que (errorSL x) es el menor número de términos de la serie
--- anterior necesarios para obtener su límite con un error menor que
--- x. Por ejemplo, 
---    errorSL 0.1    ==  4.0
---    errorSL 0.01   ==  49.0
---    errorSL 0.001  ==  499.0
--- ---------------------------------------------------------------------
-
-errorSL :: Double -> Double
-errorSL x = head [m | m <- [1..]
-                    , abs (sumaSL m - log 2) < x]
-
--- ---------------------------------------------------------------------
--- Ejercicio 2. Se define la raizS de un número natural como sigue. Dado
--- un número natural N, sumamos todos sus dígitos, y repetimos este
--- procedimiento hasta que quede un solo dígito al cual llamamos raizS
--- de N. Por ejemplo para 9327: 3+2+7 = 21 y 2+1 = 3. Por lo tanto, la
--- raizS de 9327 es 3.
-
--- Definir la función
---    raizS :: Integer -> Integer
--- tal que (raizS n) es la raizS de n. Por ejemplo.
---   raizS 9327                 == 3
---   raizS 932778214521         == 6
---   raizS 93277821452189123561 == 5
--- ---------------------------------------------------------------------
-
-raizS :: Integer -> Integer
-raizS n | n < 10    = n
-        | otherwise = raizS (sum (digitos n))
-
-digitos :: Integer -> [Integer]
-digitos n = [read [x] | x <- show n]
-
--- ---------------------------------------------------------------------
--- Ejercicio 3.1. Definir la función 
---    alterna :: [a] -> [a] -> [a]
--- tal que (alterna xs ys) es la lista obtenida intercalando los
--- elementos de xs e ys. Por ejemplo,
---   alterna [5,1] [2,7,4,9]     == [5,2,1,7,4,9]
---   alterna [5,1,7] [2..10]     == [5,2,1,3,7,4,5,6,7,8,9,10]
---   alterna [2..10] [5,1,7]     == [2,5,3,1,4,7,5,6,7,8,9,10]
---   alterna [2,4..12] [1,5..30] == [2,1,4,5,6,9,8,13,10,17,12,21,25,29]
--- ---------------------------------------------------------------------
-
-alterna :: [a] -> [a] -> [a]
-alterna [] ys         = ys
-alterna xs []         = xs
-alterna (x:xs) (y:ys) = x:y:alterna xs ys
-
--- ---------------------------------------------------------------------
--- Ejercicio 3.2. Comprobar con QuickCheck que el número de elementos de 
--- (alterna xs ys) es la suma de los números de elementos de xs e ys.
--- ---------------------------------------------------------------------
-
-propAlterna :: [a] -> [a] -> Bool
-propAlterna xs ys = length (alterna xs ys) == length xs + length ys
-
--- La comprobación es
---    ghci> quickCheck propAlterna
---    +++ OK, passed 100 tests.  
-
--- ---------------------------------------------------------------------
--- Ejercicio 4. La sucesión de los números triangulares se obtiene
--- sumando los números naturales. Así, el 7º número triangular es
---    1 + 2 + 3 + 4 + 5 + 6 + 7 = 28.
--- 
--- Los primeros 10 números triangulares son
---    1, 3, 6, 10, 15, 21, 28, 36, 45, 55, ...
--- 
--- Los divisores de los primeros 7 números triangulares son:
---     1: 1
---     3: 1,3
---     6: 1,2,3,6
---    10: 1,2,5,10
---    15: 1,3,5,15
---    21: 1,3,7,21
---    28: 1,2,4,7,14,28
+-- En este ejercicio se pretende contar el número de regiones vecinas de
+-- aquella en la que está un punto dado. Por ejemplo, el punto (0,0)
+-- está en la region central, que tiene 4 regiones vecinas; el punto
+-- (2,2) está en la región superior derecha, que tiene 2 regiones
+-- vecinas; y el punto (2,0) está en la región media derecha, que tiene
+-- 3 regiones vecinas. Para cualquier punto que se encuentre en las
+-- rectas x = 1, x = -1, y = 1 e y = -1, el resultado debe ser 0.
 --
--- Como se puede observar, 28 es el menor número triangular con más de 5
--- divisores.
--- 
 -- Definir la función
---    menorTND :: Int -> Integer
--- tal que (menorTND n) es el menor número triangular que tiene al menos
--- n divisores. Por ejemplo,
---    menorTND 5  == 28
---    menorTND 10 == 120
---    menorTND 50 == 25200
+--    numeroRegionesVecinas :: (Float,Float) -> Int
+-- tal que (numeroRegionesVecinas (x,y)) es el número de regiones
+-- vecinas de aquella en la que está contenido el punto (x,y). Por
+-- ejemplo, 
+--    numeroRegionesVecinas (0,0)  ==  4
+--    numeroRegionesVecinas (2,2)  ==  2
+--    numeroRegionesVecinas (2,0)  ==  3
+--    numeroRegionesVecinas (1,0)  ==  0
 -- ---------------------------------------------------------------------
 
-menorTND :: Int -> Integer
-menorTND x = head $ filter ((> x) . numeroDiv) triangulares
+numeroRegionesVecinas :: (Float,Float) -> Int
+numeroRegionesVecinas (x,y)
+  | x' <  1 && y' <  1 = 4
+  | x' == 1 || y' == 1 = 0
+  | x' >  1 && y' >  1 = 2
+  | otherwise          = 3
+  where x' = abs x
+        y' = abs y
 
-triangulares :: [Integer]
-triangulares = [(n*(n+1)) `div` 2 | n <- [1..]]
+-- ---------------------------------------------------------------------
+-- Ejercicio 2. Una secuencia de números es de signo alternado si en
+-- ella se alternan los números positivos y negativos. Se pueden dar dos
+-- casos de secuencias de signo alternado: 
+-- + El primer término es positivo, el segundo es negativo, el tercero
+--   es positivo, el cuarto es negativo, y así sucesivamente. Por
+--   ejemplo, la secuencia
+--      1, -1, 2, -2, 3, -3
+-- + El primer término es negativo, el segundo es positivo, el tercero
+--   es negativo, el cuarto es positivo, y así sucesivamente. Por
+--   ejemplo, la secuencia
+--      -1, 1, -2, 2, -3, 3
+-- Las secuencias que tengan un 0 entre sus elementos nunca son de signo
+-- alternado.
+--
+-- Definir la función
+--    signosAlternados :: [Int] -> Bool
+-- tal que (signosAlternados xs) se verifica si la secuencia de números
+-- enteros xs es de signo alternado. Por ejemplo, 
+--    signosAlternados [1,-1,2,-2,3,-3]  ==  True
+--    signosAlternados [-1,1,-2,2,-3,3]  ==  True
+--    signosAlternados [0,-1,1,-1,0]     ==  False
+--    signosAlternados [1,2,-1,1,-5]     ==  False
+--    signosAlternados [1,-2,1,-1,-5]    ==  False
+-- ---------------------------------------------------------------------
 
-numeroDiv :: Integer -> Int
-numeroDiv n = 2 + length [x | x <- [2..n `div` 2], rem n x == 0]
+signosAlternados :: [Int] -> Bool
+signosAlternados xs =
+  and [x*y < 0 | (x,y) <- zip xs (tail xs)]
+
+-- ---------------------------------------------------------------------
+-- Ejercicio 3.1. Una forma de aproximar el valor del número e es usando
+-- la siguiente igualdad: 
+--
+--                  1        2        3        4        5
+--            e = ------ + ------ + ------ + ------ + ------ + ...
+--                 2*0!     2*1!     2*2!     2*3!     2*4!
+--
+-- Es decir, la serie cuyo término general n-ésimo es el cociente entre
+-- (n+1) yel doble del factorial de n:
+--
+--                    n+1
+--           s(n) =  ------
+--                    2*n!
+--
+-- Definir por comprensión la función:
+--    aproximaEC :: Double -> Double
+-- tal que (aproximaEC n) es la aproximación del número e calculada con
+-- la serie anterior hasta el término n-ésimo. Por ejemplo,
+--    aproximaEC 10  ==  2.718281663359788
+--    aproximaEC 15  ==  2.718281828458612
+--    aproximaEC 20  ==  2.718281828459045
+-- ---------------------------------------------------------------------
+
+aproximaEC :: Double -> Double
+aproximaEC n =
+  sum [(i+1) / (2*product [1..i]) | i <- [0..n]]
+
+-- ---------------------------------------------------------------------
+-- Ejercicio 3.2. Definir por recursión la función:
+--    aproximaER :: Double -> Double
+-- tal que (aproximaER n) es la aproximación del número e calculada con
+-- la serie anterior hasta el término n-ésimo. Por ejemplo,
+--    aproximaER 10  ==  2.718281663359788
+--    aproximaER 15  ==  2.718281828458612
+--    aproximaER 20  ==  2.718281828459045
+-- ---------------------------------------------------------------------
+
+aproximaER :: Double -> Double
+aproximaER 0 = 1/2
+aproximaER n =
+  (n+1)/(2*product [1..n]) + aproximaER (n-1)
+
+-- ---------------------------------------------------------------------
+-- Ejercicio 4. Definición por recursión la función:
+--    restaCifrasDe2en2 :: Integer -> Integer
+-- tal que (restaCifrasDe2en2 n) es el número obtenido a partir del
+-- número n, considerando sus cifras de 2 en 2 y tomando el valor
+-- absoluto de sus diferencias. Por ejemplo
+--    restaCifrasDe2en2 3       ==  3
+--    restaCifrasDe2en2 83      ==  5
+--    restaCifrasDe2en2 283     ==  25
+--    restaCifrasDe2en2 5283    ==  35
+--    restaCifrasDe2en2 2538    ==  35
+--    restaCifrasDe2en2 102583  ==  135
+-- ---------------------------------------------------------------------
+
+restaCifrasDe2en2 :: Integer -> Integer
+restaCifrasDe2en2 n
+  | n < 10    = n
+  | otherwise = 10 * restaCifrasDe2en2 (n `div` 100) + abs (x-y)
+  where x = n `mod` 10
+        y = (n `mod` 100) `div` 10
+
