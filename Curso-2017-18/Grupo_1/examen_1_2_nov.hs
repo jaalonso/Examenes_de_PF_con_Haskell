@@ -7,6 +7,8 @@
 -- ---------------------------------------------------------------------
 
 import Test.QuickCheck
+import Data.List
+import Data.Numbers.Primes
 
 -- ---------------------------------------------------------------------
 -- Ejercicio 1.1. La suma de la serie 
@@ -124,11 +126,51 @@ propAlterna xs ys = length (alterna xs ys) == length xs + length ys
 --    menorTND 50 == 25200
 -- ---------------------------------------------------------------------
 
-menorTND :: Int -> Integer
-menorTND x = head $ filter ((> x) . numeroDiv) triangulares
+-- 1ª solución
+-- ===========
 
-triangulares :: [Integer]
-triangulares = [(n*(n+1)) `div` 2 | n <- [1..]]
+menorTND1 :: Int -> Integer
+menorTND1 x = head $ filter ((> x) . numeroDiv1) triangulares1
 
-numeroDiv :: Integer -> Int
-numeroDiv n = 2 + length [x | x <- [2..n `div` 2], rem n x == 0]
+triangulares1 :: [Integer]
+triangulares1 = [sum [1..n] | n <- [1..]]
+
+numeroDiv1 :: Integer -> Int
+numeroDiv1 n = length [x | x <- [1..n], rem n x == 0]
+
+-- 2ª solución
+-- ===========
+
+menorTND2 :: Int -> Integer
+menorTND2 x = head $ filter ((> x) . numeroDiv2) triangulares2
+
+triangulares2 :: [Integer]
+triangulares2 = [(n*(n+1)) `div` 2 | n <- [1..]]
+
+numeroDiv2 :: Integer -> Int
+numeroDiv2 n = 2 + length [x | x <- [2..n `div` 2], rem n x == 0]
+
+-- 3ª solución
+-- ===========
+
+menorTND3 :: Int -> Integer
+menorTND3 x = head $ filter ((> x) . numeroDiv3) triangulares3
+
+triangulares3 :: [Integer]
+triangulares3 = scanl (+) 1 [2..]
+
+numeroDiv3 :: Integer -> Int
+numeroDiv3 n = product $ map ((+1) . length) $ group $ primeFactors n
+
+-- Comparación de eficiencia
+-- =========================
+
+--    λ> menorTND1 100
+--    73920
+--    (3.44 secs, 1,912,550,376 bytes)
+--    λ> menorTND2 100
+--    73920
+--    (1.72 secs, 951,901,856 bytes)
+--    λ> menorTND3 100
+--    73920
+--    (0.02 secs, 7,430,752 bytes)
