@@ -124,11 +124,11 @@ prop_diferenciasParidad xs =
 -- (N >= 1) se construye comenzando con el número 1 y calculando el
 -- resto de términos como la suma de los N términos anteriores (si
 -- existen). Por ejemplo, 
--- * la sucesión generalizada de Fibonacci de grado 2 es:
+-- + la sucesión generalizada de Fibonacci de grado 2 es:
 --      1, 1, 2, 3, 5, 8, 13, 21, 34, 55
--- * la sucesión generalizada de Fibonacci de grado 4 es:
+-- + la sucesión generalizada de Fibonacci de grado 4 es:
 --      1, 1, 2, 4, 8, 15, 29, 56, 108, 208
--- * la sucesión generalizada de Fibonacci de grado 6 es:
+-- + la sucesión generalizada de Fibonacci de grado 6 es:
 --      1, 1, 2, 4, 8, 16, 32, 63, 125, 248
 -- 
 -- Ejercicio 3.1. Definir, por recursión con acumulador, la función
