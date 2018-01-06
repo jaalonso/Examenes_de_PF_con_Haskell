@@ -22,13 +22,13 @@ import Data.List
 -- tal que (listaIndicesRelacion xs r ys) es la lista de los índices de
 -- relación de los elementos de la lista xs en la lista ys con respecto
 -- a la relación r. Por ejemplo,
---    λ> listaIndicesRelacion [2] (<) [1,2,3,5,1,4]
+--    ghci> listaIndicesRelacion [2] (<) [1,2,3,5,1,4]
 --    [3]
---    λ> listaIndicesRelacion [4,2,5] (<) [1,6,3,6,2]
+--    ghci> listaIndicesRelacion [4,2,5] (<) [1,6,3,6,2]
 --    [2,3,2]
---    λ> listaIndicesRelacion [4,2,5] (/=) [1,6,3,6,2]
+--    ghci> listaIndicesRelacion [4,2,5] (/=) [1,6,3,6,2]
 --    [5,4,5]
---    λ> listaIndicesRelacion [4,2,5] (\ x y -> odd (x+y)) [1,6,3,6,2]
+--    ghci> listaIndicesRelacion [4,2,5] (\ x y -> odd (x+y)) [1,6,3,6,2]
 --    [2,2,3]
 -- ---------------------------------------------------------------------
 

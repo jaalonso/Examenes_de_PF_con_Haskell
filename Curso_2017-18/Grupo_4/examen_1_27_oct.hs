@@ -37,7 +37,7 @@ prop_SumaSerie :: Double -> Bool
 prop_SumaSerie n = sumaSerie n < 0.5
 
 -- La comprobación es
---    λ> quickCheck prop_SumaSerie
+--    ghci> quickCheck prop_SumaSerie
 --    +++ OK, passed 100 tests.
 
 -- ---------------------------------------------------------------------

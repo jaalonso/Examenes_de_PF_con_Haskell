@@ -70,28 +70,28 @@ biparticiones5 n =
 -- Comparación de eficiencia
 -- =========================
 
---    λ> numero n = (read (replicate n '2')) :: Integer
+--    ghci> numero n = (read (replicate n '2')) :: Integer
 --    (0.00 secs, 0 bytes)
---    λ> length (biparticiones1 (numero 10000))
+--    ghci> length (biparticiones1 (numero 10000))
 --    9999
 --    (0.03 secs, 10,753,192 bytes)
---    λ> length (biparticiones2 (numero 10000))
+--    ghci> length (biparticiones2 (numero 10000))
 --    9999
 --    (1.89 secs, 6,410,513,136 bytes)
---    λ> length (biparticiones3 (numero 10000))
+--    ghci> length (biparticiones3 (numero 10000))
 --    9999
 --    (0.54 secs, 152,777,680 bytes)
---    λ> length (biparticiones4 (numero 10000))
+--    ghci> length (biparticiones4 (numero 10000))
 --    9999
 --    (0.01 secs, 7,382,816 bytes)
---    λ> length (biparticiones5 (numero 10000))
+--    ghci> length (biparticiones5 (numero 10000))
 --    9999
 --    (2.11 secs, 152,131,136 bytes)
 --    
---    λ> length (biparticiones1 (numero (10^7)))
+--    ghci> length (biparticiones1 (numero (10^7)))
 --    9999999
 --    (14.23 secs, 10,401,100,848 bytes)
---    λ> length (biparticiones4 (numero (10^7)))
+--    ghci> length (biparticiones4 (numero (10^7)))
 --    9999999
 --    (11.43 secs, 7,361,097,856 bytes)
 

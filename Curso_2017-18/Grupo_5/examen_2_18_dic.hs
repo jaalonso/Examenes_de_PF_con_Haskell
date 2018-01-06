@@ -33,7 +33,7 @@ esPandigital x = all (`elem` xs) "0123456789"
 -- ---------------------------------------------------------------------
 
 -- El cálculo es
---    λ> head (filter isPrime dosPandigitales)
+--    ghci> head (filter isPrime dosPandigitales)
 --    101723
 
 -- ---------------------------------------------------------------------

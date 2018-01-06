@@ -79,10 +79,10 @@ padovan2 n = sucPadovan2 `genericIndex` n
 -- Comparación de eficiencia
 -- =========================
 
---    λ> sucPadovan1 !! 60
+--    ghci> sucPadovan1 !! 60
 --    15346786
 --    (12.53 secs, 6,752,729,800 bytes)
---    λ> sucPadovan2 !! 60
+--    ghci> sucPadovan2 !! 60
 --    15346786
 --    (0.00 secs, 152,648 bytes)
 
@@ -102,7 +102,7 @@ propPadovan n = sum (take m sucPadovan2) == padovan2 (m+4) - 2
   where m = abs n
 
 -- La comprobación es
---    λ> quickCheck propPadovan
+--    ghci> quickCheck propPadovan
 --    +++ OK, passed 100 tests.
 
 -- ---------------------------------------------------------------------

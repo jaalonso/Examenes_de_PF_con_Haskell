@@ -47,7 +47,7 @@ prop_carga xs =
   carga xs == carga4 xs 
 
 -- La comprobación es
---   λ> quickCheck prop_carga
+--   ghci> quickCheck prop_carga
 --   +++ OK, passed 100 tests.
 
 -- ---------------------------------------------------------------------
@@ -74,9 +74,9 @@ equilibrada xs = abs (carga xs) <= 1
 -- tal que (triples n) es la lista de todos los triples (x,y,z) con
 -- 1 <= x, y, z <= n que están formados por coordenas distintas. Por
 -- ejemplo, 
---    λ> triples 3
+--    ghci> triples 3
 --    [(1,2,3),(1,3,2),(2,1,3),(2,3,1),(3,1,2),(3,2,1)]
---    λ> triples 4
+--    ghci> triples 4
 --    [(1,2,3),(1,2,4),(1,3,2),(1,3,4),(1,4,2),(1,4,3),(2,1,3),(2,1,4),
 --     (2,3,1),(2,3,4),(2,4,1),(2,4,3),(3,1,2),(3,1,4),(3,2,1),(3,2,4),
 --     (3,4,1),(3,4,2),(4,1,2),(4,1,3),(4,2,1),(4,2,3),(4,3,1),(4,3,2)]

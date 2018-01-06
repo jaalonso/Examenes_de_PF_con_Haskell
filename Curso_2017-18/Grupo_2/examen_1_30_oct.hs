@@ -74,7 +74,7 @@ esPrimo :: Int -> Bool
 esPrimo x = divisoresPropios x == [1]
 
 -- La comprobación es
---    λ> quickCheck prop_primosSonDefectivos
+--    ghci> quickCheck prop_primosSonDefectivos
 --    +++ OK, passed 100 tests.
 
 -- ---------------------------------------------------------------------
@@ -97,10 +97,10 @@ lugarPar2 xs =
   [x | (x,n) <- zip xs [0..], even n]
 
 -- Comparación de eficiencia
---    λ> maximum (lugarPar [1..10^5])
+--    ghci> maximum (lugarPar [1..10^5])
 --    99999
 --    (5.80 secs, 22,651,424 bytes)
---    λ> maximum (lugarPar2 [1..10^5])
+--    ghci> maximum (lugarPar2 [1..10^5])
 --    99999
 --    (0.06 secs, 48,253,456 bytes)
 

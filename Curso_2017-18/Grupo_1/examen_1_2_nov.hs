@@ -165,12 +165,12 @@ numeroDiv3 n = product $ map ((+1) . length) $ group $ primeFactors n
 -- Comparación de eficiencia
 -- =========================
 
---    λ> menorTND1 100
+--    ghci> menorTND1 100
 --    73920
 --    (3.44 secs, 1,912,550,376 bytes)
---    λ> menorTND2 100
+--    ghci> menorTND2 100
 --    73920
 --    (1.72 secs, 951,901,856 bytes)
---    λ> menorTND3 100
+--    ghci> menorTND3 100
 --    73920
 --    (0.02 secs, 7,430,752 bytes)
