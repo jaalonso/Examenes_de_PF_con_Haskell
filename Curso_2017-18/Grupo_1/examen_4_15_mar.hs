@@ -1,4 +1,4 @@
--- Informática (1º del Grado en Matemáticas, Grupos 1)
+-- Informática (1º del Grado en Matemáticas, Grupo 1)
 -- 4º examen de evaluación continua (15 de marzo de 2018)
 -- ---------------------------------------------------------------------
 
