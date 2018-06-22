@@ -2,6 +2,7 @@
 *.aux
 *.bbl
 *.blg
+*.dvi
 *.el
 *.gz
 *.idx
@@ -16,5 +17,5 @@
 *TAGS
 *auto/
 Makefile
-
+Examenes_de_PF_con_Haskell_pdflatex.tex
 

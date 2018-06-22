@@ -1,7 +1,7 @@
 % Examenes_de_PF_con_Haskell.tex
 % Exámenes de programación funcional con Haskell.
 % José A. Alonso Jiménez <jalonso@us.es>
-% Sevilla, 27 de julio de 2013 (6 de enero de 2018)
+% Sevilla, 27 de julio de 2013 (22 de junio de 2018)
 % =============================================================================
 
 \documentclass[a4paper,12pt,twoside]{book}
@@ -10,45 +10,48 @@
 %% § Paquetes adicionales                                                   %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\usepackage{ucs}
-\usepackage[utf8x]{inputenc}       % Acentos de UTF8
+% Configuración para XeLaTeX
+\usepackage{fontspec}
+\usepackage{xltxtra}
+\defaultfontfeatures{Ligatures=TeX,Numbers=OldStyle}
+\setromanfont{DejaVu Sans}
+% \setsansfont{Arial}
+\setmonofont{DejaVu Sans Mono}[Scale={0.90}]
+
+% Notas: La lista de fuentes disponibles se obtiene con fc-list
+
+% \usepackage{ucs}
+% \usepackage[utf8]{inputenc}        % Acentos de UTF8
 \usepackage[spanish]{babel}        % Castellanización.
-\usepackage[T1]{fontenc}           % Codificación T1 con European Computer
-                                   % Modern.  
-\usepackage{graphicx}
+% \usepackage[T1]{fontenc}           % Codificación T1 con European Computer
+%                                    % Modern.  
+% \usepackage{graphicx}
 \usepackage{fancyvrb}              % Verbatim extendido
-\usepackage{mathpazo}              % Fuentes semejante a palatino
-\usepackage[scaled=.90]{helvet}
-\usepackage{cmtt}
-\renewcommand{\ttdefault}{cmtt}
+% \usepackage{mathpazo}              % Fuentes semejante a palatino
+% \usepackage[scaled=.90]{helvet}
+% \usepackage{cmtt}
+% \renewcommand{\ttdefault}{cmtt}
 \usepackage{a4wide}
 
-% Espacio entre líneas
-\usepackage{setspace}
-\onehalfspacing
-
-\setlength{\parindent}{5mm}        % Indentación de comienzo de párrafo
-\deactivatetilden                  % Elima uso de ~ para la eñe
+\linespread{1.05}                  % Distancia entre líneas
+\setlength{\parindent}{2em}        % Indentación de comienzo de párrafo
+% \deactivatetilden                  % Elima uso de ~ para la eñe
 \raggedbottom                      % No ajusta los espacios verticales.
-
-% Control de listas
-% Elimina espacio entre item y párrafo y coloca item en el margen izquierdo
-\usepackage{enumitem}
-\setlist[enumerate,itemize]{noitemsep, nolistsep, leftmargin=*}
 
 \usepackage[%
   colorlinks=true,
   urlcolor=blue,
-  pdftex,
+  % pdftex,
   pdfauthor={José A. Alonso <jalonso@us.es>},%
   pdftitle={Examenes de Informatica de 1 de Matematicas},%
   pdfstartview=FitH,%
   bookmarks=false]{hyperref}      
 
-\usepackage{tocloft}
+\setcounter{tocdepth}{1}
+\setcounter{secnumdepth}{4}
 
-% \setlength\cftparskip{-2pt}
-% \setlength\cftbeforechapskip{0pt}
+\usepackage{tocstyle}
+\usetocstyle{KOMAlike}
 
 \newenvironment{enumerate*}%
   {\vspace*{-0mm}
@@ -79,9 +82,9 @@
 \cfoot{}
 
 \fancyhead{}
-\fancyhead[RE]{\bfseries \nouppercase{\leftmark}}
-\fancyhead[LO]{\bfseries \nouppercase{\rightmark}}
-\fancyhead[LE,RO]{\bfseries \thepage}
+\fancyhead[RE]{\mdseries\sffamily \nouppercase{\leftmark}}
+\fancyhead[LO]{\mdseries\sffamily \nouppercase{\rightmark}}
+\fancyhead[LE,RO]{\mdseries\sffamily \thepage}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% § Definiciones                                                           %%
@@ -114,7 +117,7 @@
            {Dpto. de Ciencias de la Computación e Inteligencia Artificial} \\
       \href{http://www.us.es}
            {Universidad de Sevilla}  \\
-      Sevilla, 6 de enero de 2018
+      Sevilla, 22 de junio de 2018
   \end{tabular}\hfill\mbox{}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -186,7 +189,7 @@ Además contiene dos apéndices. Uno con el método de Polya de resolución de
 problemas (sobre el que se hace énfasis durante todo el curso) y el otro con un
 resumen de las funciones de Haskell de uso más frecuente.
 
-En resumen, el libro contiene 1.205 ejercicios resueltos propuestos en 223
+En resumen, el libro contiene 1.279 ejercicios resueltos propuestos en 207
 exámenes. 
 
 Los ejercicios de cada examen han sido propuestos por los profesores de su
@@ -199,7 +202,7 @@ Los códigos del libro están disponibles en Github
 
 \begin{flushright}
   José A. Alonso \\
-  Sevilla, 6 de enero de 2018
+  Sevilla, 21 de junio de 2018
 \end{flushright}
 
 \chapter{Exámenes del curso 2009--10}
@@ -869,16 +872,16 @@ El examen es común con el del grupo 4 (ver página \pageref{examen_16_17_4_9}).
 \section{Exámenes del grupo 1 (María J. Hidalgo)}
 \subsection{Examen 1 (2 de noviembre de 2017)}
 \examen{Curso_2017-18/Grupo_1/examen_1_2_nov.hs}
-\subsection{Examen 2 (5 de diciembre de 1017)}
+\subsection{Examen 2 (5 de diciembre de 2017)}
 \examen{Curso_2017-18/Grupo_1/examen_2_5_dic.hs}
-% \subsection{Examen 3 (30 de enero de 2018)}
-% \examen{Curso_2017-18/Grupo_1/examen_.hs}
-% \subsection{Examen 4 (15 de marzo de 2018)}
-% \examen{Curso_2017-18/Grupo_1/examen_.hs}
-% \subsection{Examen 5 (3 de mayo de 2018)}
-% \examen{Curso_2017-18/Grupo_1/examen_.hs}
-% \subsection{Examen 6 (12 de junio de 2018)}
-% \examen{Curso_2017-18/Grupo_1/examen_.hs}
+\subsection{Examen 3 (30 de enero de 2018)}
+\examen{Curso_2017-18/Grupo_1/examen_3_30_ene.hs} \label{examen_17_18_1_3}
+\subsection{Examen 4 (15 de marzo de 2018)}
+\examen{Curso_2017-18/Grupo_1/examen_4_15_mar.hs}
+\subsection{Examen 5 (3 de mayo de 2018)}
+\examen{Curso_2017-18/Grupo_1/examen_5_03_may.hs}
+\subsection{Examen 6 (12 de junio de 2018)} \label{examen_17_18_1_6}
+\examen{Curso_2017-18/Grupo_1/examen_6_12_jun.hs}
 % \subsection{Examen 7 (27 de junio de 2018)}
 % \examen{Curso_2017-18/Grupo_1/examen_.hs}
 % \subsection{Examen 8 (10 de septiembre de 2018)}
@@ -889,14 +892,14 @@ El examen es común con el del grupo 4 (ver página \pageref{examen_16_17_4_9}).
 \examen{Curso_2017-18/Grupo_2/examen_1_30_oct.hs}
 \subsection{Examen 2 (27 de noviembre de 2017)}
 \examen{Curso_2017-18/Grupo_2/examen_2_27_nov.hs}
-% \subsection{Examen 3 (30 de enero de 2018)}
-% \examen{Curso_2017-18/Grupo_2/examen_.hs}
-% \subsection{Examen 4 (12 de marzo de 2018)}
-% \examen{Curso_2017-18/Grupo_2/examen_.hs}
-% \subsection{Examen 5 (30 de abril de 2018)}
-% \examen{Curso_2017-18/Grupo_2/examen_.hs}
-% \subsection{Examen 6 (12 de junio de 2018)}
-% \examen{Curso_2017-18/Grupo_2/examen_.hs}
+\subsection{Examen 3 (30 de enero de 2018)}
+El examen es común con el del grupo 1 (ver página \pageref{examen_17_18_1_3}).
+\subsection{Examen 4 (12 de marzo de 2018)}
+\examen{Curso_2017-18/Grupo_2/examen_4_12_mar.hs}
+\subsection{Examen 5 (30 de abril de 2018)}
+\examen{Curso_2017-18/Grupo_2/examen_5_30_abr.hs}
+\subsection{Examen 6 (12 de junio de 2018)}
+El examen es común con el del grupo 1 (ver página \pageref{examen_17_18_1_6}).
 % \subsection{Examen 7 (27 de junio de 2018)}
 % \examen{Curso_2017-18/Grupo_2/examen_.hs}
 % \subsection{Examen 8 (10 de septiembre de 2018)}
@@ -907,14 +910,14 @@ El examen es común con el del grupo 4 (ver página \pageref{examen_16_17_4_9}).
 \examen{Curso_2017-18/Grupo_3/examen_1_2_nov.hs}
 \subsection{Examen 2 (30 de noviembre de 2017)}
 \examen{Curso_2017-18/Grupo_3/examen_2_30_nov.hs}
-% \subsection{Examen 3 (30 de enero de 2018)}
-% \examen{Curso_2017-18/Grupo_3/examen_.hs}
-% \subsection{Examen 4 (8 de marzo de 2018)}
-% \examen{Curso_2017-18/Grupo_3/examen_.hs}
-% \subsection{Examen 5 (26 de abril de 2018)}
-% \examen{Curso_2017-18/Grupo_3/examen_.hs}
-% \subsection{Examen 6 (12 de junio de 2018)}
-% \examen{Curso_2017-18/Grupo_3/examen_.hs}
+\subsection{Examen 3 (30 de enero de 2018)}
+El examen es común con el del grupo 1 (ver página \pageref{examen_17_18_1_3}).
+\subsection{Examen 4 (8 de marzo de 2018)}
+\examen{Curso_2017-18/Grupo_3/examen_4_13_mar.hs}
+\subsection{Examen 5 (26 de abril de 2018)}
+\examen{Curso_2017-18/Grupo_3/examen_5_26_abr.hs}
+\subsection{Examen 6 (12 de junio de 2018)}
+El examen es común con el del grupo 1 (ver página \pageref{examen_17_18_1_6}).
 % \subsection{Examen 7 (27 de junio de 2018)}
 % \examen{Curso_2017-18/Grupo_3/examen_.hs}
 % \subsection{Examen 8 (10 de septiembre de 2018)}
@@ -925,14 +928,14 @@ El examen es común con el del grupo 4 (ver página \pageref{examen_16_17_4_9}).
 \examen{Curso_2017-18/Grupo_4/examen_1_27_oct.hs}
 \subsection{Examen 2 (29 de noviembre de 2017)}
 \examen{Curso_2017-18/Grupo_4/examen_2_29_nov.hs}
-% \subsection{Examen 3 (30 de enero de 2018)}
-% \examen{Curso_2017-18/Grupo_4/examen_.hs}
-% \subsection{Examen 4 (14 de marzo de 2018)}
-% \examen{Curso_2017-18/Grupo_4/examen_.hs}
-% \subsection{Examen 5 (2 de mayo de 2018)}
-% \examen{Curso_2017-18/Grupo_4/examen_.hs}
-% \subsection{Examen 6 (12 de junio de 2018)}
-% \examen{Curso_2017-18/Grupo_4/examen_.hs}
+\subsection{Examen 3 (30 de enero de 2018)}
+\examen{Curso_2017-18/Grupo_4/examen_3_30_ene.hs} \label{examen_17_18_4_3}
+\subsection{Examen 4 (14 de marzo de 2018)}
+\examen{Curso_2017-18/Grupo_4/examen_4_14_mar.hs}
+\subsection{Examen 5 (2 de mayo de 2018)}
+\examen{Curso_2017-18/Grupo_4/examen_5_02_may.hs}
+\subsection{Examen 6 (12 de junio de 2018)}
+\examen{Curso_2017-18/Grupo_4/examen_6_12_jun.hs} \label{examen_17_18_4_6}
 % \subsection{Examen 7 (27 de junio de 2018)}
 % \examen{Curso_2017-18/Grupo_4/examen_.hs}
 % \subsection{Examen 8 (10 de septiembre de 2018)}
@@ -943,14 +946,14 @@ El examen es común con el del grupo 4 (ver página \pageref{examen_16_17_4_9}).
 \examen{Curso_2017-18/Grupo_5/examen_1_25_oct.hs}
 \subsection{Examen 2 (18 de diciembre de 2017)}
 \examen{Curso_2017-18/Grupo_5/examen_2_18_dic.hs}
-% \subsection{Examen 3 (30 de enero de 2018)}
-% \examen{Curso_2017-18/Grupo_5/examen_.hs}
-% \subsection{Examen 4 (21 de marzo de 2018)}
-% \examen{Curso_2017-18/Grupo_5/examen_.hs}
-% \subsection{Examen 5 (7 de mayo de 2018)}
-% \examen{Curso_2017-18/Grupo_5/examen_.hs}
-% \subsection{Examen 6 (12 de junio de 2018)}
-% \examen{Curso_2017-18/Grupo_5/examen_.hs}
+\subsection{Examen 3 (30 de enero de 2018)}
+El examen es común con el del grupo 4 (ver página \pageref{examen_17_18_4_3}).
+\subsection{Examen 4 (21 de marzo de 2018)}
+\examen{Curso_2017-18/Grupo_5/examen_4_21_mar.hs}
+\subsection{Examen 5 (7 de mayo de 2018)}
+\examen{Curso_2017-18/Grupo_5/examen_5_07_may.hs}
+\subsection{Examen 6 (12 de junio de 2018)}
+El examen es común con el del grupo 4 (ver página \pageref{examen_17_18_4_6}).
 % \subsection{Examen 7 (27 de junio de 2018)}
 % \examen{Curso_2017-18/Grupo_5/examen_.hs}
 % \subsection{Examen 8 (10 de septiembre de 2018)}
