@@ -103,12 +103,15 @@
                                           firstline=6]
                                          {../AlgoritmosMatematicos/#1.hs}}
 
-\newcommand{\examen}[1]{\VerbatimInput[% frame=single
-                                      , firstline=0
-                                      , baselinestretch=1
-                                      ]
-                                      {#1}}
+% \newcommand{\examen}[1]{\VerbatimInput[% frame=single
+%                                       , firstline=0
+%                                       , baselinestretch=1
+%                                       ]
+%                                       {#1}}
 
+\newcommand{\examen}[1]{\inputminted{haskell}{#1}}
+                                       
+                                    
 % \newcommand{\programa}[1]{\lstinputlisting[% frame=single,
 %                                            firstline=6]
 %                                            {../#1/#1_sol.hs}}
