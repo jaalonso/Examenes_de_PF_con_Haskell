@@ -4,7 +4,7 @@
 
 -- -----------------------------------------------------------------------
 -- Ejercicio 1. Definir la función
---    porTramosC :: (Num a, Ord a) => [a] -> Bool
+--    porTramos :: (Num a, Ord a) => [a] -> Bool
 -- tal que (porTramos xs) se verifica si la diferencia entre numeros
 -- consecutivos de xs es siempre, en valor absoluto, mayor que 2. Por
 -- ejemplo, 
