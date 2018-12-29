@@ -54,12 +54,12 @@ deshacer6 ps = (reverse us, reverse vs)
 -- La propiedad es
 prop_deshacer :: [(Int,Int)] -> Bool
 prop_deshacer ps =
-  all (== unzip ps) [f ps | f <- [ deshacer ps
-                                 , deshacer2 ps
-                                 , deshacer3 ps
-                                 , deshacer4 ps
-                                 , deshacer5 ps
-                                 , deshacer6 ps
+  all (== unzip ps) [f ps | f <- [ deshacer 
+                                 , deshacer2
+                                 , deshacer3
+                                 , deshacer4
+                                 , deshacer5
+                                 , deshacer6
                                  ]]
 
 -- La comprobación es
