@@ -191,8 +191,8 @@ caminoALaFelicidad n =
 
 -- ---------------------------------------------------------------------
 -- Ejercicio 3.3. En el camino a la felicidad, pueden ocurrir dos casos:
--- * aparece un 1 y a continuación solo aparece 1,
--- * llegamos a 4 y se entra en el ciclo 4,16,37,58,89,145,42,20.
+-- + aparece un 1 y a continuación solo aparece 1,
+-- + llegamos a 4 y se entra en el ciclo 4,16,37,58,89,145,42,20.
 -- 
 -- Definir la función 
 --    caminoALaFelicidadFundamental :: Int -> [Int]

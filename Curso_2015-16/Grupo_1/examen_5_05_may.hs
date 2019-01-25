@@ -40,11 +40,11 @@ digitos n = [read [x] | x <- show n]
 sig :: Int -> Int
 sig = sum . (map (^2)) . digitos
 
-orbita:: Int -> [Int]
+orbita :: Int -> [Int]
 orbita n = iterate sig n
 
 -- ---------------------------------------------------------------------
--- Ejercicio 1.2. Se observan las siguientes ropiedades de la órbita de
+-- Ejercicio 1.2. Se observan las siguientes propiedades de la órbita de
 -- un número natural n:
 -- (*) O bien aparece un 1, en cuyo caso todos los siguientes son 1 y el
 --     número es feliz.
@@ -71,7 +71,7 @@ felicidad n = aux (orbita n)
 esFeliz :: Int -> Bool
 esFeliz = fromJust . felicidad
 
-numerosFelices:: [Int]
+numerosFelices :: [Int]
 numerosFelices = filter esFeliz [1..]
 
 -- 2ª solución
