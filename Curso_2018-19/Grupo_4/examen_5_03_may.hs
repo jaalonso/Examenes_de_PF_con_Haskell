@@ -74,10 +74,14 @@ numeroFormas2 n = v A.! (2*n)
 --    mayoritarios :: Ord a => Set (Set a) -> [a]
 -- tal que (mayoritarios f) es la lista de elementos que pertenecen al
 -- menos a la mitad de los conjuntos de la familia f. Por ejemplo,
---    mayoritarios (fromList [empty, fromList [1,3], fromList [3,5]]) == [3]
---    mayoritarios (fromList [empty, fromList [1,3], fromList [4,5]]) == []
---    mayoritarios (fromList [fromList [1..n] | n <- [1..7]]) == [1,2,3,4]
---    mayoritarios (fromList [fromList [1..n] | n <- [1..8]]) == [1,2,3,4,5]
+--    λ> mayoritarios (S.fromList [S.empty, S.fromList [1,3], S.fromList [3,5]])
+--    [3]
+--    λ> mayoritarios (S.fromList [S.empty, S.fromList [1,3], S.fromList [4,5]])
+--    []
+--    λ> mayoritarios (S.fromList [S.fromList [1..n] | n <- [1..7]])
+--    [1,2,3,4]
+--    λ> mayoritarios (S.fromList [S.fromList [1..n] | n <- [1..8]])
+--    [1,2,3,4,5]
 -- ---------------------------------------------------------------------
 
 mayoritarios :: Ord a => Set (Set a) -> [a]
@@ -88,17 +92,13 @@ mayoritarios f =
 
 -- (elementosFamilia f) es el conjunto de los elementos de los elementos
 -- de la familia f. Por ejemplo, 
---    λ> elementosFamilia (fromList [empty, fromList [1,2], fromList [2,5]])
+--    λ> elementosFamilia (S.fromList [S.fromList [1,2], S.fromList [2,5]])
 --    fromList [1,2,5]
 elementosFamilia :: Ord a => Set (Set a) -> Set a
 elementosFamilia = S.unions . S.toList
 
 -- (nOcurrencias f x) es el número de conjuntos de la familia f a los
--- que pertenece el elemento x. Por ejemplo,
---    nOcurrencias (fromList [empty, fromList [1,3], fromList [3,5]]) 3 == 2
---    nOcurrencias (fromList [empty, fromList [1,3], fromList [3,5]]) 4 == 0
---    nOcurrencias (fromList [empty, fromList [1,3], fromList [3,5]]) 5 == 1
-nOcurrencias :: Ord a => Set (Set a) -> a -> Int
+-- que pertenece el elemento x. nOcurrencias :: Ord a => Set (Set a) -> a -> Int
 nOcurrencias f x =
   length [c | c <- S.toList f, x `S.member` c]
 
