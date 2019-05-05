@@ -6,35 +6,12 @@
 -- § Librerías auxiliares                                             --
 -- ---------------------------------------------------------------------
 
-import Test.Hspec -- Para verificación
-
 import Data.List
 import Data.Array as A
 import Data.Map as M
 import Data.Set as S
 import I1M.Grafo
 import System.Timeout
-
--- ---------------------------------------------------------------------
--- § Verificación                                                     --
--- ---------------------------------------------------------------------
-
-corrige :: Int -> IO ()
-corrige n = hspec (especificacion n)
-
-corrigeTodo :: IO ()
-corrigeTodo =
-  sequence_ [corrige x | x <- [1..4]]
-
-especificacion :: Int -> Spec
-
-especificacion 1 = describe "Ejercicio 1" $ do
-  it "e1" $
-    numeroFormas 1   `shouldBe`  1
-  it "e2" $
-    numeroFormas 2   `shouldBe`  2
-  it "e3" $
-    numeroFormas 4   `shouldBe`  14
 
 -- ---------------------------------------------------------------------
 -- Ejercicio 1.1. [1 punto] Dado 4 puntos de un círculo se pueden
