@@ -136,8 +136,9 @@ todasDesdeAlguno2 p (N x []) = p x
 todasDesdeAlguno2 p (N _ as) = all (todasDesdeAlguno2 p) as 
 
 -- ---------------------------------------------------------------------
--- Ejercicio 3.1. El fichero sucPrimos.txt contiene una sucesión de
--- números primos escritos uno a continuación de otro. Por ejemplo,
+-- Ejercicio 3.1. El fichero sucPrimos.txt http://bit.ly/2J49Qjl
+-- contiene una sucesión de números primos escritos uno a continuación
+-- de otro. Por ejemplo, 
 --    λ> xs <- readFile "sucPrimos.txt"
 --    λ> take 50 xs
 --    "23571113171923293137414347535961677173798389971011"
