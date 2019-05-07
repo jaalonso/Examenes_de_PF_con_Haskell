@@ -1,5 +1,5 @@
 -- Informática (1º del Grado en Matemáticas, Grupo 2)
--- 4º examen de evaluación continua (15 de marzo de 2019)
+-- 5º examen de evaluación continua (12 de abril de 2019)
 -- ---------------------------------------------------------------------
 
 -- ---------------------------------------------------------------------
