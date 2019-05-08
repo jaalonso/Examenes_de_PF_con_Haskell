@@ -10,22 +10,31 @@ recopilado en dos libros:
 + [[http://www.cs.us.es/~jalonso/publicaciones/2013-Temas_de_PF_con_Haskell.pdf][Temas de programación funcional]] y
 + [[http://www.cs.us.es/~jalonso/publicaciones/Piensa_en_Haskell.pdf][Piensa en Haskell (Ejercicios de programación funcional con Haskell)]]
 
-Este libro completa los anteriores presentando una recopilación de los exámenes
+Los anteriores se complementa con una serie de libro con los exámenes
 de la asignatura durante estos años.
 
 Los exámenes se realizaron en el aula de informática y su duración fue de 2
 horas. La materia de cada examen es la impartida desde el comienzo del curso
 (generalmente, el 1 de octubre) hasta la fecha del examen.
 
-El libro consta de 8 capítulos correspondientes a los 8 cursos en los que se ha
-impartido la asignatura. En cada capítulo hay una sección, por cada uno de los
-grupos de la asignatura, y una subsección por cada uno de los exámenes del
-grupo.
-
-En resumen, el libro contiene 1.149 ejercicios resueltos.
-
 Los ejercicios de cada examen han sido propuestos por los profesores de su
 grupo (cuyos nombres aparecen en el título de la sección). Sin embargo, los he
 modificado para unificar el estilo de su presentación.
 
+La lista de los libros y repositorios en GitHub de la serie **Exámenes de
+programación funcional con Haskell** es la siguiente
+|----------------------------+----------------|
+| Libro                      | Repositorio    |
+|----------------------------+----------------|
+| [[https://github.com/jaalonso/Examenes_de_PF_con_Haskell_Vol1/raw/master/Libro/Examenes_de_PF_con_Haskell_Vol1.pdf][Volumen  1 (Curso 2009-10)]] | [[https://github.com/jaalonso/Examenes_de_PF_con_Haskell_Vol1][Repositorio 1]]  |
+| [[https://github.com/jaalonso/Examenes_de_PF_con_Haskell_Vol1/raw/master/Libro/Examenes_de_PF_con_Haskell_Vol2.pdf][Volumen  2 (Curso 2010-11)]] | [[https://github.com/jaalonso/Examenes_de_PF_con_Haskell_Vol2][Repositorio 2]]  |
+| [[https://github.com/jaalonso/Examenes_de_PF_con_Haskell_Vol1/raw/master/Libro/Examenes_de_PF_con_Haskell_Vol3.pdf][Volumen  3 (Curso 2011-12)]] | [[https://github.com/jaalonso/Examenes_de_PF_con_Haskell_Vol3][Repositorio 3]]  |
+| [[https://github.com/jaalonso/Examenes_de_PF_con_Haskell_Vol1/raw/master/Libro/Examenes_de_PF_con_Haskell_Vol4.pdf][Volumen  4 (Curso 2012-13)]] | [[https://github.com/jaalonso/Examenes_de_PF_con_Haskell_Vol4][Repositorio 4]]  |
+| [[https://github.com/jaalonso/Examenes_de_PF_con_Haskell_Vol1/raw/master/Libro/Examenes_de_PF_con_Haskell_Vol5.pdf][Volumen  5 (Curso 2013-14)]] | [[https://github.com/jaalonso/Examenes_de_PF_con_Haskell_Vol5][Repositorio 5]]  |
+| [[https://github.com/jaalonso/Examenes_de_PF_con_Haskell_Vol1/raw/master/Libro/Examenes_de_PF_con_Haskell_Vol6.pdf][Volumen  6 (Curso 2014-15)]] | [[https://github.com/jaalonso/Examenes_de_PF_con_Haskell_Vol6][Repositorio 6]]  |
+| [[https://github.com/jaalonso/Examenes_de_PF_con_Haskell_Vol1/raw/master/Libro/Examenes_de_PF_con_Haskell_Vol7.pdf][Volumen  7 (Curso 2015-16)]] | [[https://github.com/jaalonso/Examenes_de_PF_con_Haskell_Vol7][Repositorio 7]]  |
+| [[https://github.com/jaalonso/Examenes_de_PF_con_Haskell_Vol1/raw/master/Libro/Examenes_de_PF_con_Haskell_Vol8.pdf][Volumen  8 (Curso 2016-17)]] | [[https://github.com/jaalonso/Examenes_de_PF_con_Haskell_Vol8][Repositorio 8]]  |
+| [[https://github.com/jaalonso/Examenes_de_PF_con_Haskell_Vol1/raw/master/Libro/Examenes_de_PF_con_Haskell_Vol9.pdf][Volumen  9 (Curso 2017-18)]] | [[https://github.com/jaalonso/Examenes_de_PF_con_Haskell_Vol9][Repositorio 9]]  |
+| [[https://github.com/jaalonso/Examenes_de_PF_con_Haskell_Vol1/raw/master/Libro/Examenes_de_PF_con_Haskell_Vol10.pdf][Volumen 10 (Curso 2018-19)]] | [[https://github.com/jaalonso/Examenes_de_PF_con_Haskell_Vol10][Repositorio 10]] |
+|----------------------------+----------------|
 

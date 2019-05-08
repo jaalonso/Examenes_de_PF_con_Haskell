@@ -1,9 +1,0 @@
-Exámenes de I1M (curso 2009-11). Grupo 3 (María J. Hidalgo)
-==========================================================================
-
-+ [[./examen_1_04_dic.hs][Examen 1]] (4 de diciembre de 2009)
-+ [[./examen_2_16_mar.hs][Examen 2]] (16 de marzo de 2010).
-+ Examen 3 (16 de marzo de 2010).
-+ [[../Grupo_1/examen_7_05_jul.hs][Examen 7]] (05 de julio de 2010).
-+ [[../Grupo_1/examen_8_15_sep.hs][Examen 8]] (15 de septiembre de 2010).
-+ [[../Grupo_1/examen_9_17_dic.hs][Examen 9]] (17 de diciembre de 2010).
