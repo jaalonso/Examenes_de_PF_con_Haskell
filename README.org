@@ -21,8 +21,8 @@ Los ejercicios de cada examen han sido propuestos por los profesores de su
 grupo (cuyos nombres aparecen en el título de la sección). Sin embargo, los he
 modificado para unificar el estilo de su presentación.
 
-La lista de los libros y repositorios en GitHub de la serie **Exámenes de
-programación funcional con Haskell** es la siguiente
+La lista de los libros y repositorios en GitHub de la serie *Exámenes de
+programación funcional con Haskell* es la siguiente
 |----------------------------+----------------|
 | Libro                      | Repositorio    |
 |----------------------------+----------------|
