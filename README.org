@@ -36,6 +36,6 @@ programación funcional con Haskell* es la siguiente
 | [[https://github.com/jaalonso/Examenes_de_PF_con_Haskell_Vol8/raw/master/Libro/Examenes_de_PF_con_Haskell_Vol8.pdf][Volumen  8 (Curso 2016-17)]] | [[https://github.com/jaalonso/Examenes_de_PF_con_Haskell_Vol8][Repositorio 8]]  |
 | [[https://github.com/jaalonso/Examenes_de_PF_con_Haskell_Vol9/raw/master/Libro/Examenes_de_PF_con_Haskell_Vol9.pdf][Volumen  9 (Curso 2017-18)]] | [[https://github.com/jaalonso/Examenes_de_PF_con_Haskell_Vol9][Repositorio 9]]  |
 | [[https://github.com/jaalonso/Examenes_de_PF_con_Haskell_Vol10/raw/master/Libro/Examenes_de_PF_con_Haskell_Vol10.pdf][Volumen 10 (Curso 2018-19)]] | [[https://github.com/jaalonso/Examenes_de_PF_con_Haskell_Vol10][Repositorio 10]] |
-| [[https://github.com/jaalonso/Examenes_de_PF_con_Haskell_Vol10/raw/master/Libro/Examenes_de_PF_con_Haskell_Vol11.pdf][Volumen 10 (Curso 2019-20)]] | [[https://github.com/jaalonso/Examenes_de_PF_con_Haskell_Vol11][Repositorio 11]] |
+| [[https://github.com/jaalonso/Examenes_de_PF_con_Haskell_Vol11/raw/master/Libro/Examenes_de_PF_con_Haskell_Vol11.pdf][Volumen 11 (Curso 2019-20)]] | [[https://github.com/jaalonso/Examenes_de_PF_con_Haskell_Vol11][Repositorio 11]] |
 |----------------------------+----------------|
 
