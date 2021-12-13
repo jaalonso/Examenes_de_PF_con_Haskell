@@ -1,0 +1,1172 @@
+% Examenes_de_PF_con_Haskell.tex
+% Exámenes de programación funcional con Haskell.
+% José A. Alonso Jiménez <jalonso@us.es>
+% Sevilla, 27 de julio de 2013 (14 de diciembre de 2021)
+% =============================================================================
+
+\documentclass[a4paper,12pt,twoside]{book}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% § Paquetes adicionales                                                   %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Configuración para XeLaTeX
+\usepackage{fontspec}
+\usepackage{xltxtra}
+\defaultfontfeatures{Ligatures=TeX,Numbers=OldStyle}
+\setromanfont{DejaVu Sans}
+% \setsansfont{Arial}
+\setmonofont{DejaVu Sans Mono}[Scale={0.90}]
+
+% Notas: La lista de fuentes disponibles se obtiene con fc-list
+
+% \usepackage{ucs}
+% \usepackage[utf8]{inputenc}        % Acentos de UTF8
+\usepackage[spanish]{babel}        % Castellanización.
+% \usepackage[T1]{fontenc}           % Codificación T1 con European Computer
+%                                    % Modern.
+% \usepackage{graphicx}
+\usepackage{fancyvrb}              % Verbatim extendido
+% \usepackage{mathpazo}              % Fuentes semejante a palatino
+% \usepackage[scaled=.90]{helvet}
+% \usepackage{cmtt}
+% \renewcommand{\ttdefault}{cmtt}
+\usepackage{a4wide}
+\usepackage{minted}
+
+\linespread{1.05}                  % Distancia entre líneas
+\setlength{\parindent}{2em}        % Indentación de comienzo de párrafo
+% \deactivatetilden                  % Elima uso de ~ para la eñe
+\raggedbottom                      % No ajusta los espacios verticales.
+
+\usepackage[%
+  colorlinks=true,
+  urlcolor=blue,
+  % pdftex,
+  pdfauthor={José A. Alonso <jalonso@us.es>},%
+  pdftitle={Examenes de Informatica de 1 de Matematicas},%
+  pdfstartview=FitH,%
+  bookmarks=false]{hyperref}
+
+\setcounter{tocdepth}{1}
+\setcounter{secnumdepth}{4}
+
+% \usepackage{tocstyle}
+% \usetocstyle{KOMAlike}
+
+\newenvironment{enumerate*}%
+  {\vspace*{-0mm}
+   \begin{enumerate}%
+    \setlength{\itemsep}{0pt}%
+    \setlength{\parskip}{0pt}}%
+  {\vspace*{-0mm}
+   \end{enumerate}}
+
+\newenvironment{itemize*}%
+  {\vspace*{-0mm}
+   \begin{itemize}%
+    \setlength{\itemsep}{0pt}%
+    \setlength{\parskip}{0pt}}%
+  {\vspace*{-0mm}
+   \end{itemize}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% § Cabeceras                                                              %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{fancyhdr}
+
+\addtolength{\headheight}{\baselineskip}
+
+\pagestyle{fancy}
+
+\cfoot{}
+
+\fancyhead{}
+\fancyhead[RE]{\mdseries\sffamily \nouppercase{\leftmark}}
+\fancyhead[LO]{\mdseries\sffamily \nouppercase{\rightmark}}
+\fancyhead[LE,RO]{\mdseries\sffamily \thepage}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% § Definiciones                                                           %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\input definiciones
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% § Título                                                                 %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{{\Huge Ex\'amenes de \\
+              ``Programaci\'on funcional con Haskell'' \\
+              (2009--2020)}}
+\author{
+  % {\Large Profesores de I1M:} \\ \vspace*{2cm}
+  \href{http://www.cs.us.es/~jalonso}{\Large José A. Alonso} (coord.) y \\ \\
+  \begin{tabular}{lll}
+    Gonzalo Aranda,   & Antonia M. Chávez,  & Andrés Cordón, \\
+    María J. Hidalgo, & Francisco J. Martín & Miguel A. Martínez, \\
+    Ignacio Pérez,    & José F. Quesada,    & Agustín Riscos y \\
+    Luis Valencia
+  \end{tabular}
+        }
+\date{\vfill \hrule \vspace*{2mm}
+  \begin{tabular}{l}
+      \href{http://www.cs.us.es/glc}
+           {Grupo de Lógica Computacional} \\
+      \href{http://www.cs.us.es}
+           {Dpto. de Ciencias de la Computación e Inteligencia Artificial} \\
+      \href{http://www.us.es}
+           {Universidad de Sevilla}  \\
+      Sevilla, 27 de julio de 2013 (versión del 14 de diciembre de 2021)
+  \end{tabular}\hfill\mbox{}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% § Documento                                                              %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \includeonly{Exámenes del curso 2016--17}
+
+% \includexmp{licencia}
+
+\begin{document}
+
+\maketitle
+\newpage
+
+\input{Licencia/licenciaCC}
+\newpage
+
+\tableofcontents
+\clearpage
+
+\renewcommand{\chaptername}{}
+
+\chapter*{Introducción}
+\addcontentsline{toc}{chapter}{Introducción}
+Desde el inicio (en el curso 2009--10) del
+\href{http://www.matematicas.us.es/estudios/grado-en-matematicas}
+     {Grado en Matemática}
+de la
+\href{http://www.us.es/}
+     {Universidad de Sevilla}
+se estudia, en la
+\href{http://www.cs.us.es/~jalonso/cursos/i1m/}
+     {asignatura de Informática}
+de primero, una introducción a la programación funcional con
+\href{http://es.wikipedia.org/wiki/Haskell}
+     {Haskell}.
+
+Durante este tiempo he ido publicando materiales para la asignatura que he
+recopilado en tres libros:
+\begin{itemize}
+\item \href{https://www.cs.us.es/~jalonso/cursos/i1m/temas/2019-20-I1M-temas-PF.pdf}
+           {Temas de programación funcional}\
+           \footnote{\url{https://www.cs.us.es/~jalonso/cursos/i1m/temas/2019-20-I1M-temas-PF.pdf}}
+\item \href{http://www.cs.us.es/~jalonso/publicaciones/Piensa_en_Haskell.pdf}
+           {Piensa en Haskell (Ejercicios de programación funcional con Haskell)}\
+           \footnote{\url{http://www.cs.us.es/~jalonso/publicaciones/Piensa_en_Haskell.pdf}}
+\item \href{https://raw.githubusercontent.com/jaalonso/I1M-Ejercicios-Haskell/main/libro/Ejercicios-Haskell.pdf}
+           {Ejercicios de programación funcional con Haskell}\
+           \footnote{\url{https://raw.githubusercontent.com/jaalonso/I1M-Ejercicios-Haskell/main/libro/Ejercicios-Haskell.pdf}}
+\end{itemize}
+
+Este libro completa los anteriores presentando una recopilación de los exámenes
+de la asignatura durante estos años.
+
+Los exámenes se realizaron en el aula de informática y su duración fue de 2
+horas. La materia de cada examen es la impartida desde el
+comienzo del curso (generalmente, el 1 de octubre) hasta la fecha del examen.
+
+En algunos ejercicios se usan tipos abstractos de datos estudiados en la
+asignatura tal como se explica en \cite{Alonso-12a}. Sus implementaciones se
+encuentra en la
+\href{https://github.com/jaalonso/I1M}
+     {página de los códigos}
+     \footnote{\url{https://github.com/jaalonso/I1M}}
+
+El libro consta de 10 capítulos correspondientes a los 10 primeros
+cursos en los que se ha impartido la asignatura. En cada capítulo
+hay una sección, por cada uno de los grupos de la asignatura, y una
+subsección por cada uno de los exámenes del grupo.
+
+Además contiene dos apéndices. Uno con el método de Polya de resolución de
+problemas (sobre el que se hace énfasis durante todo el curso) y el otro con un
+resumen de las funciones de Haskell de uso más frecuente.
+
+Los ejercicios de cada examen han sido propuestos por los profesores de su
+grupo (cuyos nombres aparecen en el título de la sección). Sin embargo, los he
+modificado para unificar el estilo de su presentación.
+
+Los códigos del libro están disponibles en Github
+\href{https://github.com/jaalonso/Examenes_de_PF_con_Haskell}
+     {\url{https://github.com/jaalonso/Examenes_de_PF_con_Haskell}}.
+
+\begin{flushright}
+  José A. Alonso \\
+  Sevilla, 14 de diciembre de 2021
+\end{flushright}
+
+\chapter{Exámenes del curso 2009--10}
+
+\section{Exámenes del grupo 1 (José A. Alonso y Gonzalo Aranda)}
+\subsection{Examen 1 (30 de noviembre de 2009)}
+\examen{Examenes_de_PF_con_Haskell_Vol1/Examenes/Grupo_1/examen_1_30_nov.hs}
+\subsection{Examen 2 (12 de febrero de 2010)}
+\examen{Examenes_de_PF_con_Haskell_Vol1/Examenes/Grupo_1/examen_2_12_feb.hs}
+\subsection{Examen 3 (15 de marzo de 2010)}
+\examen{Examenes_de_PF_con_Haskell_Vol1/Examenes/Grupo_1/examen_3_15_mar.hs}
+\subsection{Examen 4 (12 de abril de 2010)}
+\examen{Examenes_de_PF_con_Haskell_Vol1/Examenes/Grupo_1/examen_4_12_abr.hs}
+\subsection{Examen 5 (17 de mayo de 2010)}
+\examen{Examenes_de_PF_con_Haskell_Vol1/Examenes/Grupo_1/examen_5_17_may.hs}
+\subsection{Examen 6 (21 de junio de 2010)}
+\examen{Examenes_de_PF_con_Haskell_Vol1/Examenes/Grupo_1/examen_6_21_jun.hs}
+\subsection{Examen 7 ( 5 de julio de 2010)}
+\label{examen_09_10_1_7}
+\examen{Examenes_de_PF_con_Haskell_Vol1/Examenes/Grupo_1/examen_7_05_jul.hs}
+\subsection{Examen 8 (15 de septiembre de 2010)}
+\label{examen_09_10_1_8}
+\examen{Examenes_de_PF_con_Haskell_Vol1/Examenes/Grupo_1/examen_8_15_sep.hs}
+\subsection{Examen 9 (17 de diciembre de 2010)}
+\label{examen_09_10_1_9}
+\examen{Examenes_de_PF_con_Haskell_Vol1/Examenes/Grupo_1/examen_9_17_dic.hs}
+
+\section{Exámenes del grupo 3 (María J. Hidalgo)}
+\subsection{Examen 1 ( 4 de diciembre de 2009)}
+\examen{Examenes_de_PF_con_Haskell_Vol1/Examenes/Grupo_3/examen_1_04_dic.hs}
+\subsection{Examen 2 (16 de marzo de 2010)}
+\examen{Examenes_de_PF_con_Haskell_Vol1/Examenes/Grupo_3/examen_2_16_mar.hs}
+\subsection{Examen 3 ( 5 de julio de 2010)}
+El examen es común con el del grupo 1 (ver página \pageref{examen_09_10_1_7}).
+\subsection{Examen 4 (15 de septiembre de 2010)}
+El examen es común con el del grupo 1 (ver página \pageref{examen_09_10_1_8}).
+\subsection{Examen 5 (17 de diciembre de 2010)}
+El examen es común con el del grupo 1 (ver página \pageref{examen_09_10_1_9}).
+
+\chapter{Exámenes del curso 2010--11}
+
+\section{Exámenes del grupo 1 (José A. Alonso y Agustín Riscos)}
+\subsection{Examen 1 (25 de Octubre de 2010)}
+\examen{Examenes_de_PF_con_Haskell_Vol2/Examenes/Grupo_1/examen_1_25_Oct.hs}
+\subsection{Examen 2 (22 de Noviembre de 2010)}
+\examen{Examenes_de_PF_con_Haskell_Vol2/Examenes/Grupo_1/examen_2_22_Nov.hs}
+\subsection{Examen 3 (20 de Diciembre de 2010)}
+\examen{Examenes_de_PF_con_Haskell_Vol2/Examenes/Grupo_1/examen_3_20_Dic.hs}
+\subsection{Examen 4 (11 de Febrero de 2011)}
+\label{examen_10_11_4_4}
+\examen{Examenes_de_PF_con_Haskell_Vol2/Examenes/Grupo_1/examen_4_11_Feb.hs}
+\subsection{Examen 5 (14 de Marzo de 2011)}
+\label{examen_10_11_4_5}
+\examen{Examenes_de_PF_con_Haskell_Vol2/Examenes/Grupo_1/examen_5_14_Mar.hs}
+\subsection{Examen 6 (11 de Abril de 2011)}
+\examen{Examenes_de_PF_con_Haskell_Vol2/Examenes/Grupo_1/examen_6_11_Abr.hs}
+\subsection{Examen 7 (23 de Mayo de 2011)}
+\examen{Examenes_de_PF_con_Haskell_Vol2/Examenes/Grupo_1/examen_7_23_May.hs}
+\subsection{Examen 8 (24 de Junio de 2011)}
+\label{examen_10_11_4_8}
+\examen{Examenes_de_PF_con_Haskell_Vol2/Examenes/Grupo_1/examen_8_24_Jun.hs}
+\subsection{Examen 9 ( 8 de Julio de 2011)}
+\label{examen_10_11_4_9}
+\examen{Examenes_de_PF_con_Haskell_Vol2/Examenes/Grupo_1/examen_9_08_Jul.hs}
+\subsection{Examen 10 (16 de Septiembre de 2011)}
+\label{examen_10_11_4_10}
+\examen{Examenes_de_PF_con_Haskell_Vol2/Examenes/Grupo_1/examen_10_16_Sep.hs}
+\subsection{Examen 11 (22 de Noviembre de 2011)}
+\examen{Examenes_de_PF_con_Haskell_Vol2/Examenes/Grupo_1/examen_11_22_Nov.hs}
+\label{examen_10_11_4_11}
+
+\section{Exámenes del grupo 2 (María J. Hidalgo)}
+\subsection{Examen 1 (29 de Octubre de 2010)}
+\examen{Examenes_de_PF_con_Haskell_Vol2/Examenes/Grupo_2/examen_1_29_oct.hs}
+\subsection{Examen 2 (26 de Noviembre de 2010)}
+\examen{Examenes_de_PF_con_Haskell_Vol2/Examenes/Grupo_2/examen_2_26_nov.hs}
+\subsection{Examen 3 (17 de Diciembre de 2010)}
+\examen{Examenes_de_PF_con_Haskell_Vol2/Examenes/Grupo_2/examen_3_17_dic.hs}
+\subsection{Examen 4 (11 de Febrero de 2011)}
+El examen es común con el del grupo 1 (ver página \pageref{examen_10_11_4_4}).
+\subsection{Examen 5 (14 de Marzo de 2011)}
+El examen es común con el del grupo 1 (ver página \pageref{examen_10_11_4_5}).
+\subsection{Examen 6 (15 de abril de 2011)}
+\examen{Examenes_de_PF_con_Haskell_Vol2/Examenes/Grupo_2/examen_6_15_abr.hs}
+\subsection{Examen 7 (27 de mayo de 2011)}
+\examen{Examenes_de_PF_con_Haskell_Vol2/Examenes/Grupo_2/examen_7_27_may.hs}
+\subsection{Examen 8 (24 de Junio de 2011)}
+El examen es común con el del grupo 1 (ver página \pageref{examen_10_11_4_8}).
+\subsection{Examen 9 ( 8 de Julio de 2011)}
+El examen es común con el del grupo 1 (ver página \pageref{examen_10_11_4_9}).
+\subsection{Examen 10 (16 de Septiembre de 2011)}
+El examen es común con el del grupo 1 (ver página \pageref{examen_10_11_4_10}).
+\subsection{Examen 11 (22 de Noviembre de 2011)}
+El examen es común con el del grupo 1 (ver página \pageref{examen_10_11_4_11}).
+
+\chapter{Exámenes del curso 2011--12}
+
+\section{Exámenes del grupo 1 (José A. Alonso y Agustín Riscos)}
+\subsection{Examen 1 (26 de Octubre de 2011)}
+\examen{Examenes_de_PF_con_Haskell_Vol3/Examenes/Grupo_1/examen_1_26_Oct.hs}
+\subsection{Examen 2 (30 de Noviembre de 2011)}
+\examen{Examenes_de_PF_con_Haskell_Vol3/Examenes/Grupo_1/examen_2_30_Nov.hs}
+\subsection{Examen 3 (25 de Enero de 2012)}
+\examen{Examenes_de_PF_con_Haskell_Vol3/Examenes/Grupo_1/examen_3_25_Ene.hs}
+\subsection{Examen 4 (29 de Febrero de 2012)}
+\examen{Examenes_de_PF_con_Haskell_Vol3/Examenes/Grupo_1/examen_4_29_Feb.hs}
+\subsection{Examen 5 (21 de Marzo de 2012)}
+\examen{Examenes_de_PF_con_Haskell_Vol3/Examenes/Grupo_1/examen_5_21_Mar.hs}
+\subsection{Examen 6 ( 2 de Mayo de 2012)}
+\examen{Examenes_de_PF_con_Haskell_Vol3/Examenes/Grupo_1/examen_6_02_May.hs}
+\subsection{Examen 7 (25 de Junio de 2012)}
+\examen{Examenes_de_PF_con_Haskell_Vol3/Examenes/Grupo_1/examen_7_25_Jun.hs}
+\subsection{Examen 8 (29 de Junio de 2012)}
+\label{examen_11_12_1_8}
+\examen{Examenes_de_PF_con_Haskell_Vol3/Examenes/Grupo_1/examen_8_29_Jun.hs}
+\subsection{Examen 9 ( 9 de Septiembre de 2012)}
+\label{examen_11_12_1_9}
+\examen{Examenes_de_PF_con_Haskell_Vol3/Examenes/Grupo_1/examen_9_10_Sep.hs}
+\subsection{Examen 10 (10 de Diciembre de 2012)}
+\label{examen_11_12_1_10}
+\examen{Examenes_de_PF_con_Haskell_Vol3/Examenes/Grupo_1/examen_10_10_Dic.hs}
+
+\section{Exámenes del grupo 2 (María J. Hidalgo)}
+\subsection{Examen 1 (27 de Octubre de 2011)}
+\examen{Examenes_de_PF_con_Haskell_Vol3/Examenes/Grupo_2/examen_1_27_oct.hs}
+\subsection{Examen 2 ( 1 de Diciembre de 2011)}
+\examen{Examenes_de_PF_con_Haskell_Vol3/Examenes/Grupo_2/examen_2_01_dic.hs}
+\subsection{Examen 3 (26 de Enero de 2012)}
+\examen{Examenes_de_PF_con_Haskell_Vol3/Examenes/Grupo_2/examen_3_26_ene.hs}
+\subsection{Examen 4 ( 1 de Marzo de 2012)}
+\examen{Examenes_de_PF_con_Haskell_Vol3/Examenes/Grupo_2/examen_4_01_mar.hs}
+\subsection{Examen 5 (22 de Marzo de 2012)}
+\examen{Examenes_de_PF_con_Haskell_Vol3/Examenes/Grupo_2/examen_5_22_mar.hs}
+\subsection{Examen 6 ( 3 de Mayo de 2012)}
+\examen{Examenes_de_PF_con_Haskell_Vol3/Examenes/Grupo_2/examen_6_03_may.hs}
+\subsection{Examen 7 (24 de Junio de 2012)}
+\examen{Examenes_de_PF_con_Haskell_Vol3/Examenes/Grupo_2/examen_7_24_jun.hs}
+\subsection{Examen 8 (29 de Junio de 2012)}
+El examen es común con el del grupo 1 (ver página \pageref{examen_11_12_1_8}).
+\subsection{Examen 9 ( 9 de Septiembre de 2012)}
+El examen es común con el del grupo 1 (ver página \pageref{examen_11_12_1_9}).
+\subsection{Examen 10 (10 de Diciembre de 2012)}
+El examen es común con el del grupo 1 (ver página \pageref{examen_11_12_1_10}).
+
+\section{Exámenes del grupo 3 (Antonia M. Chávez)}
+\subsection{Examen 1 (14 de Noviembre de 2011)}
+\examen{Examenes_de_PF_con_Haskell_Vol3/Examenes/Grupo_3/examen_1_14_nov.hs}
+\subsection{Examen 2 (12 de Diciembre de 2011)}
+\examen{Examenes_de_PF_con_Haskell_Vol3/Examenes/Grupo_3/examen_2_12_dic.hs}
+\subsection{Examen 7 (29 de Junio de 2012)}
+El examen es común con el del grupo 1 (ver página \pageref{examen_11_12_1_8}).
+\subsection{Examen 8 (9 de Septiembre de 2012)}
+El examen es común con el del grupo 1 (ver página \pageref{examen_11_12_1_9}).
+\subsection{Examen 9 (10 de Diciembre de 2012)}
+El examen es común con el del grupo 1 (ver página \pageref{examen_11_12_1_10}).
+
+\section{Exámenes del grupo 4 (José F. Quesada)}
+\subsection{Examen 1 ( 7 de Noviembre de 2011)}
+\examen{Examenes_de_PF_con_Haskell_Vol3/Examenes/Grupo_4/examen_1_07_nov.hs}
+\subsection{Examen 2 (30 de Noviembre de 2011)}
+\examen{Examenes_de_PF_con_Haskell_Vol3/Examenes/Grupo_4/examen_2_30_nov.hs}
+\subsection{Examen 3 (16 de Enero de 2012)}
+\examen{Examenes_de_PF_con_Haskell_Vol3/Examenes/Grupo_4/examen_3_16_ene.hs}
+\subsection{Examen 4 ( 7 de Marzo de 2012)}
+\examen{Examenes_de_PF_con_Haskell_Vol3/Examenes/Grupo_4/examen_4_07_mar.hs}
+\subsection{Examen 5 (28 de Marzo de 2012)}
+\examen{Examenes_de_PF_con_Haskell_Vol3/Examenes/Grupo_4/examen_5_28_mar.hs}
+\subsection{Examen 6 ( 9 de Mayo de 2012)}
+\examen{Examenes_de_PF_con_Haskell_Vol3/Examenes/Grupo_4/examen_6_09_may.hs}
+\subsection{Examen 7 (11 de Junio de 2012)}
+\examen{Examenes_de_PF_con_Haskell_Vol3/Examenes/Grupo_4/examen_7_11_jun.hs}
+\subsection{Examen 8 (29 de Junio de 2012)}
+El examen es común con el del grupo 1 (ver página \pageref{examen_11_12_1_8}).
+\subsection{Examen 9 ( 9 de Septiembre de 2012)}
+El examen es común con el del grupo 1 (ver página \pageref{examen_11_12_1_9}).
+\subsection{Examen 10 (10 de Diciembre de 2012)}
+El examen es común con el del grupo 1 (ver página \pageref{examen_11_12_1_10}).
+
+\chapter{Exámenes del curso 2012--13}
+
+\section{Exámenes del grupo 1 (José A. Alonso y Miguel A. Martínez)}
+\subsection{Examen 1 ( 8 de noviembre de 2012)}
+\examen{Examenes_de_PF_con_Haskell_Vol4/Examenes/Grupo_1/examen_1_08_nov.hs}
+\subsection{Examen 2 (20 de diciembre de 2012)}
+\examen{Examenes_de_PF_con_Haskell_Vol4/Examenes/Grupo_1/examen_2_20_dic.hs}
+\subsection{Examen 3 ( 6 de febrero de 2013)}
+\label{examen_12_13_2_3}
+\examen{Examenes_de_PF_con_Haskell_Vol4/Examenes/Grupo_1/examen_3_06_feb.hs}
+\subsection{Examen 4 (21 de marzo de 2013)}
+\examen{Examenes_de_PF_con_Haskell_Vol4/Examenes/Grupo_1/examen_4_21_mar.hs}
+\subsection{Examen 5 ( 9 de mayo de 2013)}
+\examen{Examenes_de_PF_con_Haskell_Vol4/Examenes/Grupo_1/examen_5_16_may.hs}
+\subsection{Examen 6 (13 de junio de 2013)}
+\examen{Examenes_de_PF_con_Haskell_Vol4/Examenes/Grupo_1/examen_6_13_jun.hs}
+\subsection{Examen 7 ( 3 de julio de 2013)}
+\label{examen_12_13_2_7}
+\examen{Examenes_de_PF_con_Haskell_Vol4/Examenes/Grupo_1/examen_7_03_jul.hs}
+\subsection{Examen 8 (13 de septiembre de 2013)}
+\label{examen_12_13_2_8}
+\examen{Examenes_de_PF_con_Haskell_Vol4/Examenes/Grupo_1/examen_8_13_sep.hs}
+\subsection{Examen 9 (20 de noviembre de 2013)}
+\label{examen_12_13_2_9}
+\examen{Examenes_de_PF_con_Haskell_Vol4/Examenes/Grupo_1/examen_9_20_nov.hs}
+
+\section{Exámenes del grupo 2 (Antonia M. Chávez)}
+\subsection{Examen 1 ( 7 de noviembre de 2012)}
+\examen{Examenes_de_PF_con_Haskell_Vol4/Examenes/Grupo_2/examen_1_07_nov.hs}
+\subsection{Examen 2 (19 de diciembre de 2012)}
+\examen{Examenes_de_PF_con_Haskell_Vol4/Examenes/Grupo_2/examen_2_19_dic.hs}
+\subsection{Examen 3 ( 6 de febrero de 2013)}
+El examen es común con el del grupo 1 (ver página \pageref{examen_12_13_2_3}).
+\subsection{Examen 4 ( 3 de abril de 2013)}
+\examen{Examenes_de_PF_con_Haskell_Vol4/Examenes/Grupo_2/examen_4_03_abr.hs}
+\subsection{Examen 5 (15 de mayo de 2013)}
+\examen{Examenes_de_PF_con_Haskell_Vol4/Examenes/Grupo_2/examen_5_15_may.hs}
+\subsection{Examen 6 (13 de junio de 2013)}
+\label{examen_12_13_1_6}
+\examen{Examenes_de_PF_con_Haskell_Vol4/Examenes/Grupo_2/examen_6_13_jun.hs}
+\subsection{Examen 7 ( 3 de julio de 2013)}
+El examen es común con el del grupo 1 (ver página \pageref{examen_12_13_2_7}).
+\subsection{Examen 8 (13 de septiembre de 2013)}
+El examen es común con el del grupo 1 (ver página \pageref{examen_12_13_2_8}).
+\subsection{Examen 9 (20 de noviembre de 2013)}
+El examen es común con el del grupo 1 (ver página \pageref{examen_12_13_2_9}).
+
+\section{Exámenes del grupo 3 (María J. Hidalgo)}
+\subsection{Examen 1 (16 de noviembre de 2012)}
+\examen{Examenes_de_PF_con_Haskell_Vol4/Examenes/Grupo_3/examen_1_16_nov.hs}
+\subsection{Examen 2 (21 de diciembre de 2012)}
+\examen{Examenes_de_PF_con_Haskell_Vol4/Examenes/Grupo_3/examen_2_21_dic.hs}
+\subsection{Examen 3 (6 de febrero de 2013)}
+El examen es común con el del grupo 1 (ver página \pageref{examen_12_13_2_3}).
+\subsection{Examen 4 (22 de marzo de 2013)}
+\examen{Examenes_de_PF_con_Haskell_Vol4/Examenes/Grupo_3/examen_4_22_mar.hs}
+\subsection{Examen 5 (10 de mayo de 2013)}
+\examen{Examenes_de_PF_con_Haskell_Vol4/Examenes/Grupo_3/examen_5_10_jun.hs}
+\subsection{Examen 6 (13 de junio de 2013)}
+\examen{Examenes_de_PF_con_Haskell_Vol4/Examenes/Grupo_3/examen_6_13_jun.hs}
+\subsection{Examen 7 (3 de julio de 2013)}
+El examen es común con el del grupo 1 (ver página \pageref{examen_12_13_2_7}).
+\subsection{Examen 8 (13 de septiembre de 2013)}
+El examen es común con el del grupo 1 (ver página \pageref{examen_12_13_2_8}).
+\subsection{Examen 9 (20 de noviembre de 2013)}
+El examen es común con el del grupo 1 (ver página \pageref{examen_12_13_2_9}).
+
+\section{Exámenes del grupo 4 (Andrés Cordón e Ignacio Pérez)}
+\subsection{Examen 1 (12 de noviembre de 2012)}
+\examen{Examenes_de_PF_con_Haskell_Vol4/Examenes/Grupo_4/examen_1_12_nov.hs}
+\subsection{Examen 2 (17 de diciembre de 2012)}
+\examen{Examenes_de_PF_con_Haskell_Vol4/Examenes/Grupo_4/examen_2_17_dic.hs}
+\subsection{Examen 3 ( 6 de febrero de 2013)}
+El examen es común con el del grupo 1 (ver página \pageref{examen_12_13_2_3}).
+\subsection{Examen 4 (18 de marzo de 2013)}
+\examen{Examenes_de_PF_con_Haskell_Vol4/Examenes/Grupo_4/examen_4_18_mar.hs}
+\subsection{Examen 5 ( 6 de mayo de 2013)}
+\examen{Examenes_de_PF_con_Haskell_Vol4/Examenes/Grupo_4/examen_5_06_may.hs}
+\subsection{Examen 6 (13 de junio de 2013)}
+El examen es común con el del grupo 1 (ver página \pageref{examen_12_13_1_6}).
+\subsection{Examen 7 ( 3 de julio de 2013)}
+El examen es común con el del grupo 1 (ver página \pageref{examen_12_13_2_7}).
+\subsection{Examen 8 (13 de septiembre de 2013)}
+El examen es común con el del grupo 1 (ver página \pageref{examen_12_13_2_8}).
+\subsection{Examen 9 (20 de noviembre de 2013)}
+El examen es común con el del grupo 1 (ver página \pageref{examen_12_13_2_9}).
+
+\chapter{Exámenes del curso 2013--14}
+
+\section{Exámenes del grupo 1 (José A. Alonso y Luis Valencia)}
+\subsection{Examen 1 (5 de Noviembre de 2013)}
+\examen{Examenes_de_PF_con_Haskell_Vol5/Examenes/Grupo_1/examen_1_05_nov.hs}
+\subsection{Examen 2 (17 de Diciembre de 2013)}
+\examen{Examenes_de_PF_con_Haskell_Vol5/Examenes/Grupo_1/examen_2_17_dic.hs}
+\subsection{Examen 3 (23 de Enero de 2014)}
+\examen{Examenes_de_PF_con_Haskell_Vol5/Examenes/Grupo_1/examen_3_23_ene.hs} \label{examen_13_14_3_3}
+\subsection{Examen 4 (21 de Marzo de 2014)}
+\examen{Examenes_de_PF_con_Haskell_Vol5/Examenes/Grupo_1/examen_4_21_mar.hs}
+\subsection{Examen 5 (16 de Mayo de 2014)}
+\examen{Examenes_de_PF_con_Haskell_Vol5/Examenes/Grupo_1/examen_5_16_may.hs}
+\subsection{Examen 6 (18 de Junio de 2014)}
+\examen{Examenes_de_PF_con_Haskell_Vol5/Examenes/Grupo_1/examen_6_18_jun.hs} \label{examen_13_14_3_6}
+\subsection{Examen 7 (4 de Julio de 2014)}
+\examen{Examenes_de_PF_con_Haskell_Vol5/Examenes/Grupo_1/examen_7_04_jul.hs} \label{examen_13_14_3_7}
+\subsection{Examen 8 (10 de Septiembre de 2014)}
+\examen{Examenes_de_PF_con_Haskell_Vol5/Examenes/Grupo_1/examen_8_10_sep.hs} \label{examen_13_14_3_8}
+\subsection{Examen 9 (20 de Noviembre de 2014)}
+\examen{Examenes_de_PF_con_Haskell_Vol5/Examenes/Grupo_1/examen_9_20_nov.hs} \label{examen_13_14_3_9}
+
+\section{Exámenes del grupo 2 (Antonia M. Chávez)}
+\subsection{Examen 1 (6 de Noviembre de 2013)}
+\examen{Examenes_de_PF_con_Haskell_Vol5/Examenes/Grupo_2/examen_1_06_nov.hs}
+\subsection{Examen 2 (4 de Diciembre de 2013)}
+\examen{Examenes_de_PF_con_Haskell_Vol5/Examenes/Grupo_2/examen_2_04_dic.hs}
+\subsection{Examen 3 (23 de Enero de 2014)}
+El examen es común con el del grupo 1 (ver página \pageref{examen_13_14_3_3}).
+\subsection{Examen 4 (24 de Marzo de 2014)}
+\examen{Examenes_de_PF_con_Haskell_Vol5/Examenes/Grupo_2/examen_4_24_mar.hs}
+\subsection{Examen 5 (19 de Mayo de 2014)}
+\examen{Examenes_de_PF_con_Haskell_Vol5/Examenes/Grupo_2/examen_5_19_may.hs}
+\subsection{Examen 6 (18 de Junio de 2014)}
+El examen es común con el del grupo 1 (ver página \pageref{examen_13_14_3_6}).
+\subsection{Examen 7 (4 de Julio de 2014)}
+El examen es común con el del grupo 1 (ver página \pageref{examen_13_14_3_7}).
+\subsection{Examen 8 (10 de Septiembre de 2014)}
+El examen es común con el del grupo 1 (ver página \pageref{examen_13_14_3_8}).
+\subsection{Examen 9 (20 de Noviembre de 2014)}
+El examen es común con el del grupo 1 (ver página \pageref{examen_13_14_3_9}).
+
+\section{Exámenes del grupo 3 (María J. Hidalgo)}
+\subsection{Examen 1 (7 de Noviembre de 2013)}
+\examen{Examenes_de_PF_con_Haskell_Vol5/Examenes/Grupo_3/examen_1_07_nov.hs}
+\subsection{Examen 2 (19 de Diciembre de 2013)}
+\examen{Examenes_de_PF_con_Haskell_Vol5/Examenes/Grupo_3/examen_2_19_dic.hs}
+\subsection{Examen 3 (23 de Enero de 2014)}
+\examen{Examenes_de_PF_con_Haskell_Vol5/Examenes/Grupo_3/examen_3_23_ene.hs} \label{examen_13_14_1_3}
+\subsection{Examen 4 (20 de Marzo de 2014)}
+\examen{Examenes_de_PF_con_Haskell_Vol5/Examenes/Grupo_3/examen_4_20_mar.hs}
+\subsection{Examen 5 (15 de Mayo de 2014)}
+\examen{Examenes_de_PF_con_Haskell_Vol5/Examenes/Grupo_3/examen_5_15_may.hs}
+\subsection{Examen 6 (18 de Junio de 2014)}
+\examen{Examenes_de_PF_con_Haskell_Vol5/Examenes/Grupo_3/examen_6_18_jun.hs} \label{examen_13_14_1_6}
+\subsection{Examen 7 (4 de Julio de 2014)}
+El examen es común con el del grupo 1 (ver página \pageref{examen_13_14_3_7}).
+\subsection{Examen 8 (10 de Septiembre de 2014)}
+El examen es común con el del grupo 1 (ver página \pageref{examen_13_14_3_8}).
+\subsection{Examen 9 (20 de Noviembre de 2014)}
+El examen es común con el del grupo 1 (ver página \pageref{examen_13_14_3_9}).
+
+\section{Exámenes del grupo 4 (Francisco J. Martín)}
+\subsection{Examen 1 (5 de Noviembre de 2013)}
+\examen{Examenes_de_PF_con_Haskell_Vol5/Examenes/Grupo_4/examen_1_11_nov.hs}
+\subsection{Examen 2 (16 de Diciembre de 2013)}
+\examen{Examenes_de_PF_con_Haskell_Vol5/Examenes/Grupo_4/examen_2_16_dic.hs}
+\subsection{Examen 3 (23 de Enero de 2014)}
+El examen es común con el del grupo 1 (ver página \pageref{examen_13_14_1_3}).
+\subsection{Examen 4 (20 de Marzo de 2014)}
+\examen{Examenes_de_PF_con_Haskell_Vol5/Examenes/Grupo_4/examen_4_20_mar.hs}
+\subsection{Examen 5 (22 de Mayo de 2014)}
+\examen{Examenes_de_PF_con_Haskell_Vol5/Examenes/Grupo_4/examen_5_22_may.hs}
+\subsection{Examen 6 (18 de Junio de 2014)}
+El examen es común con el del grupo 1 (ver página \pageref{examen_13_14_1_6}).
+\subsection{Examen 7 (4 de Julio de 2014)}
+El examen es común con el del grupo 1 (ver página \pageref{examen_13_14_3_7}).
+\subsection{Examen 8 (10 de Septiembre de 2014)}
+El examen es común con el del grupo 1 (ver página \pageref{examen_13_14_3_8}).
+\subsection{Examen 9 (20 de Noviembre de 2014)}
+El examen es común con el del grupo 1 (ver página \pageref{examen_13_14_3_9}).
+
+\section{Exámenes del grupo 5 (Andrés Cordón y Miguel A. Martínez)}
+\subsection{Examen 1 (5 de Noviembre de 2013)}
+\examen{Examenes_de_PF_con_Haskell_Vol5/Examenes/Grupo_5/examen_1_04_nov.hs}
+\subsection{Examen 2 (16 de Diciembre de 2013)}
+\examen{Examenes_de_PF_con_Haskell_Vol5/Examenes/Grupo_5/examen_2_16_dic.hs}
+\subsection{Examen 3 (23 de Enero de 2014)}
+El examen es común con el del grupo 1 (ver página \pageref{examen_13_14_1_3}).
+\subsection{Examen 4 (19 de Marzo de 2014)}
+\examen{Examenes_de_PF_con_Haskell_Vol5/Examenes/Grupo_5/examen_4_19_mar.hs}
+\subsection{Examen 5 (21 de Mayo de 2014)}
+\examen{Examenes_de_PF_con_Haskell_Vol5/Examenes/Grupo_5/examen_5_21_may.hs}
+\subsection{Examen 6 (18 de Junio de 2014)}
+El examen es común con el del grupo 1 (ver página \pageref{examen_13_14_1_6}).
+\subsection{Examen 7 (4 de Julio de 2014)}
+El examen es común con el del grupo 1 (ver página \pageref{examen_13_14_3_7}).
+\subsection{Examen 8 (10 de Septiembre de 2014)}
+El examen es común con el del grupo 1 (ver página \pageref{examen_13_14_3_8}).
+\subsection{Examen 9 (20 de Noviembre de 2014)}
+El examen es común con el del grupo 1 (ver página \pageref{examen_13_14_3_9}).
+
+\chapter{Exámenes del curso 2014--15}
+
+\section{Exámenes del grupo 1 (José A. Alonso y Luis Valencia)}
+\subsection{Examen 1 (5 de Noviembre de 2014)}
+\examen{Examenes_de_PF_con_Haskell_Vol6/Examenes/Grupo_1/examen_1_05_nov.hs}
+\subsection{Examen 2 (3 de Diciembre de 2014)}
+\examen{Examenes_de_PF_con_Haskell_Vol6/Examenes/Grupo_1/examen_2_03_dic.hs}
+\subsection{Examen 3 (23 de enero de 2015)}
+\examen{Examenes_de_PF_con_Haskell_Vol6/Examenes/Grupo_1/examen_3_23_ene.hs} \label{examen_14_15_5_3}
+\subsection{Examen 4 (9 de marzo de 2015)}
+\examen{Examenes_de_PF_con_Haskell_Vol6/Examenes/Grupo_1/examen_4_09_mar.hs}
+\subsection{Examen 5 (29 de abril de 2015 )}
+\examen{Examenes_de_PF_con_Haskell_Vol6/Examenes/Grupo_1/examen_5_29_abr.hs}
+\subsection{Examen 6 (15 de junio de 2015)}
+\examen{Examenes_de_PF_con_Haskell_Vol6/Examenes/Grupo_1/examen_6_15_jun.hs}
+\subsection{Examen 7 (3 de julio de 2015)}
+\examen{Examenes_de_PF_con_Haskell_Vol6/Examenes/Grupo_1/examen_7_03_jul.hs} \label{examen_14_15_5_7}
+\subsection{Examen 8 (4 de septiembre de 2015)}
+\examen{Examenes_de_PF_con_Haskell_Vol6/Examenes/Grupo_1/examen_8_04_sep.hs} \label{examen_14_15_5_8}
+\subsection{Examen 9 (4 de diciembre de 2015)}
+\examen{Examenes_de_PF_con_Haskell_Vol6/Examenes/Grupo_1/examen_9_04_dic.hs} \label{examen_14_15_5_9}
+
+\section{Exámenes del grupo 2 (Antonia M. Chávez)}
+\subsection{Examen 1 (6 de Noviembre de 2014)}
+\examen{Examenes_de_PF_con_Haskell_Vol6/Examenes/Grupo_2/examen_1_06_nov.hs}
+\subsection{Examen 2 (4 de Diciembre de 2014)}
+\examen{Examenes_de_PF_con_Haskell_Vol6/Examenes/Grupo_2/examen_2_04_dic.hs}
+\subsection{Examen 3 (23 de enero de 2015)}
+El examen es común con el del grupo 4 (ver página \pageref{examen_14_15_4_3}).
+\subsection{Examen 4 (12 de marzo de 2015)}
+\examen{Examenes_de_PF_con_Haskell_Vol6/Examenes/Grupo_2/examen_4_12_mar.hs}
+\subsection{Examen 5 (7 de mayo de 2015)}
+\examen{Examenes_de_PF_con_Haskell_Vol6/Examenes/Grupo_2/examen_5_07_may.hs}
+\subsection{Examen 6 (15 de junio de 2015)}
+El examen es común con el del grupo 4 (ver página \pageref{examen_14_15_4_6}).
+\subsection{Examen 7 (3 de julio de 2015)}
+El examen es común con el del grupo 1 (ver página \pageref{examen_14_15_5_7}).
+\subsection{Examen 8 (4 de septiembre de 2015)}
+El examen es común con el del grupo 1 (ver página \pageref{examen_14_15_5_8}).
+\subsection{Examen 9 (4 de diciembre de 2015)}
+El examen es común con el del grupo 1 (ver página \pageref{examen_14_15_5_9}).
+
+\section{Exámenes del grupo 3 (Andrés Cordón)}
+\subsection{Examen 1 (4 de Noviembre de 2014)}
+\examen{Examenes_de_PF_con_Haskell_Vol6/Examenes/Grupo_3/examen_1_04_nov.hs}
+\subsection{Examen 2 (5 de Diciembre de 2014)}
+\examen{Examenes_de_PF_con_Haskell_Vol6/Examenes/Grupo_3/examen_2_05_dic.hs}
+\subsection{Examen 3 (23 de enero de 2015)}
+El examen es común con el del grupo 4 (ver página \pageref{examen_14_15_4_3}).
+\subsection{Examen 4 (18 de marzo de 2015)}
+\examen{Examenes_de_PF_con_Haskell_Vol6/Examenes/Grupo_3/examen_4_18_mar.hs}
+\subsection{Examen 5 (6 de mayo de 2015)}
+\examen{Examenes_de_PF_con_Haskell_Vol6/Examenes/Grupo_3/examen_5_06_may.hs}
+\subsection{Examen 6 (15 de junio de 2015)}
+El examen es común con el del grupo 4 (ver página \pageref{examen_14_15_4_6}).
+\subsection{Examen 7 (3 de julio de 2015)}
+El examen es común con el del grupo 1 (ver página \pageref{examen_14_15_5_7}).
+\subsection{Examen 8 (4 de septiembre de 2015)}
+El examen es común con el del grupo 1 (ver página \pageref{examen_14_15_5_8}).
+\subsection{Examen 9 (4 de diciembre de 2015)}
+El examen es común con el del grupo 1 (ver página \pageref{examen_14_15_5_9}).
+
+\section{Exámenes del grupo 4 (María J. Hidalgo)}
+\subsection{Examen 1 (6 de Noviembre de 2014)}
+\examen{Examenes_de_PF_con_Haskell_Vol6/Examenes/Grupo_4/examen_1_06_nov.hs}
+\subsection{Examen 2 (4 de Diciembre de 2014)}
+\examen{Examenes_de_PF_con_Haskell_Vol6/Examenes/Grupo_4/examen_2_04_dic.hs}
+\subsection{Examen 3 (23 de enero de 2015)}
+\examen{Examenes_de_PF_con_Haskell_Vol6/Examenes/Grupo_4/examen_3_23_ene.hs} \label{examen_14_15_4_3}
+\subsection{Examen 4 (12 de marzo de 2015)}
+\examen{Examenes_de_PF_con_Haskell_Vol6/Examenes/Grupo_4/examen_4_12_mar.hs}
+\subsection{Examen 5 (30 de abril de 2015)}
+\examen{Examenes_de_PF_con_Haskell_Vol6/Examenes/Grupo_4/examen_5_30_abr.hs}
+\subsection{Examen 6 (15 de junio de 2015)}
+\examen{Examenes_de_PF_con_Haskell_Vol6/Examenes/Grupo_4/examen_6_15_jun.hs} \label{examen_14_15_4_6}
+\subsection{Examen 7 (3 de julio de 2015)}
+El examen es común con el del grupo 1 (ver página \pageref{examen_14_15_5_7}).
+\subsection{Examen 8 (4 de septiembre de 2015)}
+El examen es común con el del grupo 1 (ver página \pageref{examen_14_15_5_7}).
+\subsection{Examen 9 (4 de diciembre de 2015)}
+El examen es común con el del grupo 1 (ver página \pageref{examen_14_15_5_9}).
+
+\section{Exámenes del grupo 5 (Francisco J. Martín)}
+\subsection{Examen 1 (3 de Noviembre de 2014)}
+\examen{Examenes_de_PF_con_Haskell_Vol6/Examenes/Grupo_5/examen_1_03_nov.hs}
+\subsection{Examen 2 (1 de Diciembre de 2014)}
+\examen{Examenes_de_PF_con_Haskell_Vol6/Examenes/Grupo_5/examen_2_01_dic.hs}
+\subsection{Examen 3 (23 de enero de 2015)}
+El examen es común con el del grupo 1 (ver página \pageref{examen_14_15_5_3}).
+\subsection{Examen 4 (16 de marzo de 2015)}
+\examen{Examenes_de_PF_con_Haskell_Vol6/Examenes/Grupo_5/examen_4_16_mar.hs}
+\subsection{Examen 5 (5 de mayo de 2015)}
+\examen{Examenes_de_PF_con_Haskell_Vol6/Examenes/Grupo_5/examen_5_05_may.hs}
+\subsection{Examen 6 (15 de junio de 2015)}
+El examen es común con el del grupo 4 (ver página \pageref{examen_14_15_4_6}).
+\subsection{Examen 7 (3 de julio de 2015)}
+El examen es común con el del grupo 1 (ver página \pageref{examen_14_15_5_7}).
+\subsection{Examen 8 (4 de septiembre de 2015)}
+El examen es común con el del grupo 1 (ver página \pageref{examen_14_15_5_8}).
+\subsection{Examen 9 (4 de diciembre de 2015)}
+El examen es común con el del grupo 1 (ver página \pageref{examen_14_15_5_9}).
+
+\chapter{Exámenes del curso 2015--16}
+
+\section{Exámenes del grupo 1 (José A. Alonso y Luis Valencia)}
+\subsection{Examen 1 (6 de Noviembre de 2015)}
+\examen{Examenes_de_PF_con_Haskell_Vol7/Examenes/Grupo_1/examen_1_06_nov.hs}
+\subsection{Examen 2 (4 de Diciembre de 2015)}
+\examen{Examenes_de_PF_con_Haskell_Vol7/Examenes/Grupo_1/examen_2_04_dic.hs}
+\subsection{Examen 3 (25 de enero de 2016)}
+\examen{Examenes_de_PF_con_Haskell_Vol7/Examenes/Grupo_1/examen_3_25_ene.hs} \label{examen_15_16_4_3}
+\subsection{Examen 4 (16 de marzo de 2016)}
+\examen{Examenes_de_PF_con_Haskell_Vol7/Examenes/Grupo_1/examen_4_16_mar.hs}
+\subsection{Examen 5 (4 de mayo de 2016)}
+\examen{Examenes_de_PF_con_Haskell_Vol7/Examenes/Grupo_1/examen_5_04_may.hs}
+\subsection{Examen 6A (25 de mayo de 2016)}
+\examen{Examenes_de_PF_con_Haskell_Vol7/Examenes/Grupo_1/examen_6A_25_may.hs}
+\subsection{Examen 6B (7 de junio de 2016)}
+\examen{Examenes_de_PF_con_Haskell_Vol7/Examenes/Grupo_1/examen_6B_07_jun.hs} \label{examen_15_16_4_6}
+\subsection{Examen 7 (23 de junio de 2016)}
+\examen{Examenes_de_PF_con_Haskell_Vol7/Examenes/Grupo_1/examen_7_23_jun.hs}  \label{examen_15_16_4_7}
+\subsection{Examen 8 (1 de septiembre de 2016)}
+\examen{Examenes_de_PF_con_Haskell_Vol7/Examenes/Grupo_1/examen_8_01_sep.hs}  \label{examen_15_16_4_8}
+
+\section{Exámenes del grupo 2 (Antonia M. Chávez)}
+\subsection{Examen 1 (6 de Noviembre de 2015)}
+\examen{Examenes_de_PF_con_Haskell_Vol7/Examenes/Grupo_2/examen_1_06_nov.hs}
+\subsection{Examen 2 (4 de Diciembre de 2015)}
+\examen{Examenes_de_PF_con_Haskell_Vol7/Examenes/Grupo_2/examen_2_04_dic.hs}
+\subsection{Examen 3 (25 de enero de 2016)}
+\examen{Examenes_de_PF_con_Haskell_Vol7/Examenes/Grupo_2/examen_3_25_ene.hs} \label{examen_15_16_2_3}.
+\subsection{Examen 4 (11 de marzo de 2016)}
+\examen{Examenes_de_PF_con_Haskell_Vol7/Examenes/Grupo_2/examen_4_11_mar.hs}
+\subsection{Examen 5 (6 de mayo de 2016)}
+\examen{Examenes_de_PF_con_Haskell_Vol7/Examenes/Grupo_2/examen_5_06_may.hs}
+\subsection{Examen 6 (7 de junio de 2016)}
+El examen es común con el del grupo 1 (ver página \pageref{examen_15_16_4_6}).
+\subsection{Examen 7 (23 de junio de 2016)}
+El examen es común con el del grupo 1 (ver página \pageref{examen_15_16_4_7}).
+\subsection{Examen 8 (01 de septiembre de 2016)}
+El examen es común con el del grupo 1 (ver página \pageref{examen_15_16_4_8}).
+
+\section{Exámenes del grupo 3 (Francisco J. Martín)}
+\subsection{Examen 1 (27 de Octubre de 2015)}
+\examen{Examenes_de_PF_con_Haskell_Vol7/Examenes/Grupo_3/examen_1_27_oct.hs}
+\subsection{Examen 2 (2 de Diciembre de 2015)}
+\examen{Examenes_de_PF_con_Haskell_Vol7/Examenes/Grupo_3/examen_2_02_dic.hs}
+\subsection{Examen 3 (25 de enero de 2016)}
+El examen es común con el del grupo 2 (ver página \pageref{examen_15_16_2_3}).
+\subsection{Examen 4 (15 de marzo de 2016)}
+\examen{Examenes_de_PF_con_Haskell_Vol7/Examenes/Grupo_3/examen_4_15_mar.hs}
+\subsection{Examen 5 (3 de mayo de 2016)}
+\examen{Examenes_de_PF_con_Haskell_Vol7/Examenes/Grupo_3/examen_5_03_may.hs}
+\subsection{Examen 6 (7 de junio de 2016)}
+El examen es común con el del grupo 1 (ver página \pageref{examen_15_16_4_6}).
+\subsection{Examen 7 (23 de junio de 2016)}
+El examen es común con el del grupo 1 (ver página \pageref{examen_15_16_4_7}).
+\subsection{Examen 8 (01 de septiembre de 2016)}
+El examen es común con el del grupo 1 (ver página \pageref{examen_15_16_4_8}).
+
+\section{Exámenes del grupo 4 (María J. Hidalgo)}
+\subsection{Examen 1 (3 de Noviembre de 2015)}
+\examen{Examenes_de_PF_con_Haskell_Vol7/Examenes/Grupo_4/examen_1_03_nov.hs}
+\subsection{Examen 2 (3 de Diciembre de 2015)}
+\examen{Examenes_de_PF_con_Haskell_Vol7/Examenes/Grupo_4/examen_2_03_dic.hs}
+\subsection{Examen 3 (25 de enero de 2016)}
+El examen es común con el del grupo 1 (ver página \pageref{examen_15_16_4_3}).
+\subsection{Examen 4 (3 de marzo de 2016)}
+\examen{Examenes_de_PF_con_Haskell_Vol7/Examenes/Grupo_4/examen_4_03_mar.hs}
+\subsection{Examen 5 (5 de mayo de 2016)}
+\examen{Examenes_de_PF_con_Haskell_Vol7/Examenes/Grupo_4/examen_5_05_may.hs}
+\subsection{Examen 6 (7 de junio de 2016)}
+El examen es común con el del grupo 1 (ver página \pageref{examen_15_16_4_6}).
+\subsection{Examen 7 (23 de junio de 2016)}
+El examen es común con el del grupo 1 (ver página \pageref{examen_15_16_4_7}).
+\subsection{Examen 8 (01 de septiembre de 2016)}
+El examen es común con el del grupo 1 (ver página \pageref{examen_15_16_4_8}).
+
+\section{Exámenes del grupo 5 (Andrés Cordón)}
+\subsection{Examen 1 (12 de Noviembre de 2015)}
+\examen{Examenes_de_PF_con_Haskell_Vol7/Examenes/Grupo_5/examen_1_12_nov.hs}
+\subsection{Examen 2 (17 de Diciembre de 2015)}
+\examen{Examenes_de_PF_con_Haskell_Vol7/Examenes/Grupo_5/examen_2_17_dic.hs}
+\subsection{Examen 3 (25 de enero de 2016)}
+El examen es común con el del grupo 2 (ver página \pageref{examen_15_16_2_3}).
+\subsection{Examen 4 (10 de marzo de 2016)}
+\examen{Examenes_de_PF_con_Haskell_Vol7/Examenes/Grupo_5/examen_4_10_mar.hs}
+\subsection{Examen 5 (5 de mayo de 2016)}
+\examen{Examenes_de_PF_con_Haskell_Vol7/Examenes/Grupo_5/examen_5_05_may.hs}
+\subsection{Examen 6 (7 de junio de 2016)}
+El examen es común con el del grupo 1 (ver página \pageref{examen_15_16_4_6}).
+\subsection{Examen 7 (23 de junio de 2016)}
+El examen es común con el del grupo 1 (ver página \pageref{examen_15_16_4_7}).
+\subsection{Examen 8 (01 de septiembre de 2016)}
+El examen es común con el del grupo 1 (ver página \pageref{examen_15_16_4_8}).
+
+\chapter{Exámenes del curso 2016--17}
+
+\section{Exámenes del grupo 1 (José A. Alonso)}
+\subsection{Examen 1 (26 de octubre de 2016)}
+\examen{Examenes_de_PF_con_Haskell_Vol8/Examenes/Grupo_1/examen_1_26_oct.hs}
+\subsection{Examen 2 (29 de noviembre de 2016)}
+\examen{Examenes_de_PF_con_Haskell_Vol8/Examenes/Grupo_1/examen_2_29_nov.hs}
+\subsection{Examen 3 (31 de enero de 2017)}
+\examen{Examenes_de_PF_con_Haskell_Vol8/Examenes/Grupo_1/examen_3_31_ene.hs} \label{examen_16_17_4_3}
+\subsection{Examen 4 (22 de marzo de 2017)}
+\examen{Examenes_de_PF_con_Haskell_Vol8/Examenes/Grupo_1/examen_4_22_mar.hs}
+\subsection{Examen 5 (28 de abril de 2017)}
+\examen{Examenes_de_PF_con_Haskell_Vol8/Examenes/Grupo_1/examen_5_28_abr.hs}
+\subsection{Examen 6 (12 de junio de 2017)}
+\examen{Examenes_de_PF_con_Haskell_Vol8/Examenes/Grupo_1/examen_6_12_jun.hs} \label{examen_16_17_4_6}
+\subsection{Examen 7 (29 de junio de 2017)}
+\examen{Examenes_de_PF_con_Haskell_Vol8/Examenes/Grupo_1/examen_7_29_jun.hs}  \label{examen_16_17_4_7}
+\subsection{Examen 8 (8 de septiembre de 2017)}
+\examen{Examenes_de_PF_con_Haskell_Vol8/Examenes/Grupo_1/examen_8_08_sep.hs}  \label{examen_16_17_4_8}
+\subsection{Examen 9 (21 de noviembre de 2017)}
+\examen{Examenes_de_PF_con_Haskell_Vol8/Examenes/Grupo_1/examen_9_21_nov.hs}  \label{examen_16_17_4_9}
+
+\section{Exámenes del grupo 2 (Francisco J. Martín)}
+\subsection{Examen 1 (26 de octubre de 2016)}
+\examen{Examenes_de_PF_con_Haskell_Vol8/Examenes/Grupo_2/examen_1_26_oct.hs}
+\subsection{Examen 2 (30 de noviembre de 2016)}
+\examen{Examenes_de_PF_con_Haskell_Vol8/Examenes/Grupo_2/examen_2_30_nov.hs}
+\subsection{Examen 3 (31 de enero de 2017)}
+El examen es común con el del grupo 1 (ver página \pageref{examen_16_17_4_3}).
+\subsection{Examen 4 (8 de marzo de 2017)}
+\examen{Examenes_de_PF_con_Haskell_Vol8/Examenes/Grupo_2/examen_4_08_mar.hs}
+\subsection{Examen 5 (24 de abril de 2017)}
+\examen{Examenes_de_PF_con_Haskell_Vol8/Examenes/Grupo_2/examen_5_24_abr.hs}
+\subsection{Examen 6 (12 de junio de 2017)}
+El examen es común con el del grupo 1 (ver página \pageref{examen_16_17_4_6}).
+\subsection{Examen 7 (29 de junio de 2017)}
+El examen es común con el del grupo 1 (ver página \pageref{examen_16_17_4_7}).
+\subsection{Examen 8 (8 de septiembre de 2017)}
+El examen es común con el del grupo 1 (ver página \pageref{examen_16_17_4_8}).
+\subsection{Examen 9 (21 de noviembre de 2017)}
+El examen es común con el del grupo 1 (ver página \pageref{examen_16_17_4_9}).
+
+\section{Exámenes del grupo 3 (Antonia M. Chávez)}
+\subsection{Examen 1 (28 de octubre de 2016)}
+\examen{Examenes_de_PF_con_Haskell_Vol8/Examenes/Grupo_3/examen_1_28_oct.hs}
+\subsection{Examen 2 (2 de diciembre de 2016)}
+\examen{Examenes_de_PF_con_Haskell_Vol8/Examenes/Grupo_3/examen_2_02_dic.hs}
+\subsection{Examen 3 (31 de enero de 2017)}
+El examen es común con el del grupo 1 (ver página \pageref{examen_16_17_1_3}).
+\subsection{Examen 4 (13 de marzo de 2017)}
+\examen{Examenes_de_PF_con_Haskell_Vol8/Examenes/Grupo_3/examen_4_13_mar.hs}
+\subsection{Examen 5 (24 de abril de 2017)}
+\examen{Examenes_de_PF_con_Haskell_Vol8/Examenes/Grupo_3/examen_5_24_abr.hs}
+\subsection{Examen 6 (12 de junio de 2017)}
+El examen es común con el del grupo 1 (ver página \pageref{examen_16_17_1_6}).
+\subsection{Examen 7 (29 de junio de 2017)}
+El examen es común con el del grupo 1 (ver página \pageref{examen_16_17_4_7}).
+\subsection{Examen 8 (8 de septiembre de 2017)}
+El examen es común con el del grupo 1 (ver página \pageref{examen_16_17_4_8}).
+\subsection{Examen 9 (21 de noviembre de 2017)}
+El examen es común con el del grupo 1 (ver página \pageref{examen_16_17_4_9}).
+
+\section{Exámenes del grupo 4 (María J. Hidalgo)}
+\subsection{Examen 1 (3 de noviembre de 2016)}
+\examen{Examenes_de_PF_con_Haskell_Vol8/Examenes/Grupo_4/examen_1_03_nov.hs}
+\subsection{Examen 2 (1 de diciembre de 2016)}
+\examen{Examenes_de_PF_con_Haskell_Vol8/Examenes/Grupo_4/examen_2_01_dic.hs}
+\subsection{Examen 3 (31 de enero de 2017)}
+\examen{Examenes_de_PF_con_Haskell_Vol8/Examenes/Grupo_4/examen_3_31_ene.hs} \label{examen_16_17_1_3}
+\subsection{Examen 4 (14 de marzo de 2017)}
+\examen{Examenes_de_PF_con_Haskell_Vol8/Examenes/Grupo_4/examen_4_14_mar.hs}
+\subsection{Examen 5 (21 de abril de 2017)}
+\examen{Examenes_de_PF_con_Haskell_Vol8/Examenes/Grupo_4/examen_5_21_abr.hs}
+\subsection{Examen 6 (12 de junio de 2017)}
+\examen{Examenes_de_PF_con_Haskell_Vol8/Examenes/Grupo_4/examen_6_12_jun.hs} \label{examen_16_17_1_6}
+\subsection{Examen 7 (29 de junio de 2017)}
+El examen es común con el del grupo 1 (ver página \pageref{examen_16_17_4_7}).
+\subsection{Examen 8 (8 de septiembre de 2017)}
+El examen es común con el del grupo 1 (ver página \pageref{examen_16_17_4_8}).
+\subsection{Examen 9 (21 de noviembre de 2017)}
+El examen es común con el del grupo 1 (ver página \pageref{examen_16_17_4_9}).
+
+\section{Exámenes del grupo 5 (Andrés Cordón y Antonia M. Chávez)}
+\subsection{Examen 1 (26 de octubre de 2016)}
+\examen{Examenes_de_PF_con_Haskell_Vol8/Examenes/Grupo_5/examen_1_26_oct.hs}
+\subsection{Examen 2 (30 de noviembre de 2016)}
+\examen{Examenes_de_PF_con_Haskell_Vol8/Examenes/Grupo_5/examen_2_30_nov.hs}
+\subsection{Examen 3 (31 de enero de 2017)}
+El examen es común con el del grupo 1 (ver página \pageref{examen_16_17_1_3}).
+\subsection{Examen 4 (15 de marzo de 2017)}
+\examen{Examenes_de_PF_con_Haskell_Vol8/Examenes/Grupo_5/examen_4_15_mar.hs}
+\subsection{Examen 5 (26 de abril de 2017)}
+\examen{Examenes_de_PF_con_Haskell_Vol8/Examenes/Grupo_5/examen_5_26_abr.hs}
+\subsection{Examen 6 (12 de junio de 2017)}
+El examen es común con el del grupo 1 (ver página \pageref{examen_16_17_1_6}).
+\subsection{Examen 7 (29 de junio de 2017)}
+El examen es común con el del grupo 1 (ver página \pageref{examen_16_17_4_7}).
+\subsection{Examen 8 (8 de septiembre de 2017)}
+El examen es común con el del grupo 1 (ver página \pageref{examen_16_17_4_8}).
+\subsection{Examen 9 (21 de noviembre de 2017)}
+El examen es común con el del grupo 1 (ver página \pageref{examen_16_17_4_9}).
+
+\chapter{Exámenes del curso 2017--18}
+
+\section{Exámenes del grupo 1 (José A. Alonso)}
+\subsection{Examen 1 (27 de octubre de 2017)}
+\examen{Examenes_de_PF_con_Haskell_Vol9/Examenes/Grupo_1/examen_1_27_oct.hs}
+\subsection{Examen 2 (29 de noviembre de 2017)}
+\examen{Examenes_de_PF_con_Haskell_Vol9/Examenes/Grupo_1/examen_2_29_nov.hs}
+\subsection{Examen 3 (30 de enero de 2018)}
+\examen{Examenes_de_PF_con_Haskell_Vol9/Examenes/Grupo_1/examen_3_30_ene.hs} \label{examen_17_18_4_3}
+\subsection{Examen 4 (14 de marzo de 2018)}
+\examen{Examenes_de_PF_con_Haskell_Vol9/Examenes/Grupo_1/examen_4_14_mar.hs}
+\subsection{Examen 5 (2 de mayo de 2018)}
+\examen{Examenes_de_PF_con_Haskell_Vol9/Examenes/Grupo_1/examen_5_02_may.hs}
+\subsection{Examen 6 (12 de junio de 2018)}
+\examen{Examenes_de_PF_con_Haskell_Vol9/Examenes/Grupo_1/examen_6_12_jun.hs} \label{examen_17_18_4_6}
+\subsection{Examen 7 (27 de junio de 2018)}
+\examen{Examenes_de_PF_con_Haskell_Vol9/Examenes/Grupo_1/examen_7_27_jun.hs} \label{examen_17_18_4_7}
+\subsection{Examen 8 (10 de septiembre de 2018)}
+\examen{Examenes_de_PF_con_Haskell_Vol9/Examenes/Grupo_1/examen_8_10_sep.hs} \label{examen_17_18_4_8}
+
+\section{Exámenes del grupo 2 (Antonia M. Chávez)}
+\subsection{Examen 1 (30 de octubre de 2017)}
+\examen{Examenes_de_PF_con_Haskell_Vol9/Examenes/Grupo_2/examen_1_30_oct.hs}
+\subsection{Examen 2 (27 de noviembre de 2017)}
+\examen{Examenes_de_PF_con_Haskell_Vol9/Examenes/Grupo_2/examen_2_27_nov.hs}
+\subsection{Examen 3 (30 de enero de 2018)}
+El examen es común con el del grupo 1 (ver página \pageref{examen_17_18_1_3}).
+\subsection{Examen 4 (12 de marzo de 2018)}
+\examen{Examenes_de_PF_con_Haskell_Vol9/Examenes/Grupo_2/examen_4_12_mar.hs}
+\subsection{Examen 5 (30 de abril de 2018)}
+\examen{Examenes_de_PF_con_Haskell_Vol9/Examenes/Grupo_2/examen_5_30_abr.hs}
+\subsection{Examen 6 (12 de junio de 2018)}
+El examen es común con el del grupo 1 (ver página \pageref{examen_17_18_1_6}).
+\subsection{Examen 7 (27 de junio de 2018)}
+El examen es común con el del grupo 1 (ver página \pageref{examen_17_18_4_7}).
+\subsection{Examen 8 (10 de septiembre de 2018)}
+El examen es común con el del grupo 1 (ver página \pageref{examen_17_18_4_8}).
+
+\section{Exámenes del grupo 3 (Francisco J. Martín)}
+\subsection{Examen 1 (2 de noviembre de 2017)}
+\examen{Examenes_de_PF_con_Haskell_Vol9/Examenes/Grupo_3/examen_1_2_nov.hs}
+\subsection{Examen 2 (30 de noviembre de 2017)}
+\examen{Examenes_de_PF_con_Haskell_Vol9/Examenes/Grupo_3/examen_2_30_nov.hs}
+\subsection{Examen 3 (30 de enero de 2018)}
+El examen es común con el del grupo 1 (ver página \pageref{examen_17_18_1_3}).
+\subsection{Examen 4 (8 de marzo de 2018)}
+\examen{Examenes_de_PF_con_Haskell_Vol9/Examenes/Grupo_3/examen_4_13_mar.hs}
+\subsection{Examen 5 (26 de abril de 2018)}
+\examen{Examenes_de_PF_con_Haskell_Vol9/Examenes/Grupo_3/examen_5_26_abr.hs}
+\subsection{Examen 6 (12 de junio de 2018)}
+El examen es común con el del grupo 1 (ver página \pageref{examen_17_18_1_6}).
+\subsection{Examen 7 (27 de junio de 2018)}
+El examen es común con el del grupo 1 (ver página \pageref{examen_17_18_4_7}).
+\subsection{Examen 8 (10 de septiembre de 2018)}
+El examen es común con el del grupo 1 (ver página \pageref{examen_17_18_4_8}).
+
+\section{Exámenes del grupo 4 (María J. Hidalgo)}
+\subsection{Examen 1 (2 de noviembre de 2017)}
+\examen{Examenes_de_PF_con_Haskell_Vol9/Examenes/Grupo_4/examen_1_2_nov.hs}
+\subsection{Examen 2 (5 de diciembre de 2017)}
+\examen{Examenes_de_PF_con_Haskell_Vol9/Examenes/Grupo_4/examen_2_5_dic.hs}
+\subsection{Examen 3 (30 de enero de 2018)}
+\examen{Examenes_de_PF_con_Haskell_Vol9/Examenes/Grupo_4/examen_3_30_ene.hs} \label{examen_17_18_1_3}
+\subsection{Examen 4 (15 de marzo de 2018)}
+\examen{Examenes_de_PF_con_Haskell_Vol9/Examenes/Grupo_4/examen_4_15_mar.hs}
+\subsection{Examen 5 (3 de mayo de 2018)}
+\examen{Examenes_de_PF_con_Haskell_Vol9/Examenes/Grupo_4/examen_5_03_may.hs}
+\subsection{Examen 6 (12 de junio de 2018)} \label{examen_17_18_1_6}
+\examen{Examenes_de_PF_con_Haskell_Vol9/Examenes/Grupo_4/examen_6_12_jun.hs}
+\subsection{Examen 7 (27 de junio de 2018)}
+El examen es común con el del grupo 1 (ver página \pageref{examen_17_18_4_7}).
+\subsection{Examen 8 (10 de septiembre de 2018)}
+El examen es común con el del grupo 1 (ver página \pageref{examen_17_18_4_8}).
+
+\section{Exámenes del grupo 5 (Andrés Cordón y Miguel A. Martínez)}
+\subsection{Examen 1 (25 de octubre de 2017)}
+\examen{Examenes_de_PF_con_Haskell_Vol9/Examenes/Grupo_5/examen_1_25_oct.hs}
+\subsection{Examen 2 (18 de diciembre de 2017)}
+\examen{Examenes_de_PF_con_Haskell_Vol9/Examenes/Grupo_5/examen_2_18_dic.hs}
+\subsection{Examen 3 (30 de enero de 2018)}
+El examen es común con el del grupo 1 (ver página \pageref{examen_17_18_4_3}).
+\subsection{Examen 4 (21 de marzo de 2018)}
+\examen{Examenes_de_PF_con_Haskell_Vol9/Examenes/Grupo_5/examen_4_21_mar.hs}
+\subsection{Examen 5 (7 de mayo de 2018)}
+\examen{Examenes_de_PF_con_Haskell_Vol9/Examenes/Grupo_5/examen_5_07_may.hs}
+\subsection{Examen 6 (12 de junio de 2018)}
+El examen es común con el del grupo 1 (ver página \pageref{examen_17_18_4_6}).
+\subsection{Examen 7 (27 de junio de 2018)}
+El examen es común con el del grupo 1 (ver página \pageref{examen_17_18_4_7}).
+\subsection{Examen 8 (10 de septiembre de 2018)}
+El examen es común con el del grupo 1 (ver página \pageref{examen_17_18_4_8}).
+
+\chapter{Exámenes del curso 2018--19}
+
+\section{Exámenes del grupo 1 (José A. Alonso)}
+\subsection{Examen 1 (07 de noviembre de 2018)}
+\examen{Examenes_de_PF_con_Haskell_Vol10/Examenes/Grupo_1/examen_1_07_nov.hs}
+\subsection{Examen 2 (19 de diciembre de 2018)}
+\examen{Examenes_de_PF_con_Haskell_Vol10/Examenes/Grupo_1/examen_2_19_dic.hs}
+\subsection{Examen 3 (22 de enero de 2019)}
+\examen{Examenes_de_PF_con_Haskell_Vol10/Examenes/Grupo_1/examen_3_22_ene.hs} \label{examen_18_19_1_3}
+\subsection{Examen 4 (13 de marzo de 2019)}
+\examen{Examenes_de_PF_con_Haskell_Vol10/Examenes/Grupo_1/examen_4_13_mar.hs}
+\subsection{Examen 5 (10 de abril de 2019)}
+\examen{Examenes_de_PF_con_Haskell_Vol10/Examenes/Grupo_1/examen_5_03_may.hs}
+\subsection{Examen 6 (10 de junio de 2019)}
+\examen{Examenes_de_PF_con_Haskell_Vol10/Examenes/Grupo_1/examen_6_10_jun.hs} \label{examen_18_19_1_6}
+\subsection{Examen 7 (02 de julio de 2019)}
+\examen{Examenes_de_PF_con_Haskell_Vol10/Examenes/Grupo_1/examen_7_02_jul.hs} \label{examen_18_19_1_7}
+\subsection{Examen 8 (11 de septiembre de 2018)}
+\examen{Examenes_de_PF_con_Haskell_Vol10/Examenes/Grupo_1/examen_8_11_sep.hs} \label{examen_18_19_1_8}
+
+\section{Exámenes del grupo 2 (Francisco J. Martín)}
+\subsection{Examen 1 (09 de noviembre de 2018)}
+\examen{Examenes_de_PF_con_Haskell_Vol10/Examenes/Grupo_2/examen_1_09_nov.hs}
+\subsection{Examen 2 (14 de diciembre de 2018)}
+\examen{Examenes_de_PF_con_Haskell_Vol10/Examenes/Grupo_2/examen_2_14_dic.hs}
+\subsection{Examen 3 (22 de enero de 2019)}
+El examen es común con el del grupo 4 (ver página \pageref{examen_18_19_4_3}).
+\subsection{Examen 4 (15 de marzo de 2019)}
+\examen{Examenes_de_PF_con_Haskell_Vol10/Examenes/Grupo_2/examen_4_15_mar.hs}
+\subsection{Examen 5 (12 de abril de 2019)}
+\examen{Examenes_de_PF_con_Haskell_Vol10/Examenes/Grupo_2/examen_5_12_abr.hs}
+\subsection{Examen 6 (10 de junio de 2019)}
+El examen es común con el del grupo 3 (ver página \pageref{examen_18_19_3_6}).
+\subsection{Examen 7 (02 de julio de 2019)}
+El examen es común con el del grupo 1 (ver página \pageref{examen_18_19_1_7}).
+\subsection{Examen 8 (11 de septiembre de 2018)}
+El examen es común con el del grupo 1 (ver página \pageref{examen_18_19_1_8}).
+
+\section{Exámenes del grupo 3 (María J. Hidalgo)}
+\subsection{Examen 1 (09 de noviembre de 2018)}
+\examen{Examenes_de_PF_con_Haskell_Vol10/Examenes/Grupo_3/examen_1_09_nov.hs}
+\subsection{Examen 2 (14 de diciembre de 2018)}
+\examen{Examenes_de_PF_con_Haskell_Vol10/Examenes/Grupo_3/examen_2_14_dic.hs}
+\subsection{Examen 3 (22 de enero de 2019)}
+El examen es común con el del grupo 1 (ver página \pageref{examen_18_19_4_3}).
+\subsection{Examen 4 (15 de marzo de 2019)}
+\examen{Examenes_de_PF_con_Haskell_Vol10/Examenes/Grupo_3/examen_4_15_mar.hs}
+\subsection{Examen 5 (03 de mayo de 2019)}
+\examen{Examenes_de_PF_con_Haskell_Vol10/Examenes/Grupo_3/examen_5_03_may.hs}
+\subsection{Examen 6 (10 de junio de 2019)}
+\examen{Examenes_de_PF_con_Haskell_Vol10/Examenes/Grupo_3/examen_6_10_jun.hs} \label{examen_18_19_3_6}
+\subsection{Examen 7 (02 de julio de 2019)}
+El examen es común con el del grupo 1 (ver página \pageref{examen_18_19_1_7}).
+\subsection{Examen 8 (11 de septiembre de 2018)}
+El examen es común con el del grupo 1 (ver página \pageref{examen_18_19_1_8}).
+
+\section{Exámenes del grupo 4 (Antonia M. Chávez)}
+\subsection{Examen 1 (08 de noviembre de 2018)}
+\examen{Examenes_de_PF_con_Haskell_Vol10/Examenes/Grupo_4/examen_1_08_nov.hs}
+\subsection{Examen 2 (11 de diciembre de 2018)}
+\examen{Examenes_de_PF_con_Haskell_Vol10/Examenes/Grupo_4/examen_2_11_dic.hs}
+\subsection{Examen 3 (22 de enero de 2019)}
+\examen{Examenes_de_PF_con_Haskell_Vol10/Examenes/Grupo_4/examen_3_22_ene.hs} \label{examen_18_19_4_3}
+\subsection{Examen 4 (26 de marzo de 2019)}
+\examen{Examenes_de_PF_con_Haskell_Vol10/Examenes/Grupo_4/examen_4_26_mar.hs}
+\subsection{Examen 5 (16 de mayo de 2019)}
+\examen{Examenes_de_PF_con_Haskell_Vol10/Examenes/Grupo_4/examen_5_03_may.hs}
+\subsection{Examen 6 (10 de junio de 2019)}
+El examen es común con el del grupo 1 (ver página \pageref{examen_18_19_1_6}).
+\subsection{Examen 7 (02 de julio de 2019)}
+El examen es común con el del grupo 1 (ver página \pageref{examen_18_19_1_7}).
+\subsection{Examen 8 (11 de septiembre de 2018)}
+El examen es común con el del grupo 1 (ver página \pageref{examen_18_19_1_8}).
+
+\section{Exámenes del grupo 5 (Andrés Cordón y Miguel A. Martínez)}
+\subsection{Examen 1 (30 de octubre de 2018)}
+\examen{Examenes_de_PF_con_Haskell_Vol10/Examenes/Grupo_5/examen_1_30_oct.hs}
+\subsection{Examen 2 (13 de diciembre de 2018)}
+\examen{Examenes_de_PF_con_Haskell_Vol10/Examenes/Grupo_5/examen_2_13_dic.hs}
+\subsection{Examen 3 (22 de enero de 2019)}
+El examen es común con el del grupo 1 (ver página \pageref{examen_18_19_4_3}).
+\subsection{Examen 4 (21 de marzo de 2019)}
+\examen{Examenes_de_PF_con_Haskell_Vol10/Examenes/Grupo_5/examen_4_21_mar.hs}
+\subsection{Examen 5 (16 de mayo de 2019)}
+\examen{Examenes_de_PF_con_Haskell_Vol10/Examenes/Grupo_5/examen_5_16_may.hs}
+\subsection{Examen 6 (10 de junio de 2019)}
+El examen es común con el del grupo 3 (ver página \pageref{examen_18_19_3_6}).
+\subsection{Examen 7 (02 de julio de 2019)}
+El examen es común con el del grupo 1 (ver página \pageref{examen_18_19_1_7}).
+\subsection{Examen 8 (11 de septiembre de 2018)}
+El examen es común con el del grupo 1 (ver página \pageref{examen_18_19_1_8}).
+
+
+% \chapter{Exámenes del curso 2018--19}
+%
+% \section{Exámenes del grupo 1 (Antonia M. Chávez)}
+% \subsection{Examen 1 (08 de noviembre de 2018)}
+% \examen{Examenes_de_PF_con_Haskell_Vol10/Examenes/Grupo_1/examen_1_08_nov.hs}
+% \subsection{Examen 2 (11 de diciembre de 2018)}
+% \examen{Examenes_de_PF_con_Haskell_Vol10/Examenes/Grupo_1/examen_2_11_dic.hs}
+% \subsection{Examen 3 (22 de enero de 2019)}
+% \examen{Examenes_de_PF_con_Haskell_Vol10/Examenes/Grupo_3/examen_3_22_ene.hs} \label{examen_18_19_1_3}
+% \subsection{Examen 4 (26 de marzo de 2019)}
+% \examen{Examenes_de_PF_con_Haskell_Vol10/Examenes/Grupo_1/examen_4_26_mar.hs}
+% % \subsection{Examen 5 (07 de mayo de 2019)}
+% % \subsection{Examen 6 (10 de junio de 2019)}
+% % \subsection{Examen 7 (02 de julio de 2019)}
+% % \subsection{Examen 8 (11 de septiembre de 2018)}
+%
+% \section{Exámenes del grupo 2 (Francisco J. Martín)}
+% \subsection{Examen 1 (09 de noviembre de 2018)}
+% \examen{Examenes_de_PF_con_Haskell_Vol10/Examenes/Grupo_2/examen_1_09_nov.hs}
+% \subsection{Examen 2 (14 de diciembre de 2018)}
+% \examen{Examenes_de_PF_con_Haskell_Vol10/Examenes/Grupo_2/examen_2_14_dic.hs}
+% \subsection{Examen 3 (22 de enero de 2019)}
+% El examen es común con el del grupo 4 (ver página \pageref{examen_18_19_4_3}).
+% \subsection{Examen 4 (15 de marzo de 2019)}
+% \examen{Examenes_de_PF_con_Haskell_Vol10/Examenes/Grupo_2/examen_4_15_mar.hs}
+% \subsection{Examen 5 (12 de abril de 2019)}
+% \examen{Examenes_de_PF_con_Haskell_Vol10/Examenes/Grupo_2/examen_5_12_abr.hs}
+% % \subsection{Examen 6 (10 de junio de 2019)}
+% % \subsection{Examen 7 (02 de julio de 2019)}
+% % \subsection{Examen 8 (11 de septiembre de 2018)}
+%
+% \section{Exámenes del grupo 3 (María J. Hidalgo)}
+% \subsection{Examen 1 (09 de noviembre de 2018)}
+% \examen{Examenes_de_PF_con_Haskell_Vol10/Examenes/Grupo_3/examen_1_09_nov.hs}
+% \subsection{Examen 2 (14 de diciembre de 2018)}
+% \examen{Examenes_de_PF_con_Haskell_Vol10/Examenes/Grupo_3/examen_2_14_dic.hs}
+% \subsection{Examen 3 (22 de enero de 2019)}
+% El examen es común con el del grupo 1 (ver página \pageref{examen_18_19_1_3}).
+% \subsection{Examen 4 (15 de marzo de 2019)}
+% \examen{Examenes_de_PF_con_Haskell_Vol10/Examenes/Grupo_3/examen_4_15_mar.hs}
+% \subsection{Examen 5 (03 de mayo de 2019)}
+% \examen{Examenes_de_PF_con_Haskell_Vol10/Examenes/Grupo_3/examen_5_03_may.hs}
+% % \subsection{Examen 6 (10 de junio de 2019)}
+% % \subsection{Examen 7 (02 de julio de 2019)}
+% % \subsection{Examen 8 (11 de septiembre de 2018)}
+%
+% \section{Exámenes del grupo 4 (José A. Alonso)}
+% \subsection{Examen 1 (07 de noviembre de 2018)}
+% \examen{Examenes_de_PF_con_Haskell_Vol10/Examenes/Grupo_4/examen_1_07_nov.hs}
+% \subsection{Examen 2 (19 de diciembre de 2018)}
+% \examen{Examenes_de_PF_con_Haskell_Vol10/Examenes/Grupo_4/examen_2_19_dic.hs}
+% \subsection{Examen 3 (22 de enero de 2019)}
+% \examen{Examenes_de_PF_con_Haskell_Vol10/Examenes/Grupo_4/examen_3_22_ene.hs} \label{examen_18_19_4_3}
+% \subsection{Examen 4 (13 de marzo de 2019)}
+% \examen{Examenes_de_PF_con_Haskell_Vol10/Examenes/Grupo_4/examen_4_13_mar.hs}
+% \subsection{Examen 5 (10 de abril de 2019)}
+% \examen{Examenes_de_PF_con_Haskell_Vol10/Examenes/Grupo_4/examen_5_03_may.hs}
+% % \subsection{Examen 6 (10 de junio de 2019)}
+% % \subsection{Examen 7 (02 de julio de 2019)}
+% % \subsection{Examen 8 (11 de septiembre de 2018)}
+%
+% \section{Exámenes del grupo 5 (Andrés Cordón y
+%                                                   Miguel A. Martínez)}
+% \subsection{Examen 1 (30 de octubre de 2018)}
+% \examen{Examenes_de_PF_con_Haskell_Vol10/Examenes/Grupo_5/examen_1_30_oct.hs}
+% \subsection{Examen 2 (13 de diciembre de 2018)}
+% \examen{Examenes_de_PF_con_Haskell_Vol10/Examenes/Grupo_5/examen_2_13_dic.hs}
+% \subsection{Examen 3 (22 de enero de 2019)}
+% El examen es común con el del grupo 1 (ver página \pageref{examen_18_19_1_3}).
+% \subsection{Examen 4 (21 de marzo de 2019)}
+% \examen{Examenes_de_PF_con_Haskell_Vol10/Examenes/Grupo_5/examen_4_21_mar.hs}
+% % \subsection{Examen 5 (02 de mayo de 2019)}
+% % \subsection{Examen 6 (10 de junio de 2019)}
+% % \subsection{Examen 7 (02 de julio de 2019)}
+% % \subsection{Examen 8 (11 de septiembre de 2018)}
+
+\appendix % Apéndices
+
+% A. Resumen de funciones Haskell
+\include{Apendice/resumen_Haskell}
+
+% B. Método de Pólya para la resolución de problemas
+\include{Apendice/metodo_de_Polya}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%  Bibliografía                                                            %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \nocite{Alonso-12a}
+\nocite{Alonso-12b}
+\nocite{Bird-99a}
+\nocite{Cunningham-10a}
+\nocite{Daume-06}
+\nocite{Davie-92a}
+\nocite{Doets-04a}
+\nocite{Fokker-96}
+\nocite{Hudak-00a}
+\nocite{Hudak-12a}
+\nocite{Hutton-07a}
+\nocite{OSullivan-08a}
+\nocite{Rabhi-99a}
+\nocite{Polya-65a}
+\nocite{Ruiz-04}
+\nocite{Thompson-11a}
+
+\addcontentsline{toc}{chapter}{Bibliografía}
+\bibliographystyle{abbrv}
+\bibliography{Examenes_de_PF_con_Haskell}
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

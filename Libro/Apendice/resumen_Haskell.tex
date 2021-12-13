@@ -1,0 +1,191 @@
+% resumen_Haskell.tex
+% Resumen de funciones habituales de Haskell.
+% José A. Alonso Jiménez <jalonso@us,es>
+% Sevilla, 13 de Noviembre de 2007
+% ============================================================================
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% § Paquetes adicionales                                                   %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\verba}[1]{%
+  \fbox{\textcolor{blue}{\ \texttt{#1}\phantom{I}}}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% § Documento                                                              %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{Resumen de funciones predefinidas de Haskell}
+\label{resumen}
+
+\begin{enumerate*}
+\item \verba{x + y} es la suma de \verb|x| e \verb|y|.
+\item \verba{x - y} es la resta de \verb|x| e \verb|y|.
+\item \verba{x / y} es el cociente de \verb|x| entre \verb|y|.
+\item \verba{x \^\ y} es \verb|x| elevado a \verb|y|.
+\item \verba{x == y} se verifica si \verb|x| es igual a \verb|y|.
+\item \verba{x /= y} se verifica si \verb|x| es distinto de \verb|y|.
+\item \verba{x <\ y} se verifica si \verb|x| es menor que \verb|y|.
+\item \verba{x <= y} se verifica si \verb|x| es menor o igual que \verb|y|.
+\item \verba{x >\ y} se verifica si \verb|x| es mayor que \verb|y|.
+\item \verba{x >= y} se verifica si \verb|x| es mayor o igual que \verb|y|.
+\item \verba{x \&\& y} es la conjunción de \verb|x| e \verb|y|.
+\item \verba{x || y} es la disyunción de \verb|x| e \verb|y|.
+\item \verba{x:ys} es la lista obtenida añadiendo \verb|x| al principio de
+  \verb|ys|. 
+\item \verba{xs ++ ys} es la concatenación de \verb|xs| e \verb|ys|.
+\item \verba{xs !! n} es el elemento \verb|n|--ésimo de \verb|xs|.
+\item \verba{f . g} es la composición de \verb|f| y \verb|g|.
+\item \verba{abs x} es el valor absoluto de \verb|x|.
+\item \verba{and xs} es la conjunción de la lista de booleanos \verb|xs|.
+\item \verba{ceiling x} es el menor entero no menor que \verb|x|.
+\item \verba{chr n} es el carácter cuyo código ASCII es \verb|n|.
+\item \verba{concat xss} es la concatenación de la lista de listas \verb|xss|.
+\item \verba{const x y} es \verb|x|.
+\item \verba{curry f} es la versión curryficada de la función \verb|f|.
+\item \verba{div x y} es la división entera de \verb|x| entre \verb|y|.
+\item \verba{drop n xs} borra los \verb|n| primeros elementos de \verb|xs|.
+\item \verba{dropWhile p xs} borra el mayor prefijo de \verb|xs| cuyos
+  elementos satisfacen el predicado \verb|p|.
+\item \verba{elem x ys} se verifica si \verb|x| pertenece a \verb|ys|.
+\item \verba{even x} se verifica si \verb|x| es par.
+\item \verba{filter p xs} es la lista de elementos de la lista \verb|xs| que
+  verifican el predicado \verb|p|. 
+\item \verba{flip f x y} es \verb|f y x|.
+\item \verba{floor x} es el mayor entero no mayor que \verb|x|.
+\item \verba{foldl f e xs} pliega \verb|xs| de izquierda a derecha
+  usando el operador f y el valor inicial \verb|e|.
+\item \verba{foldr f e xs} pliega \verb|xs| de derecha a izquierda
+  usando el operador f y el valor inicial \verb|e|. 
+\item \verba{fromIntegral x} transforma el número entero \verb|x| al tipo
+  numérico correspondiente. 
+\item \verba{fst p} es el primer elemento del par \verb|p|.
+\item \verba{gcd x y} es el máximo común divisor de de \verb|x| e \verb|y|.
+\item \verba{head xs} es el primer elemento de la lista \verb|xs|.
+\item \verba{init xs} es la lista obtenida eliminando el último elemento de
+  \verb|xs|. 
+% \item \verba{isSpace x}    se verifica si \verb|x| es un espacio.
+% \item \verba{isUpper x}    se verifica si \verb|x| está en mayúscula.
+% \item \verba{isLower x}    se verifica si \verb|x| está en minúscula.
+% \item \verba{isAlpha x}    se verifica si \verb|x| es un carácter alfabético.
+% \item \verba{isDigit x}    se verifica si \verb|x| es un dígito.
+% \item \verba{isAlphaNum x} se verifica si \verb|x| es un carácter alfanumérico.
+\item \verba{iterate f x} es la lista \verb|[x, f(x), f(f(x)), ...]|.
+\item \verba{last xs} es el último elemento de la lista \verb|xs|.
+\item \verba{length xs} es el número de elementos de la lista \verb|xs|.
+\item \verba{map f xs} es la lista obtenida aplicado \verb|f| a cada elemento
+  de \verb|xs|.
+\item \verba{max x y} es el máximo de \verb|x| e \verb|y|.
+\item \verba{maximum xs} es el máximo elemento de la lista \verb|xs|.
+\item \verba{min x y} es el mínimo de \verb|x| e \verb|y|.
+\item \verba{minimum xs} es el mínimo elemento de la lista \verb|xs|.
+\item \verba{mod x y} es el resto de \verb|x| entre \verb|y|.
+\item \verba{not x} es la negación lógica del booleano \verb|x|.
+\item \verba{noElem x ys} se verifica si \verb|x| no pertenece a \verb|ys|.
+\item \verba{null xs} se verifica si \verb|xs| es la lista vacía.
+\item \verba{odd x} se verifica si \verb|x| es impar.
+\item \verba{or xs} es la disyunción de la lista de booleanos \verb|xs|.
+\item \verba{ord c} es el código ASCII del carácter \verb|c|.
+\item \verba{product xs} es el producto de la lista de números \verb|xs|.
+\item \verba{read c} es la expresión representada por la cadena \verb|c|.
+\item \verba{rem x y} es el resto de \verb|x| entre \verb|y|.
+\item \verba{repeat x} es la lista infinita \verb|[x, x, x, ...]|.
+\item \verba{replicate n x} es la lista formada por \verb|n| veces el elemento
+  \verb|x|. 
+\item \verba{reverse xs} es la inversa de la lista \verb|xs|.
+\item \verba{round x} es el redondeo de \verb|x| al entero más cercano.
+\item \verba{scanr f e xs} es la lista de los resultados de plegar \verb|xs|
+  por la derecha con \verb|f| y \verb|e|.
+\item \verba{show x} es la representación de \verb|x| como cadena.
+\item \verba{signum x} es 1 si \verb|x| es positivo, 0 si \verb|x| es cero y -1
+  si \verb|x| es negativo.
+\item \verba{snd p} es el segundo elemento del par \verb|p|.
+\item \verba{splitAt n xs} es \verb|(take n xs, drop n xs)|.
+\item \verba{sqrt x} es la raíz cuadrada de \verb|x|.
+\item \verba{sum xs} es la suma de la lista numérica \verb|xs|.
+\item \verba{tail xs} es la lista obtenida eliminando el primer elemento de
+  \verb|xs|. 
+\item \verba{take n xs} es la lista de los \verb|n| primeros elementos de
+  \verb|xs|. 
+\item \verba{takeWhile p xs} es el mayor prefijo de \verb|xs| cuyos elementos
+  satisfacen el predicado \verb|p|. 
+\item \verba{uncurry f} es la versión cartesiana de la función \verb|f|.
+\item \verba{until p f x} aplica \verb|f| a \verb|x| hasta que se verifique
+  \verb|p|. 
+\item \verba{zip xs ys} es la lista de pares formado por los correspondientes
+  elementos de \verb|xs| e \verb|ys|.
+\item \verba{zipWith f xs ys} se obtiene aplicando \verb|f| a los
+  correspondientes elementos de \verb|xs| e \verb|ys|. 
+\end{enumerate*}
+
+\section{Resumen de funciones sobre TAD en Haskell}
+
+\subsection{Polinomios}
+
+\begin{enumerate*}
+\item \verba{polCero} es el polinomio cero.
+\item \verba{(esPolCero p)} se verifica si \verb|p| es el polinomio cero.
+\item \verba{(consPol n b p)} es el polinomio $bx^n+p$.
+\item \verba{(grado p)} es el grado del polinomio \verb|p|.
+\item \verba{(coefLider p)} es el coeficiente líder del polinomio \verb|p|.
+\item \verba{(restoPol p)} es el resto del polinomio \verb|p|.
+\end{enumerate*}
+
+\subsection{Vectores y matrices (\texttt{Data.Array})}
+
+\begin{enumerate*}
+\item \verba{(range m n)} es la lista de los índices del \verb|m| al \verb|n|.
+\item \verba{(index (m,n) i)} es el ordinal del índice \verb|i| en \verb|(m,n)|.
+\item \verba{(inRange (m,n) i)} se verifica si el índice \verb|i| está dentro
+  del rango limitado por \verb|m| y \verb|n|.
+\item \verba{(rangeSize (m,n))} es el número de elementos en el rango
+  limitado por \verb|m| y \verb|n|.
+\item \verba{(array (1,n) [(i, f i) | i <- [1..n])} es el vector de dimensión
+  \verb|n| cuyo elemento \verb|i|--ésimo es \verb|f i|. 
+\item \verba{(array ((1,1),(m,n)) [((i,j), f i j) | i <- [1..m], j <- [1..n]])} 
+  es la matriz de dimensión \verb|m.n| cuyo elemento \verb|(i,j)|--ésimo es
+  \verb|f i j|.  
+\item \verba{(array (m,n) ivs)} es la tabla de índices en el rango limitado
+  por \verb|m| y \verb|n| definida por la lista de asociación \verb|ivs|
+  (cuyos elementos son pares de la forma (índice, valor)).
+\item \verba{(t ! i)} es el valor del índice \verb|i| en la tabla \verb|t|.
+\item \verba{(bounds t)} es el rango de la tabla \verb|t|.
+\item \verba{(indices t)} es la lista de los índices de la tabla \verb|t|.
+\item \verba{(elems t)} es la lista de los elementos de la tabla \verb|t|.
+\item \verba{(assocs t)} es la lista de asociaciones de la tabla \verb|t|.
+\item \verba{(t // ivs)} es la tabla \verb|t| asignándole a los índices de la
+  lista de asociación \verb|ivs| sus correspondientes valores.
+\item \verba{(listArray (m,n) vs)} es la tabla cuyo rango es \verb|(m,n)| y
+  cuya lista de valores es \verb|vs|.
+\item \verba{(accumArray f v (m,n) ivs)} es la tabla de rango \verb|(m,n)|
+  tal que el valor del índice \verb|i| se obtiene acumulando la aplicación de
+  la función \verb|f| al valor inicial \verb|v| y a los valores de la lista
+  de asociación \verb|ivs| cuyo índice es \verb|i|.
+\end{enumerate*}
+
+\subsection{Tablas}
+\begin{enumerate*}
+\item \verba{(tabla ivs)} es la tabla correspondiente a la lista de
+  asociación \verb|ivs| (que es una lista de pares formados por los
+  índices y los valores).
+\item \verba{(valor t i)} es el valor del índice \verb|i| en la tabla
+  \verb|t|.
+\item \verba{(modifica (i,v) t)} es la tabla obtenida modificando en la
+  tabla \verb|t| el valor de \verb|i| por \verb|v|.
+\end{enumerate*}
+
+\subsection{Grafos}
+\begin{enumerate*}
+  \item \verba{(creaGrafo d cs as)} es un grafo (dirigido o no, según el valor
+    de o), con el par de cotas cs y listas de aristas as (cada arista es un
+    trío formado por los dos vértices y su peso).
+  \item \verba{(dirigido g)} se verifica si \verb|g| es dirigido.
+  \item \verba{(nodos g)} es la lista de todos los nodos del grafo \verb|g|.
+  \item \verba{(aristas g)} es la lista de las aristas del grafo \verb|g|.
+  \item \verba{(adyacentes g v)} es la lista de los vértices adyacentes al nodo
+    \verb|v| en el grafo \verb|g|.
+  \item \verba{(aristaEn g a)} se verifica si \verb|a| es una arista del grafo
+    \verb|g|.
+  \item \verba{(peso v1 v2 g)} es el peso de la arista que une los vértices
+    \verb|v1| y \verb|v2| en el grafo \verb|g|.
+\end{enumerate*}
