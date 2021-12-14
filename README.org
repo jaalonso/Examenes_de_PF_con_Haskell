@@ -39,3 +39,4 @@ programación funcional con Haskell* es la siguiente
 | [[https://github.com/jaalonso/Examenes_de_PF_con_Haskell_Vol11/raw/master/Libro/Examenes_de_PF_con_Haskell_Vol11.pdf][Volumen 11 (Curso 2019-20)]] | [[https://github.com/jaalonso/Examenes_de_PF_con_Haskell_Vol11][Repositorio 11]] |
 |----------------------------+----------------|
 
+Además, en el libro
