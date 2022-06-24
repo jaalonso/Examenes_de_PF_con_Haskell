@@ -1,5 +1,5 @@
 #+TITLE: Exámenes de programación funcional con Haskell
-
+ 
 Desde el inicio (en el curso 2009-10) del [[http://www.matematicas.us.es/estudios/grado-en-matematicas][Grado en Matemática]] de la [[http://www.us.es/][Universidad
 de Sevilla]] se estudia, en la [[http://www.cs.us.es/~jalonso/cursos/i1m/][asignatura de Informática]] de primero, una
 introducción a la programación funcional con [[http://es.wikipedia.org/wiki/Haskell][Haskell]].
